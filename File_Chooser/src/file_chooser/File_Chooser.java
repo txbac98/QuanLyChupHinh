@@ -5,6 +5,8 @@
  */
 package file_chooser;
 
+import listing_image.ImageListing;
+
 /**
  *
  * @author 16520
@@ -16,7 +18,7 @@ public class File_Chooser {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        FirstPage p = new FirstPage();
+        ImageListing p = new ImageListing();
         p.setVisible(true);
         
     }
