@@ -5,6 +5,7 @@
  */
 package listing_image;
 
+import java.awt.GridLayout;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -15,40 +16,46 @@ import javax.swing.JPanel;
 
 public class ImageItemManager {
     
+    
     public JPanel targetPanel;
     
     public ArrayList<ImageItem> imageItems;
     public ArrayList<ImageItem> selectedItems;
+    
     
     // list of the selected item
     public ArrayList<ImageItem> getSelectedItems(){
         return this.selectedItems;
     }
     
-    private int cellWidth = 10;
-    private int cellHeight = 10;
+    private GridImageAdapter gridAdapter;
     
     public ImageItemManager() {
-        this.imageItems = new ArrayList<>();
-        this.selectedItems = new ArrayList<>();
+        this.initialize();
         
     }
     
-    // update cell size (you need to call revalidate() )
-    public ImageItemManager setCellSize(int x, int y) {
-        this.cellWidth = x;
-        this.cellHeight = y;
+    private void initialize() {
+        this.imageItems = new ArrayList<>();
+        this.selectedItems = new ArrayList<>();
+        this.gridAdapter = new GridImageAdapter();
         
-        int count = this.imageItems.size();
-        for(int i = 0; i < count; ++i) {
-            this.imageItems.get(i).setSize(x, y);
-        }
+        this.gridAdapter.setListItem(imageItems);
+    }
+    
+    
+    // update cell size (you need to call revalidate() )
+    public ImageItemManager setCellSize(int width) {
+        this.gridAdapter.setCellSize(width);
+        
+        
         
         return this;
     }
     
     public ImageItemManager setTarget(JPanel newTarget){
         this.targetPanel = newTarget;
+        this.gridAdapter.setTarget(newTarget);
         return this;
     }
     
@@ -68,9 +75,11 @@ public class ImageItemManager {
             if(i == this.imageItems.size()){
                 
                 tmpItem = new ImageItem();
-                tmpItem.setManager(this).setSize(this.cellWidth, this.cellHeight);
+                tmpItem.setManager(this);
                 // TODO! add to the panel
                 this.imageItems.add(tmpItem);
+                
+                this.gridAdapter.addNewItem(tmpItem);
                 this.targetPanel.add(tmpItem);
             }
             else {
@@ -88,7 +97,7 @@ public class ImageItemManager {
             tmpItem.setVisible(false);
         }
         
-        
+        this.targetPanel.revalidate();
         return this;
     }
     

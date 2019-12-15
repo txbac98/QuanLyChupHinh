@@ -5,24 +5,14 @@
  */
 package listing_image;
 
-import java.awt.BasicStroke;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.event.ComponentAdapter;
-import java.awt.event.ComponentEvent;
-import java.awt.event.ComponentListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import java.awt.*;
 import java.awt.image.BufferedImage;
-import javax.swing.BorderFactory;
-import javax.swing.ImageIcon;
+import javax.swing.*;
 import javax.swing.JLabel;
-import javax.swing.SwingUtilities;
-import javax.swing.border.Border;
 
 
  
-public class ImageItem extends JLabel {
+public class ImageItem extends JComponent {
     
     public class Model {
         
@@ -41,8 +31,20 @@ public class ImageItem extends JLabel {
     
     private ImageItemListener myListener;
     
+    private int cellTextHeight = 60;
+    private int cellPadding = 10;
+    private int cellWidth = 50;
+    private int cellHeight = cellWidth + cellTextHeight;
+    private int cellInnerSize = cellWidth - (cellPadding * 2);
     
-    private int w, h;
+    
+    
+    private JLabel lbImage;
+    private JLabel lbName;
+    
+    private JLabel top, down, left, right;
+    
+    Color transparent = new Color( 0, 0, 0, 0 );
     
     public ImageItem(){
         
@@ -52,8 +54,38 @@ public class ImageItem extends JLabel {
         
         this.model = new Model();
         
-        //this.setHorizontalTextPosition(JLabel.CENTER);
-        //this.setVerticalTextPosition(JLabel.BOTTOM);
+        this.lbImage = new JLabel();
+        this.add(lbImage);
+        this.lbImage.setLocation(this.cellPadding, this.cellPadding);
+        this.lbName = new JLabel();
+        this.add(lbName);
+        this.lbName.setLocation(this.cellPadding / 2, this.cellPadding + this.cellInnerSize + this.cellPadding / 2);
+        this.lbName.setHorizontalAlignment(JLabel.CENTER);
+        this.lbName.setVerticalAlignment(JLabel.TOP);
+        
+        this.initBorder();
+    }
+    
+    private void initBorder() {
+        this.top = new JLabel();
+        this.add(top);
+        this.top.setOpaque(true);
+        this.top.setBackground(Color.white);
+        
+        this.down = new JLabel();
+        this.add(down);
+        this.down.setOpaque(true);
+        this.down.setBackground(Color.white);
+        
+        this.left = new JLabel();
+        this.add(left);
+        this.left.setOpaque(true);
+        this.left.setBackground(Color.white);
+        
+        this.right = new JLabel();
+        this.add(right);
+        this.right.setOpaque(true);
+        this.right.setBackground(Color.white);
     }
     
     public ImageItem setManager(ImageItemManager m){
@@ -61,12 +93,23 @@ public class ImageItem extends JLabel {
         return this;
     }
     
-    
+    public void setNewSize(int newWidth){
+        this.cellWidth = newWidth;
+        this.cellHeight = newWidth + this.cellTextHeight;
+        
+        this.cellInnerSize = this.cellWidth - (this.cellPadding * 2);
+        
+        this.setSize(this.cellWidth, this.cellHeight);
+        
+        this.lbImage.setSize(this.cellInnerSize, this.cellInnerSize);
+        
+        this.refreshImage();
+    }
     
     public void onResized(){
         
-        Dimension d = this.getSize();
-        this.refreshImage();
+        //Dimension d = this.getSize();
+        //this.refreshImage();
     }
     
     public void refreshImage() {
@@ -76,26 +119,53 @@ public class ImageItem extends JLabel {
         
         float originalWidth = this.model.image.getWidth();
         float originalHeight = this.model.image.getHeight();
-        float wPerH = originalHeight / originalHeight;
+        float wPerH = originalWidth / originalHeight;
         
-        float myW = this.getWidth();
-        float myH = this.getHeight();
+        float myW = this.cellInnerSize;
+        float myH = this.cellInnerSize;
         
         if((myW/myH) > wPerH)// the original image has the height taller than me => cap the height
         {// new width
             originalWidth = originalWidth * (myH / originalHeight);
             
             ico =  new ImageIcon(this.model.image.getScaledInstance((int)originalWidth, (int)myH, 12));
+            
+            int morePadding = (this.cellInnerSize - (int)originalWidth) / 2;
+            this.lbImage.setLocation(this.cellPadding + morePadding, this.cellPadding);
         }
         else// the original image has the width longer than me => cap the width
         {
             originalHeight = originalHeight * (myW / originalWidth);
             
             ico = new ImageIcon(this.model.image.getScaledInstance((int)myW, (int)originalHeight, 12));
+            
+            int morePadding = (this.cellInnerSize - (int)originalHeight) / 2;
+            this.lbImage.setLocation(this.cellPadding, this.cellPadding);
         }
         
-        this.setIcon(ico);
-        this.setText(this.model.name);
+        this.lbImage.setIcon(ico);
+        
+        String text = "<html><p>" + this.model.name + "</p></html>";
+        this.lbName.setText(text);
+        this.lbName.setLocation(this.cellPadding / 2, this.cellPadding + this.cellInnerSize + this.cellPadding);
+        this.lbName.setSize(this.cellInnerSize + this.cellPadding, this.cellTextHeight - this.cellPadding / 2);
+        
+        this.refreshBorderSize();
+    }
+    
+    private void refreshBorderSize(){
+        this.top.setSize(this.cellWidth, this.cellPadding);
+        this.top.setLocation(0, 0);
+        
+        this.down.setSize(this.cellWidth, this.cellPadding);
+        this.down.setLocation(0, this.cellInnerSize + this.cellPadding);
+        
+        
+        this.left.setSize(this.cellPadding, this.cellInnerSize + this.cellPadding * 2);
+        this.left.setLocation(0, 0);
+        
+        this.right.setSize(this.cellPadding, this.cellInnerSize + this.cellPadding * 2);
+        this.right.setLocation(this.cellInnerSize + this.cellPadding, 0);
     }
     
     public void onLeftClick(){
@@ -124,10 +194,16 @@ public class ImageItem extends JLabel {
     
     
     public void onSelected(){
-        this.setForeground(Color.red);
+        this.top.setBackground(Color.blue);
+        this.down.setBackground(Color.blue);
+        this.left.setBackground(Color.blue);
+        this.right.setBackground(Color.blue);
     }
     
     public void onDeselected(){
-        this.setForeground(Color.black);
+        this.top.setBackground(Color.white);
+        this.down.setBackground(Color.white);
+        this.left.setBackground(Color.white);
+        this.right.setBackground(Color.white);
     }
 }

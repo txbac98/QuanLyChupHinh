@@ -33,13 +33,17 @@ public class ImageListing extends javax.swing.JFrame {
         textAreaPaths = new javax.swing.JTextArea();
         btnRefresh = new javax.swing.JButton();
         btnAddImage = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
         jScrollPanel = new javax.swing.JScrollPane();
         panelImageList = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Listing Image");
 
         textAreaPaths.setColumns(20);
-        textAreaPaths.setRows(5);
+        textAreaPaths.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        textAreaPaths.setRows(1);
+        textAreaPaths.setToolTipText("lines of path");
         jScrollPane1.setViewportView(textAreaPaths);
 
         btnRefresh.setText("Refresh");
@@ -52,14 +56,18 @@ public class ImageListing extends javax.swing.JFrame {
 
         btnAddImage.setText("Add Image");
 
+        jLabel1.setText("Lines of path:");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 451, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 315, Short.MAX_VALUE)
+                .addGap(9, 9, 9)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 675, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnRefresh, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnAddImage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -71,6 +79,9 @@ public class ImageListing extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(btnRefresh)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnAddImage)
@@ -79,6 +90,9 @@ public class ImageListing extends javax.swing.JFrame {
         );
 
         jScrollPanel.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        jScrollPanel.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+
+        panelImageList.setBackground(new java.awt.Color(51, 255, 204));
 
         javax.swing.GroupLayout panelImageListLayout = new javax.swing.GroupLayout(panelImageList);
         panelImageList.setLayout(panelImageListLayout);
@@ -100,7 +114,7 @@ public class ImageListing extends javax.swing.JFrame {
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPanel)
+                .addComponent(jScrollPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -108,7 +122,7 @@ public class ImageListing extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 470, Short.MAX_VALUE)
+                .addComponent(jScrollPanel)
                 .addContainerGap())
         );
 
@@ -119,24 +133,13 @@ public class ImageListing extends javax.swing.JFrame {
         
         // create the manager 
         this.manager = new ImageItemManager();
-        // create the my-grid panel
-        GridImagePanel grid = new GridImagePanel();
-        // panelImageList is from Design
-        this.panelImageList.add(grid);
-
-        // rubbish way to manage the size of the panel (the panel was contained inside a scroll-panel)
-        Dimension size = this.panelImageList.getPreferredSize();
-        size.width -= 5;
-        grid.setSize(size);
-        this.panelImageList.setSize(size);
-        
-        // just let you see it
-        grid.setBackground(Color.YELLOW);
-        grid.setBorder(new EtchedBorder());
-        
         // manager register component
-        this.manager.setTarget(grid);
-        this.manager.setCellSize(100, 100);
+        this.manager.setTarget(this.panelImageList);
+        this.manager.setCellSize(100);
+        
+        // get the selected item in run-time
+        //ArrayList<Imageitem> selectedItems = this.manager.getSelectedItems();
+        // customize `ImageItem` for further use
 
         // refresh the screen
         this.revalidate();
@@ -191,6 +194,7 @@ public class ImageListing extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddImage;
     private javax.swing.JButton btnRefresh;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPanel;
