@@ -1,8 +1,17 @@
 package listing_image;
 
+import java.io.File;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.datatransfer.DataFlavor;
+import java.awt.datatransfer.Transferable;
+import java.awt.datatransfer.UnsupportedFlavorException;
+import java.io.IOException;
+import java.util.ArrayList;
+import javax.swing.JComponent;
+import javax.swing.TransferHandler;
 import javax.swing.border.EtchedBorder;
+import java.util.List;
 
 public class ImageListing extends javax.swing.JFrame {
 
@@ -16,9 +25,10 @@ public class ImageListing extends javax.swing.JFrame {
         
         /** init the images populating*/
         this.initImageGrid();
-        
+        modifyLbThaHinh();
     }
-
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -34,6 +44,7 @@ public class ImageListing extends javax.swing.JFrame {
         btnRefresh = new javax.swing.JButton();
         btnAddImage = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        lbThaHinh = new javax.swing.JLabel();
         jScrollPanel = new javax.swing.JScrollPane();
         panelImageList = new javax.swing.JPanel();
 
@@ -46,7 +57,7 @@ public class ImageListing extends javax.swing.JFrame {
         textAreaPaths.setToolTipText("lines of path");
         jScrollPane1.setViewportView(textAreaPaths);
 
-        btnRefresh.setText("Refresh");
+        btnRefresh.setText("Tải lên");
         btnRefresh.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnRefresh.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -56,18 +67,25 @@ public class ImageListing extends javax.swing.JFrame {
 
         btnAddImage.setText("Add Image");
 
-        jLabel1.setText("Lines of path:");
+        jLabel1.setText("Danh sách hình ảnh:");
+
+        lbThaHinh.setText("Thả hình ảnh tại đây");
+        lbThaHinh.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(9, 9, 9)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 675, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addContainerGap()
+                .addComponent(lbThaHinh, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 440, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnRefresh, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnAddImage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -79,14 +97,18 @@ public class ImageListing extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(lbThaHinh, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(btnRefresh)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnAddImage)
-                        .addContainerGap(33, Short.MAX_VALUE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
+                        .addContainerGap(33, Short.MAX_VALUE))))
         );
 
         jScrollPanel.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
@@ -145,11 +167,38 @@ public class ImageListing extends javax.swing.JFrame {
         this.revalidate();
     }
     
+    public void modifyLbThaHinh(){
+        TransferHandler th = new TransferHandler(){
+
+            @Override
+            public boolean canImport(JComponent comp, DataFlavor[] transferFlavors){
+                return true;
+            }
+
+            @Override
+            public boolean importData(JComponent comp, Transferable t){
+
+                try {             
+                    
+                    List<File> files = (List<File>) t.getTransferData(DataFlavor.javaFileListFlavor);
+                    AddFiles(files);
+                    System.out.println(files.size());
+                }catch (UnsupportedFlavorException ex){
+                    System.out.print(ex);
+                }catch (IOException ex){
+                    System.out.print(ex);
+                }
+                return true;
+            }
+        };
+        lbThaHinh.setTransferHandler(th);
+    }
+    
+    
     // button refresh!
     private void btnRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshActionPerformed
         
-        String[] datas = this.textAreaPaths.getText().split("\n");
-        
+        String[] datas = this.textAreaPaths.getText().split("\n");    
         this.manager.processPath(datas);
         this.revalidate();
     }//GEN-LAST:event_btnRefreshActionPerformed
@@ -191,6 +240,27 @@ public class ImageListing extends javax.swing.JFrame {
         });
     }
 
+    private ArrayList<String> listPath;
+    
+    private void AddFiles(List<File> files){
+        if (files == null) return;
+        for (File file : files){
+            AddPath(file.getPath());
+        }
+    }
+    
+    private void AddPath(String path){
+        if (listPath==null) listPath = new ArrayList<String>();
+        if (listPath.contains(path)) return;
+        listPath.add(path);
+        
+        if (textAreaPaths.getText().equals("")){
+            textAreaPaths.setText(path);
+        }
+        else
+            textAreaPaths.setText(textAreaPaths.getText() + "\n" + path);
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddImage;
     private javax.swing.JButton btnRefresh;
@@ -198,6 +268,7 @@ public class ImageListing extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPanel;
+    private javax.swing.JLabel lbThaHinh;
     private javax.swing.JPanel panelImageList;
     private javax.swing.JTextArea textAreaPaths;
     // End of variables declaration//GEN-END:variables
