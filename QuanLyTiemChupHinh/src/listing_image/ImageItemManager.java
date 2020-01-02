@@ -103,7 +103,8 @@ public class ImageItemManager {
             tmpItem.setVisible(false);
         }
         
-        this.targetPanel.revalidate();
+        //this.targetPanel.revalidate();
+        this.gridAdapter.refreshChildren();
         return this;
     }
     

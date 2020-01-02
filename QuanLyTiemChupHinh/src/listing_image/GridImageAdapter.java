@@ -2,6 +2,7 @@ package listing_image;
 
 import java.awt.Container;
 import java.awt.GridLayout;
+import java.awt.Point;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
 import java.util.ArrayList;
@@ -19,7 +20,7 @@ public class GridImageAdapter implements ComponentListener {
     private JPanel targetPanel;
     
     
-    private GridLayout gridLayout;
+    //private GridLayout gridLayout;
     
     // need to be setted from the host
     private ArrayList<ImageItem> items;
@@ -30,9 +31,9 @@ public class GridImageAdapter implements ComponentListener {
     public GridImageAdapter setTarget(JPanel newTarget){
         this.targetPanel = newTarget;
         
-        this.targetPanel.addComponentListener(this);
-        this.gridLayout = new GridLayout(0, this.columnCount);
-        this.targetPanel.setLayout(gridLayout);
+        //this.targetPanel.addComponentListener(this);
+        //this.gridLayout = new GridLayout(0, this.columnCount);
+        //this.targetPanel.setLayout(gridLayout);
         
         return this;
     }
@@ -44,7 +45,6 @@ public class GridImageAdapter implements ComponentListener {
     
     public GridImageAdapter setCellSize(int cellWidth){
         this.cellWidth = cellWidth;
-        this.updateChildrenSize();
         this.refreshChildren();
         return this;
     }
@@ -58,22 +58,39 @@ public class GridImageAdapter implements ComponentListener {
     
     private void updateChildrenSize() {
         int count = this.items.size();
+        ImageItem tmpItem;
+        Point p = new Point();
         for(int i = 0; i < count; ++i) {
-            this.items.get(i).setNewSize(this.cellWidth);
+            tmpItem = this.items.get(i);
+            tmpItem.setNewSize(this.cellWidth);
+            
+            p.x = i % this.columnCount * this.cellWidth;
+            p.y = i / this.columnCount * (this.cellWidth + 50);
+            tmpItem.setLocation(p);
         }
     }
     
-    private void refreshChildren() {
+    public void refreshChildren() {
         this.panelWidth = this.targetPanel.getSize().width;
         
-        this.columnCount = this.panelWidth / this.cellWidth;
-        this.gridLayout.setColumns(this.columnCount);
+        this.columnCount = this.panelWidth / this.cellWidth - 1;
+        //this.gridLayout.setColumns(this.columnCount);
         
-//        if(this.items.size() > 0) {
-//            int rowCount = this.items.size() / this.columnCount;
-//            int panelHeight = rowCount * (this.cellWidth + 20);
-//            this.targetPanel.setSize(this.panelWidth, panelHeight);
-//        }
+        // set row count
+        if(this.items.size() > 0) {
+            int rowCount = this.items.size() / this.columnCount;
+            int panelHeight = rowCount * (this.cellWidth + 20);
+            this.targetPanel.setSize(this.panelWidth, panelHeight);
+        }
+        else
+        {
+            this.targetPanel.setSize(this.panelWidth, 0);
+        }
+        
+        
+        
+        
+        this.updateChildrenSize();
         
         
         this.targetPanel.revalidate();
