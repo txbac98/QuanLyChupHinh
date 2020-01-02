@@ -6,6 +6,7 @@
 package listing_image;
 
 import java.awt.*;
+import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import javax.swing.*;
 import javax.swing.JLabel;
@@ -168,27 +169,27 @@ public class ImageItem extends JComponent {
         this.right.setLocation(this.cellInnerSize + this.cellPadding, 0);
     }
     
-    public void onLeftClick(){
+    public void onLeftClick(MouseEvent e){
         this.manager.onAnItemClicked(this);
     }
     
-    public void onCtrlLeftClick(){
+    public void onCtrlLeftClick(MouseEvent e){
+        this.manager.onAnItemCtrlClicked(this);
+    }
+    
+    public void onShiftLeftClick(MouseEvent e){
         
     }
     
-    public void onShiftLeftClick(){
-        
+    public void onRightClick(MouseEvent e) {
+        this.manager.onAnItemRightClicked(this, e);
     }
     
-    public void onRightClick() {
-        
+    public void onCtrlRightClick(MouseEvent e){
+        this.manager.onAnItemCtrlRightClicked(this, e);
     }
     
-    public void onCtrlRightClick(){
-        
-    }
-    
-    public void onMiddleClick() {
+    public void onMiddleClick(MouseEvent e) {
         
     }
     

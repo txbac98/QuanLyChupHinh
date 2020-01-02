@@ -6,6 +6,7 @@
 package listing_image;
 
 import java.awt.GridLayout;
+import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -30,6 +31,8 @@ public class ImageItemManager {
     
     private GridImageAdapter gridAdapter;
     
+    PopupListingImage menu;
+    
     public ImageItemManager() {
         this.initialize();
         
@@ -41,6 +44,9 @@ public class ImageItemManager {
         this.gridAdapter = new GridImageAdapter();
         
         this.gridAdapter.setListItem(imageItems);
+        
+        
+        this.menu = new PopupListingImage(this);
     }
     
     
@@ -125,12 +131,59 @@ public class ImageItemManager {
     
     // called from the child
     public void onAnItemClicked(ImageItem theItem) {
-        if(this.selectedItems.size() != 0){
-            this.selectedItems.get(0).onDeselected();
+        this.clearSelectedItems();
+        this.addAnItemToSelect(theItem);
+    }
+    
+    public void onAnItemCtrlClicked(ImageItem theItem) {
+        if(this.selectedItems.contains(theItem)){
+            this.removeitemFromSelect(theItem);
+        }
+        else {
+            this.addAnItemToSelect(theItem);
+        }
+    }
+    
+    private void clearSelectedItems(){
+        if(this.selectedItems.size() != 0) {
+            for(int i = 0; i < this.selectedItems.size(); ++i) {
+                this.selectedItems.get(i).onDeselected();
+            }
             this.selectedItems.clear();
         }
-        
+    }
+    
+    private void addAnItemToSelect(ImageItem theItem) {
         this.selectedItems.add(theItem);
         theItem.onSelected();
+    }
+    
+    private void removeitemFromSelect(ImageItem theItem) {
+        theItem.onDeselected();
+        this.selectedItems.remove(theItem);
+    }
+    
+    public void onAnItemRightClicked(ImageItem theItem, MouseEvent e){
+        
+        this.onAnItemClicked(theItem);
+        
+        this.menu.show(e.getComponent(), e.getX(), e.getY());
+    }
+    
+    public void onAnItemCtrlRightClicked(ImageItem theItem, MouseEvent e){
+        if(!this.selectedItems.contains(theItem)){
+            this.addAnItemToSelect(theItem);
+        }
+        
+        this.menu.show(e.getComponent(), e.getX(), e.getY());
+    }
+    
+    public void onMenuDeleteSelected(){
+        
+        for(int i = 0; i < this.selectedItems.size(); ++i){
+            this.selectedItems.get(i).onDeselected();
+            this.selectedItems.get(i).setVisible(false);
+        }
+        this.selectedItems.clear();
     }
 }

@@ -40,27 +40,27 @@ public class ImageItemListener extends MouseAdapter implements ComponentListener
         if(SwingUtilities.isLeftMouseButton(e))
         {
             if(e.isShiftDown()){
-                host.onShiftLeftClick();
+                host.onShiftLeftClick(e);
             }
             else if(e.isControlDown()){
-                host.onCtrlLeftClick();
+                host.onCtrlLeftClick(e);
             }
             else{
-                host.onLeftClick();
+                host.onLeftClick(e);
             }
         }
         else if(SwingUtilities.isRightMouseButton(e))
         {
             if(e.isControlDown()){
-                host.onCtrlRightClick();
+                host.onCtrlRightClick(e);
             }
             else {
-                host.onRightClick();
+                host.onRightClick(e);
             }
         }
         else if(SwingUtilities.isMiddleMouseButton(e))
         {
-            host.onMiddleClick();
+            host.onMiddleClick(e);
         }
     }
     
