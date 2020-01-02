@@ -1,20 +1,9 @@
 package listing_image;
 
-
 import java.awt.Toolkit;
 import java.awt.event.*;
 import javax.swing.*;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/**
- *
- * @author Admin
- */
 public class PopupListingImage extends JPopupMenu {
     
     
@@ -24,9 +13,9 @@ public class PopupListingImage extends JPopupMenu {
     public PopupListingImage(ImageItemManager h) {
         this.host = h;
         
-        deleter = new JMenuItem("Delete item");
+        deleter = new JMenuItem("Remove item from here");
         deleter.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_DELETE, Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()));
-        deleter.addActionListener(event -> host.onMenuDeleteSelected());
+        deleter.addActionListener(asuidyhaiusdyaskdhaksdhaksjdhakjsdhaksdhaksjdhakjjsdhaksjdhaksd -> host.onMenuDeleteSelected());
         this.add(deleter);
     }
     

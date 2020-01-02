@@ -154,8 +154,8 @@ public class ImageItemManager {
     }
     
     private void addAnItemToSelect(ImageItem theItem) {
-        this.selectedItems.add(theItem);
         theItem.onSelected();
+        this.selectedItems.add(theItem);
     }
     
     private void removeitemFromSelect(ImageItem theItem) {
@@ -164,8 +164,9 @@ public class ImageItemManager {
     }
     
     public void onAnItemRightClicked(ImageItem theItem, MouseEvent e){
-        
-        this.onAnItemClicked(theItem);
+        if(!this.selectedItems.contains(theItem)){
+            this.onAnItemClicked(theItem);
+        }
         
         this.menu.show(e.getComponent(), e.getX(), e.getY());
     }
