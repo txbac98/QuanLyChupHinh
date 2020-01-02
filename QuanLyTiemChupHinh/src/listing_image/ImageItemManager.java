@@ -22,6 +22,7 @@ public class ImageItemManager {
     
     public ArrayList<ImageItem> imageItems;
     public ArrayList<ImageItem> selectedItems;
+    public ArrayList<String> deletedNames;
     
     
     // list of the selected item
@@ -182,12 +183,19 @@ public class ImageItemManager {
     
     public void onMenuDeleteSelected(){
         
+        if (deletedNames!=null) deletedNames.clear();
+        deletedNames = new ArrayList<String>();
+        
         for(int i = 0; i < this.selectedItems.size(); ++i){
+            deletedNames.add(this.selectedItems.get(i).model.name);
             this.selectedItems.get(i).onDeselected();
             this.selectedItems.get(i).setVisible(false);
+            this.imageItems.remove(this.selectedItems.get(i));
         }
         this.selectedItems.clear();
         
         this.gridAdapter.refreshChildren();
     }
+    
+    
 }

@@ -14,8 +14,8 @@ public class PopupListingImage extends JPopupMenu {
         this.host = h;
         
         deleter = new JMenuItem("Remove item from here");
-        deleter.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_DELETE, Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()));
-        deleter.addActionListener(asuidyhaiusdyaskdhaksdhaksjdhakjsdhaksdhaksjdhakjjsdhaksjdhaksd -> host.onMenuDeleteSelected());
+        //deleter.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_DELETE, Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()));
+        deleter.addActionListener(a -> host.onMenuDeleteSelected());
         this.add(deleter);
     }
     

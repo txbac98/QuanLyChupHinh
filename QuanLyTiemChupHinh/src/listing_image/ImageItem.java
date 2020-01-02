@@ -8,6 +8,7 @@ package listing_image;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
+import java.io.File;
 import javax.swing.*;
 import javax.swing.JLabel;
 
@@ -23,7 +24,7 @@ public class ImageItem extends JComponent {
         public BufferedImage image;
     }
     
-    private Model model;
+    public Model model;
     public Model getModel() {
         return this.model;
     }
@@ -206,5 +207,8 @@ public class ImageItem extends JComponent {
         this.down.setBackground(Color.white);
         this.left.setBackground(Color.white);
         this.right.setBackground(Color.white);
+        
     }
+    
+    
 }

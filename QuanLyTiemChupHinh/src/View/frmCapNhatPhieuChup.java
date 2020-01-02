@@ -103,8 +103,7 @@ public class frmCapNhatPhieuChup extends javax.swing.JFrame {
     private void AddPath(String path){
         if (listPath==null) listPath = new ArrayList<String>();
         if (listPath.contains(path)) return;
-        listPath.add(path);
-        
+        listPath.add(path);       
     }
     
     private frmQuanLyPhieuChup frmQLPC;
@@ -287,8 +286,36 @@ public class frmCapNhatPhieuChup extends javax.swing.JFrame {
 
     private void btnXacNhanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXacNhanActionPerformed
         // TODO add your handling code here:
+
+        ArrayList<String> listNameDeleted = new ArrayList<String>();
+
+        if (manager.deletedNames!=null)
+        {
+                for(String deletedName : manager.deletedNames )
+                {
+                listNameDeleted.add(deletedName);
+                System.err.println(deletedName);
+            }
+        }
+        if (listPath!=null){
+            listPath.clear();
+        }
+        listPath = new ArrayList<String>();
+        
+        if (manager.imageItems!=null)
+        {
+                for(ImageItem item : manager.imageItems )
+                {
+                listPath.add(item.model.fullPath);
+            }
+        }
+        
+
+        
         ThongBao thongBao = PhieuChupCon.SuaTrangThaiPhieuChup(tfMaPC.getText(), cbxTrangThai.getSelectedItem().toString());
         ShowThongBao(thongBao);
+        CapNhatPhieuChupCon.XoaHinhAnh(tfMaPC.getText(), listNameDeleted);
+        
         CapNhatPhieuChupCon.LuuHinhAnh(tfMaPC.getText(), listPath);
         CapNhatPhieuChupCon.LuuCTPC(new ChiTietPhieuChup(tfMaPC.getText(), tfSoLuongAnh.getText()));
     }//GEN-LAST:event_btnXacNhanActionPerformed
