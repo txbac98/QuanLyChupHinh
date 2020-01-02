@@ -60,26 +60,35 @@ public class GridImageAdapter implements ComponentListener {
         int count = this.items.size();
         ImageItem tmpItem;
         Point p = new Point();
+        
+        int index = 0;
+        
         for(int i = 0; i < count; ++i) {
             tmpItem = this.items.get(i);
-            tmpItem.setNewSize(this.cellWidth);
             
-            p.x = i % this.columnCount * this.cellWidth;
-            p.y = i / this.columnCount * (this.cellWidth + 50);
+            if(!tmpItem.isVisible())
+            {
+                continue;
+            }
+            
+            tmpItem.setNewSize(this.cellWidth);
+            p.x = index % this.columnCount * (this.cellWidth + 10);
+            p.y = index / this.columnCount * (this.cellWidth + 30);
             tmpItem.setLocation(p);
+            ++index;
         }
     }
     
     public void refreshChildren() {
         this.panelWidth = this.targetPanel.getSize().width;
         
-        this.columnCount = this.panelWidth / this.cellWidth - 1;
+        this.columnCount = this.panelWidth / (this.cellWidth + 10) - 1;
         //this.gridLayout.setColumns(this.columnCount);
         
         // set row count
         if(this.items.size() > 0) {
             int rowCount = this.items.size() / this.columnCount;
-            int panelHeight = rowCount * (this.cellWidth + 20);
+            int panelHeight = rowCount * (this.cellWidth + 30);
             this.targetPanel.setSize(this.panelWidth, panelHeight);
         }
         else

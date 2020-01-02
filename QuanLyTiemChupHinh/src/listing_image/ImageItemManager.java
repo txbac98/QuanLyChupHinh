@@ -187,5 +187,7 @@ public class ImageItemManager {
             this.selectedItems.get(i).setVisible(false);
         }
         this.selectedItems.clear();
+        
+        this.gridAdapter.refreshChildren();
     }
 }
