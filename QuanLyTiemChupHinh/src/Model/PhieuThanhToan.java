@@ -12,15 +12,30 @@ import java.util.Date;
  * @author 16520
  */
 public class PhieuThanhToan {
-    //    MATT VARCHAR(10) NOT NULL,
-    // MAPC VARCHAR(10),
-    // MANV VARCHAR(10) NOT NULL,
-    // LOAI VARCHAR(50),
-    // NGAYTAO DATE,
-    // SOTIEN LONG
     public String MATT;
     public String MAPC;
-    public String LOAI;
-    public Date NGAYTAO;
-    public Long SOTIEN;
+    public String MANV;
+    public String SOANH;
+    public String MABHT;
+    public String MACTHT;
+    public String MACTUD;
+    public String NGAYTAO;
+    public String SOTIEN;
+    
+    
+    public PhieuThanhToan(){
+        
+    }
+    
+    public PhieuThanhToan(String MaTT, String MaPC, String MaNV, String SoAnh, String MaBHT, String MaCTHT, String MaCTUD, String ngayTao, String soTien){
+        MATT = MaTT;
+        MAPC = MaPC;
+        MANV = MaNV;
+        SOANH = SoAnh;
+        MABHT = MaBHT;
+        MACTHT = MaCTHT;
+        MACTUD = MaCTUD;
+        NGAYTAO = ngayTao;
+        SOTIEN = soTien;
+    }
 }

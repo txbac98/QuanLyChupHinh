@@ -22,8 +22,21 @@ public class ChuongTrinhUuDai {
     public String MACTUD;
     public String MANV;
     public String TENCTUD;
-    public Date NGAYBATDAU;
-    public Date NGAYKETTHUC;
+    public String NGAYBATDAU;
+    public String NGAYKETTHUC;
     public String NOIDUNG;
-    public Float GIATRIUUDAI;
+    public String GIATRIUUDAI;
+    
+    public ChuongTrinhUuDai(){
+        
+    }
+    public ChuongTrinhUuDai(String maCTUD, String maNV, String tenCTUD, String ngayBD, String ngayKT, String noiDung, String gtud){
+        MACTUD = maCTUD;
+        MANV = maNV;
+        TENCTUD = tenCTUD;
+        NGAYBATDAU = ngayBD;
+        NGAYKETTHUC = ngayKT;
+        NOIDUNG = noiDung;
+        GIATRIUUDAI = gtud;
+    }
 }

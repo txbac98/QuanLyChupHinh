@@ -18,6 +18,22 @@ public class PhieuChup {
     // TRANGTHAI VARCHAR(20)
     public String MAPC;
     public String MAKH;
-    public Date NGAYTAO;
+    public String NGAYTAO;
     public String TRANGTHAI;
+    public PhieuChup(){
+        
+    }
+    public PhieuChup(String MaPC, String MaKH, String ngayTao, String trangThai){
+        MAPC = MaPC;
+        MAKH = MaKH;
+        NGAYTAO = ngayTao;
+        TRANGTHAI = trangThai;
+    }
+    
+    public PhieuChup(PhieuChup pc){
+        MAPC = pc.MAPC;
+        MAKH = pc.MAKH;
+        NGAYTAO = pc.NGAYTAO;
+        TRANGTHAI = pc.TRANGTHAI;
+    }
 }

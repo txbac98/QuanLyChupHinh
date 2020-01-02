@@ -20,6 +20,18 @@ public class BangHoachToan {
     public String MABHT;
     public String MANV;
     public String TENBHT;
-    public Date NGAYTAO;
-    public Boolean HIEULUC;
+    public String NGAYTAO;
+    public String HIEULUC;
+    
+    public BangHoachToan(){
+        
+    }
+    
+    public BangHoachToan(String MaBHT, String MaNV, String TenBHT, String NgayTao, String HieuLuc){
+        MABHT = MaBHT;
+        MANV = MaNV;
+        TENBHT = TenBHT;
+        NGAYTAO = NgayTao;
+        HIEULUC = HieuLuc;
+    }
 }

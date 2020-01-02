@@ -5,6 +5,11 @@
  */
 package View;
 
+import Controller.PhieuChupCon;
+import Model.PhieuChup;
+import Model.ThongBao;
+import java.awt.Color;
+
 /**
  *
  * @author 16520
@@ -18,6 +23,25 @@ public class frmTraCuuPhieuChup extends javax.swing.JFrame {
         initComponents();
     }
 
+    public void Show(){
+        this.setVisible(true);
+        XoaThongBao();
+        Form.Form.centreWindow(this);
+    }
+    
+     private void XoaThongBao(){
+        lbThongBao.setText("");
+    }
+    
+    private void ShowThongBao(ThongBao thongBao){
+        lbThongBao.setText(thongBao.ChuThich);
+        if (thongBao.ThanhCong){
+           lbThongBao.setForeground(Color.GREEN);
+        }
+        else{
+            lbThongBao.setForeground(Color.RED);
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -28,19 +52,23 @@ public class frmTraCuuPhieuChup extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        btnHoanTat = new javax.swing.JButton();
+        tfMaPC = new javax.swing.JTextField();
+        btnTraCuu = new javax.swing.JButton();
+        lbThongBao = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
 
         jLabel1.setText("Mã phiếu chụp:");
 
-        btnHoanTat.setText("Tra cứu");
-        btnHoanTat.addActionListener(new java.awt.event.ActionListener() {
+        btnTraCuu.setText("Tra cứu");
+        btnTraCuu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnHoanTatActionPerformed(evt);
+                btnTraCuuActionPerformed(evt);
             }
         });
+
+        lbThongBao.setText("Thông báo");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -52,9 +80,12 @@ public class frmTraCuuPhieuChup extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(21, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnHoanTat)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lbThongBao)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnTraCuu))
+                    .addComponent(tfMaPC, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(29, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -63,20 +94,31 @@ public class frmTraCuuPhieuChup extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnHoanTat)
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addComponent(tfMaPC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lbThongBao)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnTraCuu)
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnHoanTatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHoanTatActionPerformed
+    private void btnTraCuuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTraCuuActionPerformed
         // TODO add your handling code here:
-        frmCapNhatPhieuChup frmHTPC = new frmCapNhatPhieuChup();
-        frmHTPC.setVisible(true);
-    }//GEN-LAST:event_btnHoanTatActionPerformed
+        PhieuChup phieuChup = PhieuChupCon.LayPhieuChupTheoMa(tfMaPC.getText());
+        if (phieuChup.equals(null)){
+            lbThongBao.setText("Mã phiếu chụp không tồn tại");
+        }
+        else {
+            lbThongBao.setText("Đang mở phiếu chụp");
+            frmCapNhatPhieuChup frmCNPC = new frmCapNhatPhieuChup();
+            frmCNPC.Show(phieuChup,null);
+            this.setVisible(false);
+        }
+        
+    }//GEN-LAST:event_btnTraCuuActionPerformed
 
     /**
      * @param args the command line arguments
@@ -114,8 +156,9 @@ public class frmTraCuuPhieuChup extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnHoanTat;
+    private javax.swing.JButton btnTraCuu;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JLabel lbThongBao;
+    private javax.swing.JTextField tfMaPC;
     // End of variables declaration//GEN-END:variables
 }

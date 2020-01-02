@@ -10,10 +10,16 @@ package Model;
  * @author 16520
  */
 public class ChiTietPhieuChup {
-    //    MACTPC VARCHAR(10) NOT NULL,
-    // MAPC VARCHAR(10) NOT NULL,
-    // ANH VARCHAR(100) NOT NULL
-    public String MACTPC;
+
     public String MAPC;
-    public String ANH;
+    public String SOANH;
+    
+    
+    public ChiTietPhieuChup(){
+        
+    }
+    public ChiTietPhieuChup(String maPC, String soAnh){
+        MAPC = maPC;
+        SOANH = soAnh;
+    }
 }

@@ -18,4 +18,14 @@ public class TaiKhoan {
     public String TENNV;
     public String MATKHAU;
     public String LOAINV;
+    
+    public TaiKhoan(){
+        
+    }
+    public TaiKhoan(String MaNV, String TenNV, String MatKhau, String LoaiNV){
+        MANV = MaNV;
+        TENNV = TenNV;
+        MATKHAU = MatKhau;
+        LOAINV = LoaiNV;
+    }
 }

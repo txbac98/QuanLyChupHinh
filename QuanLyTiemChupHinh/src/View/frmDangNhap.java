@@ -5,6 +5,12 @@
  */
 package View;
 
+import Controller.TaiKhoanCon;
+import Model.TaiKhoan;
+import Model.ThongBao;
+import java.awt.Color;
+import java.awt.event.KeyEvent;
+
 /**
  *
  * @author 16520
@@ -31,12 +37,14 @@ public class frmDangNhap extends javax.swing.JFrame {
         jCheckBox2 = new javax.swing.JCheckBox();
         btnDangNhap = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        tfTaiKhoan = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jPasswordField1 = new javax.swing.JPasswordField();
-        jLabel3 = new javax.swing.JLabel();
+        pfMatKhau = new javax.swing.JPasswordField();
+        lbThongBao = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setLocation(new java.awt.Point(0, 0));
+        setResizable(false);
 
         jCheckBox1.setText("Ghi nhớ mật khẩu");
 
@@ -53,36 +61,34 @@ public class frmDangNhap extends javax.swing.JFrame {
 
         jLabel2.setText("Mật khẩu:");
 
-        jLabel3.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel3.setForeground(new java.awt.Color(51, 51, 255));
-        jLabel3.setText("Quên mật khẩu");
+        pfMatKhau.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                pfMatKhauKeyPressed(evt);
+            }
+        });
+
+        lbThongBao.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        lbThongBao.setText("Thong bao");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addGap(24, 24, 24)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel1)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPasswordField1)
-                            .addComponent(jTextField1)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jCheckBox1)
-                                    .addComponent(jCheckBox2))
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(15, 15, 15)
-                                .addComponent(jLabel3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 126, Short.MAX_VALUE)
-                                .addComponent(btnDangNhap)
-                                .addGap(15, 15, 15)))))
-                .addGap(28, 28, 28))
+                    .addComponent(jCheckBox1)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(lbThongBao)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnDangNhap))
+                        .addComponent(tfTaiKhoan, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 275, Short.MAX_VALUE)
+                        .addComponent(pfMatKhau, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jCheckBox2, javax.swing.GroupLayout.Alignment.LEADING)))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -90,20 +96,20 @@ public class frmDangNhap extends javax.swing.JFrame {
                 .addGap(20, 20, 20)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(tfTaiKhoan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pfMatKhau, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jCheckBox1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jCheckBox2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnDangNhap, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
-                .addContainerGap())
+                    .addComponent(lbThongBao)
+                    .addComponent(btnDangNhap, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         pack();
@@ -111,11 +117,66 @@ public class frmDangNhap extends javax.swing.JFrame {
 
     private void btnDangNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangNhapActionPerformed
         // TODO add your handling code here:
-        frmHome home = new frmHome();
-        home.setVisible(rootPaneCheckingEnabled);
-        this.setVisible(false);
+      
+        DangNhap();
     }//GEN-LAST:event_btnDangNhapActionPerformed
 
+    private void DangNhap(){
+        ThongBao thongBao = TaiKhoanCon.KiemTraDangNhap(tfTaiKhoan.getText(), pfMatKhau.getText());;
+        if (thongBao.ThanhCong){
+            quanlytiemchuphinh.QuanLyTiemChupHinh.taiKhoanDangNhap = TaiKhoanCon.LayTaiKhoanTheoMa(tfTaiKhoan.getText());
+            LoadDangNhap();
+        }
+        ShowThongBao(thongBao);
+    }
+    
+    private void pfMatKhauKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pfMatKhauKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode()==KeyEvent.VK_ENTER){
+           DangNhap();
+        }
+    }//GEN-LAST:event_pfMatKhauKeyPressed
+
+    public void Show(){
+        this.setVisible(true);
+        Form.Form.centreWindow(this);
+        XoaThongBao();
+    }
+    
+    private void XoaThongBao(){
+        lbThongBao.setText("");
+    }
+    
+    private void ShowThongBao(ThongBao thongBao){
+        lbThongBao.setText(thongBao.ChuThich);
+        if (thongBao.ThanhCong){
+           lbThongBao.setForeground(Color.GREEN);
+        }
+        else{
+            lbThongBao.setForeground(Color.RED);
+        }
+    }
+    private void LoadDangNhap(){
+        frmHome home = new frmHome();
+        switch (quanlytiemchuphinh.QuanLyTiemChupHinh.taiKhoanDangNhap.LOAINV){
+            case "Ban lãnh đạo":            
+                home.ShowBanLanhDao();
+                break;
+            case "Bộ phận giao dịch":
+                home.ShowBanLanhDao();
+                break;
+            case "Bộ phận tiếp thị":
+               home.ShowBoPhanTiepThi();
+               break;
+            case "Bộ phận kỹ thuật":
+                home.ShowBoPhanKyThuat();
+                break;
+            default:
+                break;
+        }
+        this.setVisible(false);
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -146,7 +207,9 @@ public class frmDangNhap extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new frmDangNhap().setVisible(true);
+                frmDangNhap frmDN = new frmDangNhap();
+                frmDN.setVisible(true);
+                
             }
         });
     }
@@ -157,8 +220,8 @@ public class frmDangNhap extends javax.swing.JFrame {
     private javax.swing.JCheckBox jCheckBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JLabel lbThongBao;
+    private javax.swing.JPasswordField pfMatKhau;
+    private javax.swing.JTextField tfTaiKhoan;
     // End of variables declaration//GEN-END:variables
 }

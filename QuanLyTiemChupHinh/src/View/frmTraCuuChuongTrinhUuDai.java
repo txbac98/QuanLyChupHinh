@@ -5,6 +5,9 @@
  */
 package View;
 
+import Model.ThongBao;
+import java.awt.Color;
+
 /**
  *
  * @author 16520
@@ -17,7 +20,26 @@ public class frmTraCuuChuongTrinhUuDai extends javax.swing.JFrame {
     public frmTraCuuChuongTrinhUuDai() {
         initComponents();
     }
+    
+    public void Show(){
+        this.setVisible(true);
+        XoaThongBao();
+        Form.Form.centreWindow(this);
+    }
 
+     private void XoaThongBao(){
+        lbThongBao.setText("");
+    }
+    
+    private void ShowThongBao(ThongBao thongBao){
+        lbThongBao.setText(thongBao.ChuThich);
+        if (thongBao.ThanhCong){
+           lbThongBao.setForeground(Color.GREEN);
+        }
+        else{
+            lbThongBao.setForeground(Color.RED);
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -30,8 +52,10 @@ public class frmTraCuuChuongTrinhUuDai extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         btnHoanTat = new javax.swing.JButton();
+        lbThongBao = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
 
         jLabel1.setText("Mã chương trình ưu đãi:");
 
@@ -41,6 +65,8 @@ public class frmTraCuuChuongTrinhUuDai extends javax.swing.JFrame {
                 btnHoanTatActionPerformed(evt);
             }
         });
+
+        lbThongBao.setText("Thong bao");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -52,9 +78,11 @@ public class frmTraCuuChuongTrinhUuDai extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(23, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnHoanTat)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbThongBao)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(btnHoanTat)
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(30, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -64,9 +92,11 @@ public class frmTraCuuChuongTrinhUuDai extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lbThongBao)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
                 .addComponent(btnHoanTat)
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();
@@ -117,5 +147,6 @@ public class frmTraCuuChuongTrinhUuDai extends javax.swing.JFrame {
     private javax.swing.JButton btnHoanTat;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JLabel lbThongBao;
     // End of variables declaration//GEN-END:variables
 }

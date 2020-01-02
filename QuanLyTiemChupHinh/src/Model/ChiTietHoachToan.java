@@ -14,8 +14,19 @@ public class ChiTietHoachToan {
     //  MABHT VARCHAR(10) NOT NULL,
     //  NOIDUNG VARCHAR(1000),
     //  GIA LONG
-    public String MACTHT;
     public String MABHT;
+    public String MACTHT;   
     public String NOIDUNG;
-    public Long GIA;
+    public String GIA;
+    
+    public ChiTietHoachToan(){
+        
+    }
+    
+    public ChiTietHoachToan( String MaBHT, String MaCTHT, String NoiDung, String Gia){      
+        MABHT = MaBHT;
+        MACTHT = MaCTHT;
+        NOIDUNG = NoiDung;
+        GIA = Gia;
+    }
 }

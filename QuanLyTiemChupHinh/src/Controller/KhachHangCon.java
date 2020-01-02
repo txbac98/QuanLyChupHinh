@@ -8,6 +8,7 @@ package Controller;
 import java.util.ArrayList;
 import Model.KhachHang;
 import DAO.KhachHangDao;
+import Model.ThongBao;
 
 /**
  *
@@ -18,16 +19,25 @@ public class KhachHangCon {
         return KhachHangDao.LayDanhSachKhachHang();
     }
     
-    public static Boolean ThemKhachHang(KhachHang khachHang){
+    public static ThongBao ThemKhachHang(KhachHang khachHang){
         return KhachHangDao.ThemKhachHang(khachHang);
     }
     
-    public static Boolean SuaKhachHang(KhachHang khachHang){
+    public static ThongBao SuaKhachHang(KhachHang khachHang){
         return KhachHangDao.SuaKhachHang(khachHang);
     }
     
-    public static Boolean XoaKhachHang(KhachHang khachHang){
+    public static ThongBao XoaKhachHang(KhachHang khachHang){
         return KhachHangDao.XoaKhachHang(khachHang);
     }
     
+    public static ArrayList<KhachHang> LayDanhSachKhachHang(String MaKH, String TenKH){
+        return KhachHangDao.LayDanhSachKhachHang(MaKH, TenKH);
+    }
+    
+    public static String LayMaKhachHangMoi(){
+        ArrayList<KhachHang> listKH = KhachHangDao.LayDanhSachKhachHang();
+        if (listKH==null) return "KH1";
+        return "KH" + (listKH.size() +1);
+    }
 }

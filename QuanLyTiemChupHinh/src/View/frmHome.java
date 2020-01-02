@@ -31,20 +31,26 @@ public class frmHome extends javax.swing.JFrame {
 
         destopPane = new javax.swing.JDesktopPane();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu2 = new javax.swing.JMenu();
+        menuTrangChu = new javax.swing.JMenu();
+        menuTraCuu = new javax.swing.JMenu();
+        menuItemTraCuuPhieuChup = new javax.swing.JMenuItem();
+        menuItemTraCuuKH = new javax.swing.JMenuItem();
+        menuItemTraCuuCTUD = new javax.swing.JMenuItem();
+        menuItemTraCuuPTT = new javax.swing.JMenuItem();
         menuQuanLy = new javax.swing.JMenu();
         menuItemQuanLyPhieuChup = new javax.swing.JMenuItem();
-        menuItemTraCuuPhieuChup = new javax.swing.JMenuItem();
+        menuItemQuanLyKH = new javax.swing.JMenuItem();
+        menuItemQuanLyCTUD = new javax.swing.JMenuItem();
         menuItemQuanLyPhieuThanhToan = new javax.swing.JMenuItem();
         menuItemQuanLyBangHoachToan = new javax.swing.JMenuItem();
         menuItemQuanLyBaoCao = new javax.swing.JMenuItem();
-        menuKhachHang = new javax.swing.JMenu();
-        menuChuongTrinhUuDai = new javax.swing.JMenu();
+        menuQuanLyTaiKhoan = new javax.swing.JMenu();
         menuTaiKhoan = new javax.swing.JMenu();
-        menuItemDoiTaiKhoan = new javax.swing.JMenuItem();
+        menuItemDoiMatKhau = new javax.swing.JMenuItem();
         menuItemDangXuat = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         javax.swing.GroupLayout destopPaneLayout = new javax.swing.GroupLayout(destopPane);
         destopPane.setLayout(destopPaneLayout);
@@ -57,26 +63,15 @@ public class frmHome extends javax.swing.JFrame {
             .addGap(0, 600, Short.MAX_VALUE)
         );
 
-        jMenu2.setText("Trang chủ");
-        jMenuBar1.add(jMenu2);
-
-        menuQuanLy.setText("Quản lý");
-
-        menuItemQuanLyPhieuChup.setText("Quản lý phiếu chụp");
-        menuItemQuanLyPhieuChup.addMouseListener(new java.awt.event.MouseAdapter() {
+        menuTrangChu.setText("Trang chủ");
+        menuTrangChu.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                menuItemQuanLyPhieuChupMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                menuItemQuanLyPhieuChupMouseEntered(evt);
+                menuTrangChuMouseClicked(evt);
             }
         });
-        menuItemQuanLyPhieuChup.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuItemQuanLyPhieuChupActionPerformed(evt);
-            }
-        });
-        menuQuanLy.add(menuItemQuanLyPhieuChup);
+        jMenuBar1.add(menuTrangChu);
+
+        menuTraCuu.setText("Tra cứu");
 
         menuItemTraCuuPhieuChup.setText("Tra cứu phiếu chụp");
         menuItemTraCuuPhieuChup.addActionListener(new java.awt.event.ActionListener() {
@@ -84,7 +79,59 @@ public class frmHome extends javax.swing.JFrame {
                 menuItemTraCuuPhieuChupActionPerformed(evt);
             }
         });
-        menuQuanLy.add(menuItemTraCuuPhieuChup);
+        menuTraCuu.add(menuItemTraCuuPhieuChup);
+
+        menuItemTraCuuKH.setText("Tra cứu khách hàng");
+        menuItemTraCuuKH.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemTraCuuKHActionPerformed(evt);
+            }
+        });
+        menuTraCuu.add(menuItemTraCuuKH);
+
+        menuItemTraCuuCTUD.setText("Tra cứu CTUD");
+        menuItemTraCuuCTUD.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemTraCuuCTUDActionPerformed(evt);
+            }
+        });
+        menuTraCuu.add(menuItemTraCuuCTUD);
+
+        menuItemTraCuuPTT.setText("Tra cứu phiếu thanh toán");
+        menuItemTraCuuPTT.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemTraCuuPTTActionPerformed(evt);
+            }
+        });
+        menuTraCuu.add(menuItemTraCuuPTT);
+
+        jMenuBar1.add(menuTraCuu);
+
+        menuQuanLy.setText("Quản lý");
+
+        menuItemQuanLyPhieuChup.setText("Quản lý phiếu chụp");
+        menuItemQuanLyPhieuChup.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemQuanLyPhieuChupActionPerformed(evt);
+            }
+        });
+        menuQuanLy.add(menuItemQuanLyPhieuChup);
+
+        menuItemQuanLyKH.setText("Quản lý khách hàng");
+        menuItemQuanLyKH.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemQuanLyKHActionPerformed(evt);
+            }
+        });
+        menuQuanLy.add(menuItemQuanLyKH);
+
+        menuItemQuanLyCTUD.setText("Quản lý chương trình ưu đãi");
+        menuItemQuanLyCTUD.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemQuanLyCTUDActionPerformed(evt);
+            }
+        });
+        menuQuanLy.add(menuItemQuanLyCTUD);
 
         menuItemQuanLyPhieuThanhToan.setText("Quản lý phiếu thanh toán");
         menuItemQuanLyPhieuThanhToan.addActionListener(new java.awt.event.ActionListener() {
@@ -95,14 +142,6 @@ public class frmHome extends javax.swing.JFrame {
         menuQuanLy.add(menuItemQuanLyPhieuThanhToan);
 
         menuItemQuanLyBangHoachToan.setText("Quản lý bảng hoạch toán");
-        menuItemQuanLyBangHoachToan.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                menuItemQuanLyBangHoachToanMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                menuItemQuanLyBangHoachToanMouseEntered(evt);
-            }
-        });
         menuItemQuanLyBangHoachToan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuItemQuanLyBangHoachToanActionPerformed(evt);
@@ -120,33 +159,30 @@ public class frmHome extends javax.swing.JFrame {
 
         jMenuBar1.add(menuQuanLy);
 
-        menuKhachHang.setText("Khách hàng");
-        menuKhachHang.addMouseListener(new java.awt.event.MouseAdapter() {
+        menuQuanLyTaiKhoan.setText("Quản lý tài khoản");
+        menuQuanLyTaiKhoan.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                menuKhachHangMouseClicked(evt);
+                menuQuanLyTaiKhoanMouseClicked(evt);
             }
         });
-        menuKhachHang.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuKhachHangActionPerformed(evt);
-            }
-        });
-        jMenuBar1.add(menuKhachHang);
-
-        menuChuongTrinhUuDai.setText("Chương trình ưu đãi");
-        menuChuongTrinhUuDai.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                menuChuongTrinhUuDaiMouseClicked(evt);
-            }
-        });
-        jMenuBar1.add(menuChuongTrinhUuDai);
+        jMenuBar1.add(menuQuanLyTaiKhoan);
 
         menuTaiKhoan.setText("Tài khoản");
 
-        menuItemDoiTaiKhoan.setText("Đổi mật khẩu");
-        menuTaiKhoan.add(menuItemDoiTaiKhoan);
+        menuItemDoiMatKhau.setText("Đổi mật khẩu");
+        menuItemDoiMatKhau.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemDoiMatKhauActionPerformed(evt);
+            }
+        });
+        menuTaiKhoan.add(menuItemDoiMatKhau);
 
         menuItemDangXuat.setText("Đăng xuất");
+        menuItemDangXuat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemDangXuatActionPerformed(evt);
+            }
+        });
         menuTaiKhoan.add(menuItemDangXuat);
 
         jMenuBar1.add(menuTaiKhoan);
@@ -167,6 +203,42 @@ public class frmHome extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void ShowTrangChu(){
+        Form.Form.centreWindow(this);
+        this.CloseAllChildForm();
+        frmTrangChu frmTC = new frmTrangChu();
+        destopPane.add(frmTC);
+        frmTC.Show();
+    }
+    
+    public void ShowBanLanhDao(){
+        this.setVisible(true);
+        ShowTrangChu();
+    }
+    
+    public void ShowBoPhanGiaoDich(){
+        this.setVisible(true);
+        menuQuanLyTaiKhoan.setVisible(false);
+        menuTraCuu.setVisible(false);        
+        ShowTrangChu();
+    }
+    
+    public void ShowBoPhanTiepThi(){
+        this.setVisible(true);
+        menuQuanLyTaiKhoan.setVisible(false);
+        menuQuanLy.setVisible(false);
+        ShowTrangChu();
+    }
+    
+    public void ShowBoPhanKyThuat(){
+        this.setVisible(true);
+        menuQuanLy.setVisible(false);
+        menuQuanLyTaiKhoan.setVisible(false);
+        menuItemTraCuuKH.setVisible(false);
+        menuItemTraCuuCTUD.setVisible(false);
+        menuItemTraCuuPTT.setVisible(false);
+        ShowTrangChu();
+    }
     
     private void CloseAllChildForm(){
         for (JInternalFrame frmChild : destopPane.getAllFrames()) {
@@ -174,27 +246,13 @@ public class frmHome extends javax.swing.JFrame {
         }
     }
     
-    private void menuChuongTrinhUuDaiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuChuongTrinhUuDaiMouseClicked
-        // TODO add your handling code here:
-        
+    public void ShowTaoPhieuChupVoiMaKH(String MaKH){
         this.CloseAllChildForm();
-        
-        frmQuanLyChuongTrinhUuDai frmCTUD = new frmQuanLyChuongTrinhUuDai();
-       
-        //frmCTUD.setLocation(this.getWidth()/2 - frmCTUD.getWidth()/2,(this.getHeight()-20)/2 - frmCTUD.getHeight()/2 - 20);
-        destopPane.add(frmCTUD);
-        frmCTUD.setVisible(true);
-    }//GEN-LAST:event_menuChuongTrinhUuDaiMouseClicked
-
-    private void menuItemQuanLyBangHoachToanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuItemQuanLyBangHoachToanMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_menuItemQuanLyBangHoachToanMouseClicked
-
-    private void menuItemQuanLyBangHoachToanMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuItemQuanLyBangHoachToanMouseEntered
-        // TODO add your handling code here:
-        
-    }//GEN-LAST:event_menuItemQuanLyBangHoachToanMouseEntered
-
+        frmQuanLyPhieuChup frmQLPC = new frmQuanLyPhieuChup();
+        destopPane.add(frmQLPC);
+        frmQLPC.ShowVoiMaKH(MaKH);
+    }
+    
     private void menuItemQuanLyBangHoachToanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemQuanLyBangHoachToanActionPerformed
         // TODO add your handling code here:
         this.CloseAllChildForm();
@@ -203,38 +261,16 @@ public class frmHome extends javax.swing.JFrame {
        
         //frmCTUD.setLocation(this.getWidth()/2 - frmCTUD.getWidth()/2,(this.getHeight()-20)/2 - frmCTUD.getHeight()/2 - 20);
         destopPane.add(frmQLBHT);
-        frmQLBHT.setVisible(true);
+        frmQLBHT.Show();
     }//GEN-LAST:event_menuItemQuanLyBangHoachToanActionPerformed
-
-    private void menuItemQuanLyPhieuChupMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuItemQuanLyPhieuChupMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_menuItemQuanLyPhieuChupMouseClicked
-
-    private void menuItemQuanLyPhieuChupMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuItemQuanLyPhieuChupMouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_menuItemQuanLyPhieuChupMouseEntered
 
     private void menuItemQuanLyPhieuChupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemQuanLyPhieuChupActionPerformed
         // TODO add your handling code here:
         this.CloseAllChildForm();
         frmQuanLyPhieuChup frmQLPC = new frmQuanLyPhieuChup();
         destopPane.add(frmQLPC);
-        frmQLPC.setVisible(rootPaneCheckingEnabled);
+        frmQLPC.Show();
     }//GEN-LAST:event_menuItemQuanLyPhieuChupActionPerformed
-
-    private void menuKhachHangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuKhachHangActionPerformed
-        // TODO add your handling code here:
-        
-    }//GEN-LAST:event_menuKhachHangActionPerformed
-
-    private void menuKhachHangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuKhachHangMouseClicked
-        // TODO add your handling code here:
-        this.CloseAllChildForm();
-        frmQuanLyKhachHang frmQLKH = new frmQuanLyKhachHang();
-        destopPane.add(frmQLKH);
-        //frmQLKH.setd
-        frmQLKH.Show();
-    }//GEN-LAST:event_menuKhachHangMouseClicked
 
     private void menuItemQuanLyPhieuThanhToanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemQuanLyPhieuThanhToanActionPerformed
         // TODO add your handling code here:
@@ -247,7 +283,7 @@ public class frmHome extends javax.swing.JFrame {
     private void menuItemTraCuuPhieuChupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemTraCuuPhieuChupActionPerformed
         // TODO add your handling code here:
         frmTraCuuPhieuChup frmTCPC = new frmTraCuuPhieuChup();
-        frmTCPC.setVisible(true);
+        frmTCPC.Show();
     }//GEN-LAST:event_menuItemTraCuuPhieuChupActionPerformed
 
     private void menuItemQuanLyBaoCaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemQuanLyBaoCaoActionPerformed
@@ -255,8 +291,74 @@ public class frmHome extends javax.swing.JFrame {
         this.CloseAllChildForm();
         frmQuanLyBaoCao frmQLBC = new frmQuanLyBaoCao();
         destopPane.add(frmQLBC);
-        frmQLBC.setVisible(true);
+        frmQLBC.Show();
     }//GEN-LAST:event_menuItemQuanLyBaoCaoActionPerformed
+
+    private void menuQuanLyTaiKhoanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuQuanLyTaiKhoanMouseClicked
+        // TODO add your handling code here:
+        this.CloseAllChildForm();
+        frmQuanLyTaiKhoan frmQLTK = new frmQuanLyTaiKhoan();
+        destopPane.add(frmQLTK);
+        frmQLTK.Show();
+    }//GEN-LAST:event_menuQuanLyTaiKhoanMouseClicked
+
+    private void menuItemQuanLyKHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemQuanLyKHActionPerformed
+        // TODO add your handling code here:
+        this.CloseAllChildForm();
+        frmQuanLyKhachHang frmQLKH = new frmQuanLyKhachHang();
+        destopPane.add(frmQLKH);
+        //frmQLKH.setd
+        frmQLKH.Show(this);
+        
+    }//GEN-LAST:event_menuItemQuanLyKHActionPerformed
+
+    private void menuItemQuanLyCTUDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemQuanLyCTUDActionPerformed
+        // TODO add your handling code here:
+        this.CloseAllChildForm();
+        
+        frmQuanLyChuongTrinhUuDai frmCTUD = new frmQuanLyChuongTrinhUuDai();
+       
+        //frmCTUD.setLocation(this.getWidth()/2 - frmCTUD.getWidth()/2,(this.getHeight()-20)/2 - frmCTUD.getHeight()/2 - 20);
+        destopPane.add(frmCTUD);
+        frmCTUD.Show();
+        
+    }//GEN-LAST:event_menuItemQuanLyCTUDActionPerformed
+
+    private void menuItemDoiMatKhauActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemDoiMatKhauActionPerformed
+        // TODO add your handling code here:
+        frmDoiMatKhau frmDMK = new frmDoiMatKhau();
+        frmDMK.Show();
+    }//GEN-LAST:event_menuItemDoiMatKhauActionPerformed
+
+    private void menuItemDangXuatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemDangXuatActionPerformed
+        // TODO add your handling code here:
+        frmDangNhap frmDN = new frmDangNhap();
+        frmDN.Show();
+        this.setVisible(false);
+    }//GEN-LAST:event_menuItemDangXuatActionPerformed
+
+    private void menuTrangChuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuTrangChuMouseClicked
+        // TODO add your handling code here:
+        ShowTrangChu();
+    }//GEN-LAST:event_menuTrangChuMouseClicked
+
+    private void menuItemTraCuuKHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemTraCuuKHActionPerformed
+        // TODO add your handling code here:
+        frmTraCuuKhachHang frmTCKH = new frmTraCuuKhachHang();
+        frmTCKH.Show();
+    }//GEN-LAST:event_menuItemTraCuuKHActionPerformed
+
+    private void menuItemTraCuuCTUDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemTraCuuCTUDActionPerformed
+        // TODO add your handling code here:
+        frmTraCuuChuongTrinhUuDai frmTCCTUD = new frmTraCuuChuongTrinhUuDai();
+        frmTCCTUD.Show();
+    }//GEN-LAST:event_menuItemTraCuuCTUDActionPerformed
+
+    private void menuItemTraCuuPTTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemTraCuuPTTActionPerformed
+        // TODO add your handling code here:
+        frmTraCuuPhieuThanhToan frmTCPTT = new frmTraCuuPhieuThanhToan();
+        frmTCPTT.Show();
+    }//GEN-LAST:event_menuItemTraCuuPTTActionPerformed
 
     /**
      * @param args the command line arguments
@@ -295,18 +397,23 @@ public class frmHome extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane destopPane;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenu menuChuongTrinhUuDai;
     private javax.swing.JMenuItem menuItemDangXuat;
-    private javax.swing.JMenuItem menuItemDoiTaiKhoan;
+    private javax.swing.JMenuItem menuItemDoiMatKhau;
     private javax.swing.JMenuItem menuItemQuanLyBangHoachToan;
     private javax.swing.JMenuItem menuItemQuanLyBaoCao;
+    private javax.swing.JMenuItem menuItemQuanLyCTUD;
+    private javax.swing.JMenuItem menuItemQuanLyKH;
     private javax.swing.JMenuItem menuItemQuanLyPhieuChup;
     private javax.swing.JMenuItem menuItemQuanLyPhieuThanhToan;
+    private javax.swing.JMenuItem menuItemTraCuuCTUD;
+    private javax.swing.JMenuItem menuItemTraCuuKH;
+    private javax.swing.JMenuItem menuItemTraCuuPTT;
     private javax.swing.JMenuItem menuItemTraCuuPhieuChup;
-    private javax.swing.JMenu menuKhachHang;
     private javax.swing.JMenu menuQuanLy;
+    private javax.swing.JMenu menuQuanLyTaiKhoan;
     private javax.swing.JMenu menuTaiKhoan;
+    private javax.swing.JMenu menuTraCuu;
+    private javax.swing.JMenu menuTrangChu;
     // End of variables declaration//GEN-END:variables
 }
