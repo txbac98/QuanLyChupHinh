@@ -9,6 +9,7 @@ import Model.PhieuThanhToan;
 import Model.ThongBao;
 import SERVICE.PhieuThanhToanDao;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  *
@@ -18,6 +19,9 @@ public class PhieuThanhToanCon {
     public static ArrayList<PhieuThanhToan> LayDanhSachPhieuThanhToan(){
         return PhieuThanhToanDao.LayDanhSachPTT();
     }
+    
+    
+    
     
     public static PhieuThanhToan LayPTTTheoMa(String MaPTT){
         return PhieuThanhToanDao.LayPTTTheoMa(MaPTT);

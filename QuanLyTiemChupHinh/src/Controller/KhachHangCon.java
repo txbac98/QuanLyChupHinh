@@ -19,6 +19,7 @@ public class KhachHangCon {
         return KhachHangDao.LayDanhSachKhachHang();
     }
     
+   
     public static ThongBao ThemKhachHang(KhachHang khachHang){
         return KhachHangDao.ThemKhachHang(khachHang);
     }

@@ -11,6 +11,7 @@ import Model.ChiTietPhieuChup;
 import java.util.ArrayList;
 import Model.PhieuChup;
 import Model.ThongBao;
+import java.util.Date;
 
 /**
  *
@@ -20,6 +21,8 @@ public class PhieuChupCon {
     public static ArrayList<PhieuChup> LayDanhSachPhieuChup(){
         return PhieuChupDao.LayDanhSachPhieuChup();
     }
+    
+    
     
     public static ThongBao ThemPhieuChup(PhieuChup phieuChup){
         return PhieuChupDao.ThemPhieuChup(phieuChup);
