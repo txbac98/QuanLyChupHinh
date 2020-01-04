@@ -27,23 +27,30 @@
               <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
                   <Component id="btnThanhToan" min="-2" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
-                      <Component id="cbxCTHT" pref="220" max="32767" attributes="0"/>
-                      <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                      <Component id="tfMaPC" alignment="0" max="32767" attributes="0"/>
-                      <Component id="tfMaKH" alignment="0" max="32767" attributes="0"/>
-                      <Component id="tfSoLuongAnh" alignment="0" max="32767" attributes="0"/>
-                      <Component id="cbxBHT" max="32767" attributes="0"/>
-                      <Component id="cbxCTUD" alignment="0" max="32767" attributes="0"/>
-                      <Component id="tfNgayThanhToan" alignment="0" max="32767" attributes="0"/>
-                      <Component id="tfTongSoTien" alignment="0" max="32767" attributes="0"/>
+                  <Group type="103" alignment="1" groupAlignment="0" attributes="0">
+                      <Component id="lbThongBao" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
+                          <Component id="cbxCTHT" pref="220" max="32767" attributes="0"/>
+                          <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                          <Component id="tfMaPC" alignment="0" max="32767" attributes="0"/>
+                          <Component id="tfMaKH" alignment="0" max="32767" attributes="0"/>
+                          <Component id="tfSoLuongAnh" alignment="0" max="32767" attributes="0"/>
+                          <Component id="cbxBHT" max="32767" attributes="0"/>
+                          <Component id="cbxCTUD" alignment="0" max="32767" attributes="0"/>
+                          <Component id="tfNgayThanhToan" alignment="0" max="32767" attributes="0"/>
+                          <Component id="tfTongSoTien" alignment="0" max="32767" attributes="0"/>
+                          <Component id="tfMaPTT" alignment="0" max="32767" attributes="0"/>
+                          <Component id="tfMaNV" alignment="0" max="32767" attributes="0"/>
+                      </Group>
                   </Group>
               </Group>
               <EmptySpace pref="24" max="32767" attributes="0"/>
@@ -52,8 +59,12 @@
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
+              <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="tfMaPTT" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="tfMaPC" min="-2" max="-2" attributes="0"/>
@@ -62,6 +73,10 @@
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="tfMaKH" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="tfMaNV" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
               <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="tfSoLuongAnh" min="-2" max="-2" attributes="0"/>
@@ -86,13 +101,28 @@
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="tfTongSoTien" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="btnThanhToan" min="-2" pref="40" max="-2" attributes="0"/>
-              <EmptySpace pref="24" max="32767" attributes="0"/>
+              <Component id="lbThongBao" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+              <Component id="btnThanhToan" min="-2" pref="35" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
+    <Component class="javax.swing.JLabel" name="jLabel9">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="M&#xe3; PTT:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="tfMaPTT">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="cc" green="cc" red="cc" type="rgb"/>
+        </Property>
+      </Properties>
+    </Component>
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
         <Property name="text" type="java.lang.String" value="M&#xe3; PC:"/>
@@ -112,6 +142,19 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="tfMaKH">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="cc" green="cc" red="cc" type="rgb"/>
+        </Property>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel10">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="M&#xe3; NV:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="tfMaNV">
       <Properties>
         <Property name="editable" type="boolean" value="false"/>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -221,6 +264,14 @@
     <Component class="javax.swing.JButton" name="btnThanhToan">
       <Properties>
         <Property name="text" type="java.lang.String" value="Thanh to&#xe1;n"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnThanhToanActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lbThongBao">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Thong bao"/>
       </Properties>
     </Component>
   </SubComponents>

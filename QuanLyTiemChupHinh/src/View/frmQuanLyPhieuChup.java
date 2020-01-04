@@ -114,7 +114,16 @@ public class frmQuanLyPhieuChup extends javax.swing.JInternalFrame {
         tablePhieuChup.setModel(tblModel); // Thêm dữ liệu vào table  
     }
     
-    
+    public void ThanhToanPhieuChup(){
+        cbxTrangThai.setSelectedItem("Đã giao ảnh");
+        // TODO add your handling code here:
+        PhieuChup phieuChup = new PhieuChup(tfMaPC.getText(), tfMaKH.getText(),DateCon.GetDateString(dcNgayTao), cbxTrangThai.getSelectedItem().toString() );
+        if (PhieuChupCon.SuaPhieuChup(phieuChup).ThanhCong){
+            //Sua thanh cong
+            LoadDanhSachPhieuChup();
+        }  
+        btnThanhToan.setEnabled(false);
+    }
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -474,7 +483,10 @@ public class frmQuanLyPhieuChup extends javax.swing.JInternalFrame {
         else {
             lbThongBao.setText("Đang mở phiếu chụp");
             frmCapNhatPhieuChup frmCNPC = new frmCapNhatPhieuChup();
-            frmCNPC.Show(phieuChup, this);
+            //if (quanlytiemchuphinh.QuanLyTiemChupHinh.taiKhoanDangNhap.LOAINV.equals("Ban lãnh đạo") 
+                    //|| quanlytiemchuphinh.QuanLyTiemChupHinh.taiKhoanDangNhap.LOAINV.equals("Bộ phận kỹ thuật"))
+                frmCNPC.Show(phieuChup, this, true);
+            //else frmCNPC.Show(phieuChup, this, false);
         }
         
     }//GEN-LAST:event_btnChiTietActionPerformed
@@ -499,7 +511,7 @@ public class frmQuanLyPhieuChup extends javax.swing.JInternalFrame {
     private void btnThanhToanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThanhToanActionPerformed
         // TODO add your handling code here:
         frmThanhToanPhieuChup frmTTPC = new frmThanhToanPhieuChup();
-        frmTTPC.Show(new PhieuChup(tfMaPC.getText(), tfMaKH.getText(),DateCon.GetDateString(dcNgayTao), cbxTrangThai.getSelectedItem().toString()));
+        frmTTPC.Show(new PhieuChup(tfMaPC.getText(), tfMaKH.getText(),DateCon.GetDateString(dcNgayTao), cbxTrangThai.getSelectedItem().toString()),this);
     }//GEN-LAST:event_btnThanhToanActionPerformed
     private void SetEnableBtnThem(Boolean isThem){
         btnThem.setEnabled(isThem);

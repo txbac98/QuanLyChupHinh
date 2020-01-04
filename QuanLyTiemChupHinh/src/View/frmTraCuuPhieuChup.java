@@ -114,7 +114,7 @@ public class frmTraCuuPhieuChup extends javax.swing.JFrame {
         else {
             lbThongBao.setText("Đang mở phiếu chụp");
             frmCapNhatPhieuChup frmCNPC = new frmCapNhatPhieuChup();
-            frmCNPC.Show(phieuChup,null);
+            frmCNPC.Show(phieuChup,null,true);
             this.setVisible(false);
         }
         

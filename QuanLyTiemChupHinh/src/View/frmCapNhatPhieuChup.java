@@ -38,12 +38,26 @@ public class frmCapNhatPhieuChup extends javax.swing.JFrame {
     public frmCapNhatPhieuChup() {
         initComponents();
         this.initImageGrid();
-        this.modifyLbThaHinh();
     }
     
-    public void Show(){
+    private frmQuanLyPhieuChup frmQLPC;
+    public void Show(PhieuChup phieuChup, frmQuanLyPhieuChup qlpc, boolean coThaHinh){
+        tfMaPC.setText(phieuChup.MAPC);
+        cbxTrangThai.setSelectedItem(phieuChup.TRANGTHAI);
+        frmQLPC = qlpc;
         this.setVisible(true);
+        
+        XoaThongBao();
         Form.Form.centreWindow(this);
+        LoadHinhAnhPhieuChup(phieuChup.MAPC);
+        
+        if (coThaHinh)        {
+            this.modifyLbThaHinh();
+        }
+        else {
+            lbThaHinh.setVisible(false);
+        }
+            
     }
     
     private void initImageGrid(){
@@ -106,16 +120,7 @@ public class frmCapNhatPhieuChup extends javax.swing.JFrame {
         listPath.add(path);       
     }
     
-    private frmQuanLyPhieuChup frmQLPC;
-    public void Show(PhieuChup phieuChup, frmQuanLyPhieuChup qlpc){
-        tfMaPC.setText(phieuChup.MAPC);
-        cbxTrangThai.setSelectedItem(phieuChup.TRANGTHAI);
-        frmQLPC = qlpc;
-        this.setVisible(true);
-        XoaThongBao();
-        Form.Form.centreWindow(this);
-        LoadHinhAnhPhieuChup(phieuChup.MAPC);
-    }
+    
     
     private void LoadHinhAnhPhieuChup(String MaPC){
         listPath = CapNhatPhieuChupCon.LoadListPathInFolder(MaPC);    

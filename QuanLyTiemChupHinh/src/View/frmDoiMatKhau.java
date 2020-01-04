@@ -5,6 +5,7 @@
  */
 package View;
 
+import Controller.TaiKhoanCon;
 import Model.ThongBao;
 import java.awt.Color;
 
@@ -53,11 +54,11 @@ public class frmDoiMatKhau extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         tfMaNV = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        tfMatKhauCu = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        tfMatKhauMoi = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        btnDoiMK = new javax.swing.JButton();
         lbThongBao = new javax.swing.JLabel();
+        pfMKCu = new javax.swing.JPasswordField();
+        pfMKMoi = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -70,8 +71,13 @@ public class frmDoiMatKhau extends javax.swing.JFrame {
 
         jLabel3.setText("Mật khẩu mới");
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/RES/iconfinder_Key_27855.png"))); // NOI18N
-        jButton1.setText("Đổi mật khẩu");
+        btnDoiMK.setIcon(new javax.swing.ImageIcon(getClass().getResource("/RES/iconfinder_Key_27855.png"))); // NOI18N
+        btnDoiMK.setText("Đổi mật khẩu");
+        btnDoiMK.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDoiMKActionPerformed(evt);
+            }
+        });
 
         lbThongBao.setText("Thong bao");
 
@@ -81,17 +87,15 @@ public class frmDoiMatKhau extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(19, 19, 19)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton1)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(lbThongBao)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel1)
-                            .addComponent(tfMaNV)
-                            .addComponent(tfMatKhauCu)
-                            .addComponent(tfMatKhauMoi, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE))))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(btnDoiMK)
+                    .addComponent(lbThongBao, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(tfMaNV, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE)
+                    .addComponent(pfMKCu, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(pfMKMoi, javax.swing.GroupLayout.Alignment.LEADING))
                 .addContainerGap(20, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -103,21 +107,28 @@ public class frmDoiMatKhau extends javax.swing.JFrame {
                 .addComponent(tfMaNV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(tfMatKhauCu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(pfMKCu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(23, 23, 23)
                 .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(tfMatKhauMoi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(13, 13, 13)
+                .addComponent(pfMKMoi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lbThongBao)
                 .addGap(9, 9, 9)
-                .addComponent(jButton1)
+                .addComponent(btnDoiMK)
                 .addContainerGap(18, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnDoiMKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDoiMKActionPerformed
+        // TODO add your handling code here:
+        ThongBao tb = TaiKhoanCon.DoiMatKhau(tfMaNV.getText(), pfMKCu.getText(), pfMKMoi.getText());
+        ShowThongBao(tb);
+        
+    }//GEN-LAST:event_btnDoiMKActionPerformed
 
     /**
      * @param args the command line arguments
@@ -155,13 +166,13 @@ public class frmDoiMatKhau extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnDoiMK;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel lbThongBao;
+    private javax.swing.JPasswordField pfMKCu;
+    private javax.swing.JPasswordField pfMKMoi;
     private javax.swing.JTextField tfMaNV;
-    private javax.swing.JTextField tfMatKhauCu;
-    private javax.swing.JTextField tfMatKhauMoi;
     // End of variables declaration//GEN-END:variables
 }

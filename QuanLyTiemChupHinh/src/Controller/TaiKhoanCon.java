@@ -47,9 +47,13 @@ public class TaiKhoanCon {
         return TaiKhoanDao.SuaTaiKhoan(taiKhoan);
     }
     
+    public static ThongBao DoiMatKhau(String MaNV, String mkCu, String mkMoi){
+        return TaiKhoanDao.DoiMatKhau(MaNV, mkCu, mkMoi);
+    }
+    
     public static ThongBao XoaTaiKhoan(TaiKhoan taiKhoan){
         if (taiKhoan.MANV.equals("admin"))
             return new ThongBao(false, "Tài khoản này không thể xóa!!");
-        return null;
+        return TaiKhoanDao.XoaTaiKhoan(taiKhoan);
     }
 }

@@ -25,19 +25,15 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="1" attributes="0">
-                  <Component id="jButton1" min="-2" max="-2" attributes="0"/>
-                  <Group type="103" alignment="1" groupAlignment="0" attributes="0">
-                      <Component id="lbThongBao" min="-2" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                          <Component id="tfMaNV" max="32767" attributes="0"/>
-                          <Component id="tfMatKhauCu" alignment="0" max="32767" attributes="0"/>
-                          <Component id="tfMatKhauMoi" alignment="0" pref="206" max="32767" attributes="0"/>
-                      </Group>
-                  </Group>
+              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                  <Component id="btnDoiMK" min="-2" max="-2" attributes="0"/>
+                  <Component id="lbThongBao" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="tfMaNV" alignment="0" pref="206" max="32767" attributes="0"/>
+                  <Component id="pfMKCu" alignment="0" max="32767" attributes="0"/>
+                  <Component id="pfMKMoi" alignment="0" max="32767" attributes="0"/>
               </Group>
               <EmptySpace pref="20" max="32767" attributes="0"/>
           </Group>
@@ -52,16 +48,16 @@
               <Component id="tfMaNV" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="tfMatKhauCu" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="pfMKCu" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
               <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="tfMatKhauMoi" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
+              <Component id="pfMKMoi" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="lbThongBao" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
-              <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+              <Component id="btnDoiMK" min="-2" max="-2" attributes="0"/>
               <EmptySpace pref="18" max="32767" attributes="0"/>
           </Group>
       </Group>
@@ -86,27 +82,30 @@
         <Property name="text" type="java.lang.String" value="M&#x1ead;t kh&#x1ea9;u c&#x169;"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="tfMatKhauCu">
-    </Component>
     <Component class="javax.swing.JLabel" name="jLabel3">
       <Properties>
         <Property name="text" type="java.lang.String" value="M&#x1ead;t kh&#x1ea9;u m&#x1edb;i"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="tfMatKhauMoi">
-    </Component>
-    <Component class="javax.swing.JButton" name="jButton1">
+    <Component class="javax.swing.JButton" name="btnDoiMK">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/RES/iconfinder_Key_27855.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="&#x110;&#x1ed5;i m&#x1ead;t kh&#x1ea9;u"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDoiMKActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="lbThongBao">
       <Properties>
         <Property name="text" type="java.lang.String" value="Thong bao"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JPasswordField" name="pfMKCu">
+    </Component>
+    <Component class="javax.swing.JPasswordField" name="pfMKMoi">
     </Component>
   </SubComponents>
 </Form>

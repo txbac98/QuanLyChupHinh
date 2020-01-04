@@ -10,11 +10,15 @@ import Controller.ChiTietHoachToanCon;
 import Controller.ChuongTrinhUuDaiCon;
 import Controller.DateCon;
 import Controller.PhieuChupCon;
+import Controller.PhieuThanhToanCon;
 import Model.BangHoachToan;
 import Model.ChiTietHoachToan;
 import Model.ChiTietPhieuChup;
 import Model.ChuongTrinhUuDai;
 import Model.PhieuChup;
+import Model.PhieuThanhToan;
+import Model.ThongBao;
+import java.awt.Color;
 import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
 import java.util.List;
@@ -34,13 +38,16 @@ public class frmThanhToanPhieuChup extends javax.swing.JFrame {
 
     
     
-    public void Show(PhieuChup phieuChup){
+    public void Show(PhieuChup phieuChup, frmQuanLyPhieuChup qlpc){
         this.setVisible(true);
         Form.Form.centreWindow(this);
         pc = phieuChup;
+        frmQLPC= qlpc;
         LoadData();
+        XoaThongBao();
     }
     
+    frmQuanLyPhieuChup frmQLPC;
     PhieuChup pc = new PhieuChup();
     ChiTietPhieuChup ctpc = new ChiTietPhieuChup();
     ArrayList<ChuongTrinhUuDai> ctud;
@@ -54,12 +61,15 @@ public class frmThanhToanPhieuChup extends javax.swing.JFrame {
         
         tfMaPC.setText(pc.MAPC);
         tfMaKH.setText(pc.MAKH);
+        tfMaNV.setText(quanlytiemchuphinh.QuanLyTiemChupHinh.taiKhoanDangNhap.MANV);
         ctpc = PhieuChupCon.LayCTPC(pc.MAPC);
         if (ctpc!=null){
             tfSoLuongAnh.setText(ctpc.SOANH);
         }
         tfNgayThanhToan.setText(DateCon.GetToDayString());
-             
+        
+        tfMaPTT.setText(PhieuThanhToanCon.LayMaMoi());
+        
         LoadBHT();
         LoadCTHT();
         LoadCTUD();           
@@ -123,6 +133,7 @@ public class frmThanhToanPhieuChup extends javax.swing.JFrame {
 
     }
     
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -132,10 +143,14 @@ public class frmThanhToanPhieuChup extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel9 = new javax.swing.JLabel();
+        tfMaPTT = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         tfMaPC = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         tfMaKH = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
+        tfMaNV = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         tfSoLuongAnh = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
@@ -149,8 +164,14 @@ public class frmThanhToanPhieuChup extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         tfTongSoTien = new javax.swing.JTextField();
         btnThanhToan = new javax.swing.JButton();
+        lbThongBao = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+
+        jLabel9.setText("Mã PTT:");
+
+        tfMaPTT.setEditable(false);
+        tfMaPTT.setBackground(new java.awt.Color(204, 204, 204));
 
         jLabel1.setText("Mã PC:");
 
@@ -161,6 +182,11 @@ public class frmThanhToanPhieuChup extends javax.swing.JFrame {
 
         tfMaKH.setEditable(false);
         tfMaKH.setBackground(new java.awt.Color(204, 204, 204));
+
+        jLabel10.setText("Mã NV:");
+
+        tfMaNV.setEditable(false);
+        tfMaNV.setBackground(new java.awt.Color(204, 204, 204));
 
         jLabel3.setText("Số lượng ảnh:");
 
@@ -205,6 +231,13 @@ public class frmThanhToanPhieuChup extends javax.swing.JFrame {
         tfTongSoTien.setBackground(new java.awt.Color(204, 204, 204));
 
         btnThanhToan.setText("Thanh toán");
+        btnThanhToan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnThanhToanActionPerformed(evt);
+            }
+        });
+
+        lbThongBao.setText("Thong bao");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -214,29 +247,39 @@ public class frmThanhToanPhieuChup extends javax.swing.JFrame {
                 .addGap(21, 21, 21)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(btnThanhToan)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jLabel8)
-                        .addComponent(jLabel7)
-                        .addComponent(jLabel6)
-                        .addComponent(cbxCTHT, 0, 220, Short.MAX_VALUE)
-                        .addComponent(jLabel5)
-                        .addComponent(jLabel4)
-                        .addComponent(jLabel3)
-                        .addComponent(jLabel2)
-                        .addComponent(jLabel1)
-                        .addComponent(tfMaPC)
-                        .addComponent(tfMaKH)
-                        .addComponent(tfSoLuongAnh)
-                        .addComponent(cbxBHT, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(cbxCTUD, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(tfNgayThanhToan)
-                        .addComponent(tfTongSoTien)))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(lbThongBao)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel10)
+                            .addComponent(jLabel9)
+                            .addComponent(jLabel8)
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel6)
+                            .addComponent(cbxCTHT, 0, 220, Short.MAX_VALUE)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel1)
+                            .addComponent(tfMaPC)
+                            .addComponent(tfMaKH)
+                            .addComponent(tfSoLuongAnh)
+                            .addComponent(cbxBHT, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cbxCTUD, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(tfNgayThanhToan)
+                            .addComponent(tfTongSoTien)
+                            .addComponent(tfMaPTT)
+                            .addComponent(tfMaNV))))
                 .addContainerGap(24, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(22, 22, 22)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addComponent(jLabel9)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(tfMaPTT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(tfMaPC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -245,6 +288,10 @@ public class frmThanhToanPhieuChup extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(tfMaKH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
+                .addComponent(jLabel10)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(tfMaNV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(tfSoLuongAnh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -269,8 +316,10 @@ public class frmThanhToanPhieuChup extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(tfTongSoTien, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(btnThanhToan, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addComponent(lbThongBao)
+                .addGap(18, 18, 18)
+                .addComponent(btnThanhToan, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         pack();
@@ -291,6 +340,33 @@ public class frmThanhToanPhieuChup extends javax.swing.JFrame {
         TinhSoTien();
     }//GEN-LAST:event_cbxCTUDItemStateChanged
 
+    private void btnThanhToanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThanhToanActionPerformed
+        // TODO add your handling code here:
+        PhieuThanhToan ptt = new PhieuThanhToan(tfMaPTT.getText(), tfMaPC.getText(), tfMaKH.getText(), tfMaNV.getText(), tfSoLuongAnh.getText(), cbxBHT.getSelectedItem().toString(), cbxCTHT.getSelectedItem().toString(), cbxCTUD.getSelectedItem().toString(), tfNgayThanhToan.getText(), tfTongSoTien.getText());
+        ThongBao thongBao = PhieuThanhToanCon.ThemPTT(ptt);
+        ShowThongBao(thongBao);
+        
+        if (thongBao.ThanhCong){
+            frmQLPC.ThanhToanPhieuChup();
+        }
+        
+    }//GEN-LAST:event_btnThanhToanActionPerformed
+
+    private void XoaThongBao(){
+        lbThongBao.setText("");
+    }
+    
+    private void ShowThongBao(ThongBao thongBao){
+        lbThongBao.setText(thongBao.ChuThich);
+        if (thongBao.ThanhCong){
+           lbThongBao.setForeground(Color.GREEN);
+        }
+        else{
+            lbThongBao.setForeground(Color.RED);
+        }
+    }
+    
+    
     /**
      * @param args the command line arguments
      */
@@ -332,6 +408,7 @@ public class frmThanhToanPhieuChup extends javax.swing.JFrame {
     private javax.swing.JComboBox cbxCTHT;
     private javax.swing.JComboBox cbxCTUD;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -339,8 +416,12 @@ public class frmThanhToanPhieuChup extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel lbThongBao;
     private javax.swing.JTextField tfMaKH;
+    private javax.swing.JTextField tfMaNV;
     private javax.swing.JTextField tfMaPC;
+    private javax.swing.JTextField tfMaPTT;
     private javax.swing.JTextField tfNgayThanhToan;
     private javax.swing.JTextField tfSoLuongAnh;
     private javax.swing.JTextField tfTongSoTien;

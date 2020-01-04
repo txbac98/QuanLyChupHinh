@@ -268,7 +268,7 @@ public class frmHome extends javax.swing.JFrame {
         this.CloseAllChildForm();
         frmQuanLyPhieuThanhToan frmQLPTT= new frmQuanLyPhieuThanhToan();
         destopPane.add(frmQLPTT);
-        frmQLPTT.setVisible(rootPaneCheckingEnabled);
+        frmQLPTT.Show();
     }//GEN-LAST:event_menuItemQuanLyPhieuThanhToanActionPerformed
 
     private void menuItemTraCuuPhieuChupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemTraCuuPhieuChupActionPerformed
@@ -316,7 +316,7 @@ public class frmHome extends javax.swing.JFrame {
     private void menuItemDangXuatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemDangXuatActionPerformed
         // TODO add your handling code here:
         frmDangNhap frmDN = new frmDangNhap();
-        frmDN.Show();
+        frmDN.ShowKhiDangXuat();
         this.setVisible(false);
     }//GEN-LAST:event_menuItemDangXuatActionPerformed
 

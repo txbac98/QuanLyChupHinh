@@ -36,4 +36,8 @@ public class PhieuChup {
         NGAYTAO = pc.NGAYTAO;
         TRANGTHAI = pc.TRANGTHAI;
     }
+    
+    public void DaThanhToan(){
+        TRANGTHAI = "Đã giao ảnh";
+    }
 }

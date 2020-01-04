@@ -216,7 +216,7 @@ public class TaiKhoanDao {
         {
         Connection con = DBConnection.createConnection(); //establishing connection
         Statement statement = con.createStatement(); //Statement is used to write queries. Read more about it.   
-        statement.executeUpdate(String.format("UPDATE `taikhoan` SET `MANV`='%s',`TENNV`='%s',`MATKHAU`='%s',`LOAINV`='%s'",taiKhoan.MANV, taiKhoan.MATKHAU, taiKhoan.TENNV, taiKhoan.LOAINV));
+        statement.executeUpdate(String.format("UPDATE `taikhoan` SET `TENNV`='%s',`MATKHAU`='%s',`LOAINV`='%s' WHERE `MANV`='%s'", taiKhoan.MATKHAU, taiKhoan.TENNV, taiKhoan.LOAINV, taiKhoan.MANV));
         return new ThongBao(true,"Sửa thành công tài khoản "+ taiKhoan.MANV);
         }
        catch(SQLException e)
@@ -226,7 +226,20 @@ public class TaiKhoanDao {
         }
     }
     
-    
+    public static ThongBao DoiMatKhau(String MaNV, String mkCu, String mkMoi){
+        try
+        {
+        Connection con = DBConnection.createConnection(); //establishing connection
+        Statement statement = con.createStatement(); //Statement is used to write queries. Read more about it.   
+        statement.executeUpdate(String.format("UPDATE `taikhoan` SET `MATKHAU`='%s' WHERE `MANV`='%s' AND `MATKHAU`='%s'", mkMoi, MaNV, mkCu));
+        return new ThongBao(true,"Sửa thành công tài khoản "+ MaNV);
+        }
+       catch(SQLException e)
+        {
+        e.printStackTrace();
+        return new ThongBao(false,"Không thể truy vấn CSDL");
+        }
+    }
     
     public static ThongBao XoaTaiKhoan(TaiKhoan taiKhoan){
         try

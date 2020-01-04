@@ -5,11 +5,13 @@
  */
 package View;
 
+import Controller.DangNhapCon;
 import Controller.TaiKhoanCon;
 import Model.TaiKhoan;
 import Model.ThongBao;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
+import Model.DangNhap;
 
 /**
  *
@@ -33,8 +35,8 @@ public class frmDangNhap extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jCheckBox1 = new javax.swing.JCheckBox();
-        jCheckBox2 = new javax.swing.JCheckBox();
+        cbGNMK = new javax.swing.JCheckBox();
+        cbTDDN = new javax.swing.JCheckBox();
         btnDangNhap = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         tfTaiKhoan = new javax.swing.JTextField();
@@ -46,9 +48,14 @@ public class frmDangNhap extends javax.swing.JFrame {
         setLocation(new java.awt.Point(0, 0));
         setResizable(false);
 
-        jCheckBox1.setText("Ghi nhớ mật khẩu");
+        cbGNMK.setText("Ghi nhớ mật khẩu");
 
-        jCheckBox2.setText("Tự động đăng nhập");
+        cbTDDN.setText("Tự động đăng nhập");
+        cbTDDN.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cbTDDNItemStateChanged(evt);
+            }
+        });
 
         btnDangNhap.setText("Đăng nhập");
         btnDangNhap.addActionListener(new java.awt.event.ActionListener() {
@@ -77,7 +84,7 @@ public class frmDangNhap extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(24, 24, 24)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jCheckBox1)
+                    .addComponent(cbGNMK)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addGroup(layout.createSequentialGroup()
                             .addComponent(lbThongBao)
@@ -87,7 +94,7 @@ public class frmDangNhap extends javax.swing.JFrame {
                         .addComponent(pfMatKhau, javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jCheckBox2, javax.swing.GroupLayout.Alignment.LEADING)))
+                        .addComponent(cbTDDN, javax.swing.GroupLayout.Alignment.LEADING)))
                 .addContainerGap(28, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -102,9 +109,9 @@ public class frmDangNhap extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pfMatKhau, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jCheckBox1)
+                .addComponent(cbGNMK)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jCheckBox2)
+                .addComponent(cbTDDN)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbThongBao)
@@ -122,11 +129,14 @@ public class frmDangNhap extends javax.swing.JFrame {
     }//GEN-LAST:event_btnDangNhapActionPerformed
 
     private void DangNhap(){
+        DangNhap dangNhap = new DangNhap(tfTaiKhoan.getText(), pfMatKhau.getText(), cbGNMK.isSelected(), cbTDDN.isSelected());
+        
         ThongBao thongBao = TaiKhoanCon.KiemTraDangNhap(tfTaiKhoan.getText(), pfMatKhau.getText());;
         if (thongBao.ThanhCong){
-            quanlytiemchuphinh.QuanLyTiemChupHinh.taiKhoanDangNhap = TaiKhoanCon.LayTaiKhoanTheoMa(tfTaiKhoan.getText());
-            LoadDangNhap();
-        }
+            quanlytiemchuphinh.QuanLyTiemChupHinh.taiKhoanDangNhap = TaiKhoanCon.LayTaiKhoanTheoMa(tfTaiKhoan.getText());                    
+            DangNhapCon.LuuDangNhap(dangNhap);
+            LoadDangNhap();       
+        }      
         ShowThongBao(thongBao);
     }
     
@@ -137,10 +147,42 @@ public class frmDangNhap extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_pfMatKhauKeyPressed
 
+    private void cbTDDNItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbTDDNItemStateChanged
+        // TODO add your handling code here:
+        if (cbTDDN.isSelected()){
+            cbGNMK.setSelected(true);
+        }
+    }//GEN-LAST:event_cbTDDNItemStateChanged
+
     public void Show(){
         this.setVisible(true);
         Form.Form.centreWindow(this);
         XoaThongBao();
+        DangNhap dangNhap =DangNhapCon.CheckDangNhap();
+        if (dangNhap!=null){
+            tfTaiKhoan.setText(dangNhap.TAIKHOAN);
+            pfMatKhau.setText(dangNhap.MATKHAU);
+            cbGNMK.setSelected(dangNhap.GHINHO);
+            cbTDDN.setSelected(dangNhap.TUDONG);
+
+            if (dangNhap.TUDONG){
+                DangNhap();
+            }
+        }
+    }
+    
+    public void ShowKhiDangXuat(){
+        this.setVisible(true);
+        Form.Form.centreWindow(this);
+        XoaThongBao();
+        DangNhap dangNhap =DangNhapCon.CheckDangNhap();
+        if (dangNhap!=null){         
+            tfTaiKhoan.setText(dangNhap.TAIKHOAN);
+            pfMatKhau.setText(dangNhap.MATKHAU);
+            cbGNMK.setSelected(dangNhap.GHINHO);
+            cbTDDN.setSelected(false);
+            dangNhap.TUDONG= false;
+        }
     }
     
     private void XoaThongBao(){
@@ -216,8 +258,8 @@ public class frmDangNhap extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDangNhap;
-    private javax.swing.JCheckBox jCheckBox1;
-    private javax.swing.JCheckBox jCheckBox2;
+    private javax.swing.JCheckBox cbGNMK;
+    private javax.swing.JCheckBox cbTDDN;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel lbThongBao;
