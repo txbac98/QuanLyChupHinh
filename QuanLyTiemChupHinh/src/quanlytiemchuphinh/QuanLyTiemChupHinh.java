@@ -5,8 +5,8 @@
  */
 package quanlytiemchuphinh;
 
-import Model.TaiKhoan;
-import View.frmDangNhap;
+import DTO.TaiKhoan;
+import GUI.frmDangNhap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.LookAndFeel;
