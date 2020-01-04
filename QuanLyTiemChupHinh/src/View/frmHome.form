@@ -96,14 +96,6 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuItemQuanLyBangHoachToanActionPerformed"/>
               </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="menuItemQuanLyBaoCao">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Qu&#x1ea3;n l&#xfd; b&#xe1;o c&#xe1;o"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuItemQuanLyBaoCaoActionPerformed"/>
-              </Events>
-            </MenuItem>
           </SubComponents>
         </Menu>
         <Menu class="javax.swing.JMenu" name="menuQuanLyTaiKhoan">

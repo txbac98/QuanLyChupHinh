@@ -7,7 +7,7 @@ package Controller;
 
 import java.util.ArrayList;
 import Model.KhachHang;
-import DAO.KhachHangDao;
+import SERVICE.KhachHangDao;
 import Model.ThongBao;
 
 /**

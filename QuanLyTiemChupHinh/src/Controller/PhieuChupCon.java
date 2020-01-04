@@ -5,8 +5,8 @@
  */
 package Controller;
 
-import DAO.ChiTietPhieuChupDao;
-import DAO.PhieuChupDao;
+import SERVICE.ChiTietPhieuChupDao;
+import SERVICE.PhieuChupDao;
 import Model.ChiTietPhieuChup;
 import java.util.ArrayList;
 import Model.PhieuChup;

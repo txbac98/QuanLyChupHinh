@@ -43,7 +43,6 @@ public class frmHome extends javax.swing.JFrame {
         menuItemQuanLyCTUD = new javax.swing.JMenuItem();
         menuItemQuanLyPhieuThanhToan = new javax.swing.JMenuItem();
         menuItemQuanLyBangHoachToan = new javax.swing.JMenuItem();
-        menuItemQuanLyBaoCao = new javax.swing.JMenuItem();
         menuQuanLyTaiKhoan = new javax.swing.JMenu();
         menuTaiKhoan = new javax.swing.JMenu();
         menuItemDoiMatKhau = new javax.swing.JMenuItem();
@@ -148,14 +147,6 @@ public class frmHome extends javax.swing.JFrame {
             }
         });
         menuQuanLy.add(menuItemQuanLyBangHoachToan);
-
-        menuItemQuanLyBaoCao.setText("Quản lý báo cáo");
-        menuItemQuanLyBaoCao.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuItemQuanLyBaoCaoActionPerformed(evt);
-            }
-        });
-        menuQuanLy.add(menuItemQuanLyBaoCao);
 
         jMenuBar1.add(menuQuanLy);
 
@@ -286,14 +277,6 @@ public class frmHome extends javax.swing.JFrame {
         frmTCPC.Show();
     }//GEN-LAST:event_menuItemTraCuuPhieuChupActionPerformed
 
-    private void menuItemQuanLyBaoCaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemQuanLyBaoCaoActionPerformed
-        // TODO add your handling code here:
-        this.CloseAllChildForm();
-        frmQuanLyBaoCao frmQLBC = new frmQuanLyBaoCao();
-        destopPane.add(frmQLBC);
-        frmQLBC.Show();
-    }//GEN-LAST:event_menuItemQuanLyBaoCaoActionPerformed
-
     private void menuQuanLyTaiKhoanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuQuanLyTaiKhoanMouseClicked
         // TODO add your handling code here:
         this.CloseAllChildForm();
@@ -401,7 +384,6 @@ public class frmHome extends javax.swing.JFrame {
     private javax.swing.JMenuItem menuItemDangXuat;
     private javax.swing.JMenuItem menuItemDoiMatKhau;
     private javax.swing.JMenuItem menuItemQuanLyBangHoachToan;
-    private javax.swing.JMenuItem menuItemQuanLyBaoCao;
     private javax.swing.JMenuItem menuItemQuanLyCTUD;
     private javax.swing.JMenuItem menuItemQuanLyKH;
     private javax.swing.JMenuItem menuItemQuanLyPhieuChup;

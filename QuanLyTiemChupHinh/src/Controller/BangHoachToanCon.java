@@ -5,7 +5,7 @@
  */
 package Controller;
 
-import DAO.BangHoachToanDao;
+import SERVICE.BangHoachToanDao;
 import java.util.ArrayList;
 import Model.BangHoachToan;
 import Model.ThongBao;

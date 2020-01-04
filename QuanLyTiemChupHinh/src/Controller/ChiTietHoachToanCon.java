@@ -5,7 +5,7 @@
  */
 package Controller;
 
-import DAO.ChiTietHoachToanDao;
+import SERVICE.ChiTietHoachToanDao;
 import java.util.ArrayList;
 import Model.ChiTietHoachToan;
 import Model.ThongBao;

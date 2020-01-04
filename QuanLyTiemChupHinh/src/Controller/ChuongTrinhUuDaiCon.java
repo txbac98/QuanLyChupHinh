@@ -5,7 +5,7 @@
  */
 package Controller;
 
-import DAO.ChuongTrinhUuDaiDao;
+import SERVICE.ChuongTrinhUuDaiDao;
 import java.util.ArrayList;
 import Model.ChuongTrinhUuDai;
 import Model.ThongBao;

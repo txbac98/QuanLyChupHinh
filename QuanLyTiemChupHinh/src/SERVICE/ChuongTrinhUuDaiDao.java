@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package DAO;
+package SERVICE;
 
 import Controller.DateCon;
 import DB.DBConnection;

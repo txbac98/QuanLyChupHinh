@@ -6,7 +6,7 @@
 
 
 
-package DAO;
+package SERVICE;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

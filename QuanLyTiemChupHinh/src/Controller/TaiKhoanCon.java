@@ -5,7 +5,7 @@
  */
 package Controller;
 
-import DAO.TaiKhoanDao;
+import SERVICE.TaiKhoanDao;
 import Model.ThongBao;
 import Model.TaiKhoan;
 import java.util.ArrayList;

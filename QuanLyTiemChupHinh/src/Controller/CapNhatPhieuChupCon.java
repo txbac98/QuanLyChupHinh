@@ -5,7 +5,7 @@
  */
 package Controller;
 
-import DAO.ChiTietPhieuChupDao;
+import SERVICE.ChiTietPhieuChupDao;
 import Model.ChiTietPhieuChup;
 import Model.ThongBao;
 import java.io.File;
