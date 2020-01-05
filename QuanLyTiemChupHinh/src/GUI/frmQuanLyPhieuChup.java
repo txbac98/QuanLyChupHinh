@@ -14,6 +14,7 @@ import DTO.PhieuChup;
 import DTO.ThongBao;
 import java.awt.Color;
 import java.util.Vector;
+
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
@@ -62,7 +63,7 @@ public class frmQuanLyPhieuChup extends javax.swing.JInternalFrame {
         this.setVisible(true);
         dcNgayTao.setDate(DateBUS.GetToDay());
         tfMaKH.setText(MaKH);
-        tfMaPC.setText(PhieuChupBUS.LayMaPhieuChupMoi());
+        tfMaPC.setText(PhieuChupBUS.LayMaPhieuChupMoi(tfMaKH.getText()));
         btnSua.setEnabled(false);
         btnXoa.setEnabled(false);
         btnChiTiet.setEnabled(false);
@@ -509,8 +510,10 @@ public class frmQuanLyPhieuChup extends javax.swing.JInternalFrame {
         LoadDanhSachPhieuChupTheoMaPCvaMaKH(tfTraCuuMaPC.getText(), tfTraCuuMaKH.getText());
     }//GEN-LAST:event_tfTraCuuMaPCKeyReleased
 
+    
     private void btnThanhToanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThanhToanActionPerformed
         // TODO add your handling code here:
+        //if ()
         frmThanhToanPhieuChup frmTTPC = new frmThanhToanPhieuChup();
         frmTTPC.Show(new PhieuChup(tfMaPC.getText(), tfMaKH.getText(),DateBUS.GetDateString(dcNgayTao), cbxTrangThai.getSelectedItem().toString()),this);
     }//GEN-LAST:event_btnThanhToanActionPerformed

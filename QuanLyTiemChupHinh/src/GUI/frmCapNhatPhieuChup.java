@@ -109,6 +109,7 @@ public class frmCapNhatPhieuChup extends javax.swing.JFrame {
     
     private void AddFiles(List<File> files){
         if (files == null) return;
+        
         for (File file : files){
             AddPath(file.getPath());
         }
@@ -322,8 +323,8 @@ public class frmCapNhatPhieuChup extends javax.swing.JFrame {
         
         ShowThongBao(thongBao);
         
-        //thongBao = ChiTietPhieuChupBUS.LuuCTPC(new ChiTietPhieuChup(tfMaPC.getText(),tfSoLuongAnh.getText()));
-        //ShowThongBao(thongBao);
+        thongBao = ChiTietPhieuChupBUS.LuuCTPC(new ChiTietPhieuChup(tfMaPC.getText(),tfSoLuongAnh.getText()));
+        ShowThongBao(thongBao);
         
         ChiTietPhieuChupBUS.LuuHinhAnh(tfMaPC.getText(), listPath);
     }//GEN-LAST:event_btnXacNhanActionPerformed
@@ -334,6 +335,10 @@ public class frmCapNhatPhieuChup extends javax.swing.JFrame {
         tfSoLuongAnh.setText(datas.length+"");
         this.manager.processPath(datas);
         this.revalidate();
+        
+        if (cbxTrangThai.getSelectedIndex()==0){
+            cbxTrangThai.setSelectedIndex(1);
+        }
     }
     
     private void XoaThongBao(){

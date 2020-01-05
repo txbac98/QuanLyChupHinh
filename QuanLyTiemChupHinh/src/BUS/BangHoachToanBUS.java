@@ -41,8 +41,20 @@ public class BangHoachToanBUS {
     }
     
     public static String LayMaBHTMoi(){
+        
         ArrayList<BangHoachToan> listBHT = BangHoachToanDAO.LayDanhSachBHT();
         if (listBHT==null) return "BHT1";
-        return "BHT" + (listBHT.size() +1);
+        if (listBHT.size()==0) return "BHT1";
+        String maCuoi = listBHT.get(listBHT.size()-1).MABHT;
+        System.err.println(maCuoi);
+        String soCuoi = maCuoi.substring(3, maCuoi.length());
+        System.err.println(soCuoi);
+        long index =0;
+        try {  
+            index = Long.parseLong(soCuoi);             
+        } catch(NumberFormatException e){  
+            
+        }  
+        return "BHT" + (index +1);
     }
 }

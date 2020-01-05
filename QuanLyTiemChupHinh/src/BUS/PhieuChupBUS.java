@@ -74,14 +74,14 @@ public class PhieuChupBUS {
         return ChiTietPhieuChupDAO.LayCTPC(MaPC);
     }
     
-    public static String LayMaPhieuChupMoi(){
+    public static String LayMaPhieuChupMoi(String MaKH){
         
         ArrayList<PhieuChup> listPC = PhieuChupDAO.LayDanhSachPhieuChup();
-        if (listPC==null) return "PC1";
-        if (listPC.size()==0) return "PC1";
+        if (listPC==null) return MaKH + "PC1";
+        if (listPC.size()==0) return  MaKH + "PC1";
         String maCuoi = listPC.get(listPC.size()-1).MAPC;
         System.err.println(maCuoi);
-        String soCuoi = maCuoi.substring(2, maCuoi.length());
+        String soCuoi = maCuoi.substring(MaKH.length() + 2, maCuoi.length());
         System.err.println(soCuoi);
         long index =0;
         try {  
@@ -89,6 +89,6 @@ public class PhieuChupBUS {
         } catch(NumberFormatException e){  
             
         }  
-        return "PC" + (index +1);
+        return MaKH + "PC" + (index +1);
     }
 }

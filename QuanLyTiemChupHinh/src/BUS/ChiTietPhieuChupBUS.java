@@ -5,6 +5,7 @@
  */
 package BUS;
 
+import DAL.ChiTietPhieuChupDAO;
 import DTO.ChiTietPhieuChup;
 import DTO.ThongBao;
 import java.io.File;
@@ -70,6 +71,10 @@ public class ChiTietPhieuChupBUS {
         
     }
   
+    public static ThongBao LuuCTPC(ChiTietPhieuChup ctpc){
+        return ChiTietPhieuChupDAO.LuuCTPC(ctpc);
+    }
+    
     private static boolean KiemTraTonTai(String sou, String des){
         
         File source = new File(sou);

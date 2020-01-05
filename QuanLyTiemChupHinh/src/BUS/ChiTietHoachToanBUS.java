@@ -20,13 +20,6 @@ public class ChiTietHoachToanBUS {
         return ChiTietHoachToanDAO.LayDanhSachCTHT(MaBHT);
     }
     
-    
-    public static String LayMaCTHTMoi(String MaBHT){
-        ArrayList<ChiTietHoachToan> listCTHT = ChiTietHoachToanDAO.LayDanhSachCTHT(MaBHT);
-        if (listCTHT==null) return MaBHT +"CT1";
-        return MaBHT + "CT" + (listCTHT.size() +1);
-    }
-    
     public static ThongBao ThemChiTietHoachToan(ChiTietHoachToan ctht){
         return ChiTietHoachToanDAO.ThemCTBHT(ctht);
     }
@@ -37,5 +30,23 @@ public class ChiTietHoachToanBUS {
     
     public static ThongBao XoaChiTietHoachToan(ChiTietHoachToan ctht){
         return ChiTietHoachToanDAO.XoaCTBHT(ctht);
+    }
+    
+     public static String LayMaCTHTMoi(String MaBHT){
+
+        ArrayList<ChiTietHoachToan> listCTHT = LayDanhSachChiTietHoachToan(MaBHT);
+        if (listCTHT==null) return MaBHT +"CT1";
+        if (listCTHT.size()==0) return MaBHT + "CT1";
+        String maCuoi = listCTHT.get(listCTHT.size()-1).MACTHT;
+        System.err.println(maCuoi);
+        String soCuoi = maCuoi.substring(MaBHT.length()+ 2, maCuoi.length());
+        System.err.println(soCuoi);
+        long index =0;
+        try {  
+            index = Long.parseLong(soCuoi);             
+        } catch(NumberFormatException e){  
+            
+        }  
+        return MaBHT + "CT" + (listCTHT.size() +1);
     }
 }
