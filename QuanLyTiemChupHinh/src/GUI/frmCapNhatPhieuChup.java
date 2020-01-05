@@ -5,7 +5,7 @@
  */
 package GUI;
 
-import BUS.CapNhatPhieuChupBUS;
+import BUS.ChiTietPhieuChupBUS;
 import BUS.PhieuChupBUS;
 import DTO.ChiTietPhieuChup;
 import DTO.PhieuChup;
@@ -123,7 +123,7 @@ public class frmCapNhatPhieuChup extends javax.swing.JFrame {
     
     
     private void LoadHinhAnhPhieuChup(String MaPC){
-        listPath = CapNhatPhieuChupBUS.LoadListPathInFolder(MaPC);    
+        listPath = ChiTietPhieuChupBUS.LoadListPathInFolder(MaPC);    
         if (listPath==null) return;               
         ShowDatas();
     }
@@ -316,12 +316,16 @@ public class frmCapNhatPhieuChup extends javax.swing.JFrame {
         }
         
 
-        
+        tfSoLuongAnh.setText(listPath.size() +"");
+        //ThongBao thongBao = PhieuChupBUS.SuaPhieuChup(new PhieuChup(tfMaPC.getText(), tfMaK))
         ThongBao thongBao = PhieuChupBUS.SuaTrangThaiPhieuChup(tfMaPC.getText(), cbxTrangThai.getSelectedItem().toString());
+        
         ShowThongBao(thongBao);
         
+        //thongBao = ChiTietPhieuChupBUS.LuuCTPC(new ChiTietPhieuChup(tfMaPC.getText(),tfSoLuongAnh.getText()));
+        //ShowThongBao(thongBao);
         
-        CapNhatPhieuChupBUS.LuuHinhAnh(tfMaPC.getText(), listPath);
+        ChiTietPhieuChupBUS.LuuHinhAnh(tfMaPC.getText(), listPath);
     }//GEN-LAST:event_btnXacNhanActionPerformed
 
     private void ShowDatas(){

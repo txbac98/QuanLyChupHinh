@@ -222,13 +222,8 @@ public class frmHome extends javax.swing.JFrame {
     }
     
     public void ShowBoPhanKyThuat(){
-        this.setVisible(true);
-        menuQuanLy.setVisible(false);
-        menuQuanLyTaiKhoan.setVisible(false);
-        menuItemTraCuuKH.setVisible(false);
-        menuItemTraCuuCTUD.setVisible(false);
-        menuItemTraCuuPTT.setVisible(false);
-        ShowTrangChu();
+        frmKyThuatVien frmKTV = new frmKyThuatVien();
+        frmKTV.Show();
     }
     
     private void CloseAllChildForm(){

@@ -82,12 +82,26 @@ public class frmThanhToanPhieuChup extends javax.swing.JFrame {
     long soAnh;
     long gia;
     private void TinhSoTien(){      
-        cthtSelected = ctht.get(cbxCTHT.getSelectedIndex());
-        ctudSelected = ctud.get(cbxCTUD.getSelectedIndex());
-        try{          
+        
+        try{      
+            cthtSelected = ctht.get(cbxCTHT.getSelectedIndex());
+            
             soAnh = Long.parseLong(tfSoLuongAnh.getText());
             gia = Long.parseLong(cthtSelected.GIA);
-            uuDai = Float.parseFloat(ctudSelected.GIATRIUUDAI);
+            if (ctud!=null){
+                ctudSelected = ctud.get(cbxCTUD.getSelectedIndex());
+                if (cthtSelected!=null){
+                    uuDai = Float.parseFloat(ctudSelected.GIATRIUUDAI);
+                }
+                else {
+                    uuDai =0;
+                }
+            }
+            else{
+                uuDai=0;
+            }
+                
+            
          }
         catch(NumberFormatException e){  
         }
@@ -125,11 +139,14 @@ public class frmThanhToanPhieuChup extends javax.swing.JFrame {
         ctud= ChuongTrinhUuDaiBUS.LayDanhSachCTUDDangApDung();
         ArrayList<String> strCTUD = new ArrayList<>();
         if (ctud!=null)
+        {
         for (int i=0; i< ctud.size(); i++){
             strCTUD.add(ctud.get(i).TENCTUD +": "+ ctud.get(i).GIATRIUUDAI +" %");
         }
         List<String> ls = new ArrayList<String>(strCTUD); 
         cbxCTUD.setModel(new DefaultComboBoxModel<String>(ls.toArray(new String[0])));
+        }
+       
 
     }
     
@@ -213,7 +230,6 @@ public class frmThanhToanPhieuChup extends javax.swing.JFrame {
 
         jLabel6.setText("Chương trình ưu đãi:");
 
-        cbxCTUD.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cbxCTUD.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 cbxCTUDItemStateChanged(evt);

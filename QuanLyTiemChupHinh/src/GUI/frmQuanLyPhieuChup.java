@@ -62,10 +62,11 @@ public class frmQuanLyPhieuChup extends javax.swing.JInternalFrame {
         this.setVisible(true);
         dcNgayTao.setDate(DateBUS.GetToDay());
         tfMaKH.setText(MaKH);
-        tfMaPC.setText(PhieuChupBUS.LayMaPhieuChupMoi(MaKH));
+        tfMaPC.setText(PhieuChupBUS.LayMaPhieuChupMoi());
         btnSua.setEnabled(false);
         btnXoa.setEnabled(false);
         btnChiTiet.setEnabled(false);
+        btnThanhToan.setEnabled(false);
         LoadDanhSachPhieuChupTheoKhachHang(MaKH);
              
     }

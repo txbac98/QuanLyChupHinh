@@ -5,7 +5,6 @@
  */
 package BUS;
 
-import DAO.ChiTietPhieuChupDAO;
 import DTO.ChiTietPhieuChup;
 import DTO.ThongBao;
 import java.io.File;
@@ -20,7 +19,7 @@ import java.util.logging.Logger;
  *
  * @author 16520
  */
-public class CapNhatPhieuChupBUS {
+public class ChiTietPhieuChupBUS {
     
     public static ArrayList<String> LoadListPathInFolder(String MaPC){
         
@@ -92,9 +91,6 @@ public class CapNhatPhieuChupBUS {
     }
     
     
-    public static ThongBao LuuCTPC(ChiTietPhieuChup ctpc){
-        return ChiTietPhieuChupDAO.LuuCTPC(ctpc);
-    }
             
     
     private static String getFileExtension(File file) {

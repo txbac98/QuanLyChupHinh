@@ -7,7 +7,7 @@ package BUS;
 
 import DTO.PhieuThanhToan;
 import DTO.ThongBao;
-import DAO.PhieuThanhToanDAO;
+import DAL.PhieuThanhToanDAO;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -70,10 +70,22 @@ public class PhieuThanhToanBUS {
         return PhieuThanhToanDAO.XoaPTT(ptt);
     }
     
-    public static String LayMaMoi(){
+    public static String LayMaMoi(){              
         ArrayList<PhieuThanhToan> listPTT = LayDanhSachPhieuThanhToan();
         if (listPTT==null) return "PTT1";
-        return "PTT" + (listPTT.size() +1);
+        if (listPTT.size()==0) return "PTT1";
+        String maCuoi = listPTT.get(listPTT.size()-1).MAPTT;
+        System.err.println(maCuoi);
+        String soCuoi = maCuoi.substring(3, maCuoi.length());
+        System.err.println(soCuoi);
+        long index =0;
+        try {  
+            index = Long.parseLong(soCuoi);             
+        } catch(NumberFormatException e){  
+            
+        }  
+        return "PTT" + (index +1);
     }
+    
     
 }

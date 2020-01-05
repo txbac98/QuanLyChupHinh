@@ -6,7 +6,7 @@
 
 
 
-package DAO;
+package DAL;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -201,7 +201,7 @@ public class TaiKhoanDAO {
         {
         Connection con = DBConnection.createConnection(); //establishing connection
         Statement statement = con.createStatement(); //Statement is used to write queries. Read more about it.   
-        statement.executeUpdate(String.format("INSERT INTO `taikhoan`(`MANV`, `TENNV`, `MATKHAU`, `LOAINV`) VALUES ('%s','%s','%s','%s')",taiKhoan.MANV, taiKhoan.MATKHAU, taiKhoan.TENNV, taiKhoan.LOAINV));
+        statement.executeUpdate(String.format("INSERT INTO `taikhoan`(`MANV`, `TENNV`, `MATKHAU`, `LOAINV`) VALUES ('%s','%s','%s','%s')",taiKhoan.MANV, taiKhoan.TENNV, taiKhoan.MATKHAU, taiKhoan.LOAINV));
         return new ThongBao(true,"Thêm thành công tài khoản "+ taiKhoan.MANV);
         }
        catch(SQLException e)
@@ -216,7 +216,7 @@ public class TaiKhoanDAO {
         {
         Connection con = DBConnection.createConnection(); //establishing connection
         Statement statement = con.createStatement(); //Statement is used to write queries. Read more about it.   
-        statement.executeUpdate(String.format("UPDATE `taikhoan` SET `TENNV`='%s',`MATKHAU`='%s',`LOAINV`='%s' WHERE `MANV`='%s'", taiKhoan.MATKHAU, taiKhoan.TENNV, taiKhoan.LOAINV, taiKhoan.MANV));
+        statement.executeUpdate(String.format("UPDATE `taikhoan` SET `TENNV`='%s',`MATKHAU`='%s',`LOAINV`='%s' WHERE `MANV`='%s'", taiKhoan.TENNV, taiKhoan.MATKHAU, taiKhoan.LOAINV, taiKhoan.MANV));
         return new ThongBao(true,"Sửa thành công tài khoản "+ taiKhoan.MANV);
         }
        catch(SQLException e)

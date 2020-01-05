@@ -1,1 +1,1 @@
-{"TAIKHOAN":"bac","MATKHAU":"bac","GHINHO":true,"TUDONG":true}
+{"TAIKHOAN":"kythuat","MATKHAU":"kythuat","GHINHO":true,"TUDONG":false}

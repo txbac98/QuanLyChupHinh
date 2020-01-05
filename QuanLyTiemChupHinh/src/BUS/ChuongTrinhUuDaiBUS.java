@@ -5,7 +5,7 @@
  */
 package BUS;
 
-import DAO.ChuongTrinhUuDaiDAO;
+import DAL.ChuongTrinhUuDaiDAO;
 import java.util.ArrayList;
 import DTO.ChuongTrinhUuDai;
 import DTO.ThongBao;
@@ -41,9 +41,21 @@ public class ChuongTrinhUuDaiBUS {
     }
     
     public static String LayMaCTUDMoi(){
+         
         ArrayList<ChuongTrinhUuDai> listCTUD = LayDanhSachCTUD();
         if (listCTUD==null) return "UD1";
-        return "UD" + (listCTUD.size() +1);
+        if (listCTUD.size()==0) return "UD1";
+        String maCuoi = listCTUD.get(listCTUD.size()-1).MACTUD;
+        System.err.println(maCuoi);
+        String soCuoi = maCuoi.substring(2, maCuoi.length());
+        System.err.println(soCuoi);
+        long index =0;
+        try {  
+            index = Long.parseLong(soCuoi);             
+        } catch(NumberFormatException e){  
+            
+        }  
+        return "UD" + (index +1);
     }
     
 }

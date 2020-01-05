@@ -14,23 +14,23 @@ import java.text.SimpleDateFormat;
  * @author 16520
  */
 public class KiemTraBUS {
-    public static ThongBao KiemTraSDT(String sdt){
+    public static Boolean KiemTraSDT(String sdt){
         try {  
             Long.parseLong(sdt);  
-            if (sdt.length() !=10) return new ThongBao(false, "Số điện thoại phải đủ 10 số");
-            return new ThongBao(true,"Số điện thoại hợp lệ");
+            if (sdt.length() !=10) return false;
+            return true;
         } catch(NumberFormatException e){  
-            return  new ThongBao(false,"Số điện thoại phải là chuỗi số");
+            return  false;
         }  
     }
     
     
     
-    public static ThongBao KiemTraEmail(String email){
+    public static Boolean KiemTraEmail(String email){
         if (!email.contains("@") || !email.contains(".")){
-            return new ThongBao(false, "Email không hợp lệ");
+            return false;
         }
-        return new ThongBao(true, "Email hợp lệ");
+        return true;
     }
     
     public static ThongBao KiemTraGiaTriUuDai(String sGiaTri){
@@ -44,8 +44,8 @@ public class KiemTraBUS {
         }  
     }
     
-    public static Boolean KiemTraChuoi(String str){
-        if (str.length()>0) return true;
+    public static Boolean KiemTraChuoiRong(String str){
+        if (str.length()==0) return true;
         return false;
     }
     

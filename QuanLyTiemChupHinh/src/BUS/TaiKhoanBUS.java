@@ -5,7 +5,7 @@
  */
 package BUS;
 
-import DAO.TaiKhoanDAO;
+import DAL.TaiKhoanDAO;
 import DTO.ThongBao;
 import DTO.TaiKhoan;
 import java.util.ArrayList;

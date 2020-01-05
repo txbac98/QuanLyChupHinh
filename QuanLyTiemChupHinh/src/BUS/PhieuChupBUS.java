@@ -5,8 +5,8 @@
  */
 package BUS;
 
-import DAO.ChiTietPhieuChupDAO;
-import DAO.PhieuChupDAO;
+import DAL.ChiTietPhieuChupDAO;
+import DAL.PhieuChupDAO;
 import DTO.ChiTietPhieuChup;
 import java.util.ArrayList;
 import DTO.PhieuChup;
@@ -61,13 +61,7 @@ public class PhieuChupBUS {
     public static PhieuChup LayPhieuChupTheoMa(String MaPC){
         return PhieuChupDAO.LayPhieuChupTheoMa(MaPC);
     }
-    
-    public static String LayMaPhieuChupMoi(String MaKH){
-        ArrayList<PhieuChup> listPC = PhieuChupDAO.LayDanhSachPhieuChup();
-        if (listPC==null) return "PC1";
-        return MaKH+ "PC" + (LayDanhSachPhieuChupTheoKhachHang(MaKH).size() + 1);
-    }
-    
+        
     public static ThongBao SuaTrangThaiPhieuChup(String MaPC, String TrangThai){
         return PhieuChupDAO.SuaTrangThaiPhieuChup(MaPC, TrangThai);
     }
@@ -78,5 +72,23 @@ public class PhieuChupBUS {
     
     public static ChiTietPhieuChup LayCTPC(String MaPC){
         return ChiTietPhieuChupDAO.LayCTPC(MaPC);
+    }
+    
+    public static String LayMaPhieuChupMoi(){
+        
+        ArrayList<PhieuChup> listPC = PhieuChupDAO.LayDanhSachPhieuChup();
+        if (listPC==null) return "PC1";
+        if (listPC.size()==0) return "PC1";
+        String maCuoi = listPC.get(listPC.size()-1).MAPC;
+        System.err.println(maCuoi);
+        String soCuoi = maCuoi.substring(2, maCuoi.length());
+        System.err.println(soCuoi);
+        long index =0;
+        try {  
+            index = Long.parseLong(soCuoi);             
+        } catch(NumberFormatException e){  
+            
+        }  
+        return "PC" + (index +1);
     }
 }
