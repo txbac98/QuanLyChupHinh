@@ -56,7 +56,7 @@ public class ChiTietHoachToanDAO {
        catch(SQLException e)
         {
         e.printStackTrace();
-        return new ThongBao(false,"Không thể kết nối CSDL");
+        return new ThongBao(false,"Lỗi truy vấn CSDL");
         }  
     }
     
@@ -71,7 +71,7 @@ public class ChiTietHoachToanDAO {
        catch(SQLException e)
         {
         e.printStackTrace();
-        return new ThongBao(false, "Không thể kết nối CSDL");
+        return new ThongBao(false, "Lỗi truy vấn CSDL");
         }
     }
     
@@ -86,8 +86,20 @@ public class ChiTietHoachToanDAO {
        catch(SQLException e)
         {
         e.printStackTrace();
-        return new ThongBao(false, "Không thể kết nối CSDL");
+        return new ThongBao(false, "Lỗi truy vấn CSDL");
         }
     }
     
+    public static void XoaCTHTVoiMaBHT(String MaBHT){
+        try
+        {
+        Connection con = DBConnection.createConnection(); //establishing connection
+        Statement statement = con.createStatement(); //Statement is used to write queries. Read more about it.
+        statement.executeUpdate(String.format("DELETE FROM `chitiethoachtoan` WHERE MABHT ='%s'", MaBHT));
+        }
+       catch(SQLException e)
+        {
+        e.printStackTrace();
+        }
+    }
 }

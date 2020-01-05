@@ -68,8 +68,8 @@ public class ChuongTrinhUuDaiBUS {
                 for (int i=0; i< resuilt.size(); i++){
                 if (DateBUS.GetDate(resuilt.get(i).NGAYKETTHUC).before(ngayTraCuuBD)){
                     resuilt.remove(i);
-                };
-                if (DateBUS.GetDate(resuilt.get(i).NGAYBATDAU).after(ngayTraCuuKT)){
+                }
+                else if (DateBUS.GetDate(resuilt.get(i).NGAYBATDAU).after(ngayTraCuuKT)){
                     resuilt.remove(i);
                 };
             }

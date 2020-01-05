@@ -268,6 +268,8 @@ public class frmQuanLyTaiKhoan extends javax.swing.JInternalFrame {
     public void Show(){
         this.setVisible(true);
         XoaThongBao();
+        btnSua.setEnabled(false);
+        btnXoa.setEnabled(false);
         LoadDanhSachTaiKhoan();
     }
     
@@ -319,6 +321,9 @@ public class frmQuanLyTaiKhoan extends javax.swing.JInternalFrame {
        tfTenNV.setText(model.getValueAt(selectedRowIndex, 1).toString());
        tfMatKhau.setText(model.getValueAt(selectedRowIndex, 2).toString());
        cbxBoPhan.setSelectedItem(model.getValueAt(selectedRowIndex, 3).toString());
+       
+       btnSua.setEnabled(true);
+       btnXoa.setEnabled(true);
        
     }//GEN-LAST:event_tableTaiKhoanMouseClicked
 

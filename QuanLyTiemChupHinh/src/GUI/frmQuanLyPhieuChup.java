@@ -86,8 +86,8 @@ public class frmQuanLyPhieuChup extends javax.swing.JInternalFrame {
         ShowData(listPhieuChup);
     }
     
-    private void LoadDanhSachPhieuChupTheoMaPCvaMaKH(String MaPC, String MaKH){
-        ArrayList<PhieuChup> listPhieuChup = PhieuChupBUS.LayDanhSachPhieuChupTheoMaPCvaMaKH(MaPC, MaKH);
+    private void LoadDanhSachPhieuChupTheoKHVaTT(String MaKH, String TrangThai){
+        ArrayList<PhieuChup> listPhieuChup = PhieuChupBUS.LayDanhSachPhieuChupTheoKHVaTT(MaKH,TrangThai);
         ShowData(listPhieuChup);
     }
     
@@ -154,12 +154,11 @@ public class frmQuanLyPhieuChup extends javax.swing.JInternalFrame {
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablePhieuChup = new javax.swing.JTable();
-        jLabel5 = new javax.swing.JLabel();
-        tfTraCuuMaPC = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         tfTraCuuMaKH = new javax.swing.JTextField();
         btnXoaTraCuu = new javax.swing.JButton();
-        btnDanhSach = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        cbxTraCuuTrangThai = new javax.swing.JComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(900, 600));
@@ -309,14 +308,6 @@ public class frmQuanLyPhieuChup extends javax.swing.JInternalFrame {
         });
         jScrollPane1.setViewportView(tablePhieuChup);
 
-        jLabel5.setText("Mã phiếu chụp:");
-
-        tfTraCuuMaPC.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                tfTraCuuMaPCKeyReleased(evt);
-            }
-        });
-
         jLabel6.setText("Mã khách hàng:");
 
         tfTraCuuMaKH.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -332,10 +323,12 @@ public class frmQuanLyPhieuChup extends javax.swing.JInternalFrame {
             }
         });
 
-        btnDanhSach.setIcon(new javax.swing.ImageIcon(getClass().getResource("/RES/iconfinder_Refresh_27873.png"))); // NOI18N
-        btnDanhSach.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDanhSachActionPerformed(evt);
+        jLabel5.setText("Trạng thái");
+
+        cbxTraCuuTrangThai.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tất cả", "Chưa có ảnh", "Chưa chỉnh sửa", "Sẵn sàng in", "Đã in", "Đã giao ảnh" }));
+        cbxTraCuuTrangThai.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cbxTraCuuTrangThaiItemStateChanged(evt);
             }
         });
 
@@ -346,18 +339,20 @@ public class frmQuanLyPhieuChup extends javax.swing.JInternalFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel5)
-                    .addComponent(tfTraCuuMaPC, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(86, 86, 86)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel6)
-                    .addComponent(tfTraCuuMaKH, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnDanhSach)
-                .addGap(18, 18, 18)
-                .addComponent(btnXoaTraCuu)
-                .addContainerGap())
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 591, Short.MAX_VALUE)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jScrollPane1)
+                        .addContainerGap())
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel6)
+                            .addComponent(tfTraCuuMaKH, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(56, 56, 56)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel5)
+                            .addComponent(cbxTraCuuTrangThai, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 85, Short.MAX_VALUE)
+                        .addComponent(btnXoaTraCuu)
+                        .addGap(24, 24, 24))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -366,17 +361,15 @@ public class frmQuanLyPhieuChup extends javax.swing.JInternalFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel6))
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel5))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(tfTraCuuMaPC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tfTraCuuMaKH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(tfTraCuuMaKH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cbxTraCuuTrangThai, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnXoaTraCuu, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnDanhSach, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(btnXoaTraCuu, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 483, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -470,12 +463,6 @@ public class frmQuanLyPhieuChup extends javax.swing.JInternalFrame {
         OffAllBtns();
     }
 
-    private void btnDanhSachActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDanhSachActionPerformed
-        // TODO add your handling code here:
-        XoaDuLieuNhap();
-        LoadDanhSachPhieuChup();
-    }//GEN-LAST:event_btnDanhSachActionPerformed
-
     private void btnChiTietActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChiTietActionPerformed
         // TODO add your handling code here:
         PhieuChup phieuChup = PhieuChupBUS.LayPhieuChupTheoMa(tfMaPC.getText());
@@ -496,19 +483,17 @@ public class frmQuanLyPhieuChup extends javax.swing.JInternalFrame {
     private void btnXoaTraCuuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaTraCuuActionPerformed
         // TODO add your handling code here:
         tfTraCuuMaKH.setText("");
-        tfTraCuuMaPC.setText("");
+        cbxTraCuuTrangThai.setSelectedIndex(0);
+        XoaDuLieuNhap();
         LoadDanhSachPhieuChup();
     }//GEN-LAST:event_btnXoaTraCuuActionPerformed
 
     private void tfTraCuuMaKHKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfTraCuuMaKHKeyReleased
         // TODO add your handling code here:
-        LoadDanhSachPhieuChupTheoMaPCvaMaKH(tfTraCuuMaPC.getText(), tfTraCuuMaKH.getText());
+        String trangThai = cbxTraCuuTrangThai.getSelectedItem().toString();
+        if (trangThai.equals("Tất cả")) trangThai="";
+        LoadDanhSachPhieuChupTheoKHVaTT(tfTraCuuMaKH.getText(),trangThai);
     }//GEN-LAST:event_tfTraCuuMaKHKeyReleased
-
-    private void tfTraCuuMaPCKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfTraCuuMaPCKeyReleased
-        // TODO add your handling code here:
-        LoadDanhSachPhieuChupTheoMaPCvaMaKH(tfTraCuuMaPC.getText(), tfTraCuuMaKH.getText());
-    }//GEN-LAST:event_tfTraCuuMaPCKeyReleased
 
     
     private void btnThanhToanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThanhToanActionPerformed
@@ -517,6 +502,13 @@ public class frmQuanLyPhieuChup extends javax.swing.JInternalFrame {
         frmThanhToanPhieuChup frmTTPC = new frmThanhToanPhieuChup();
         frmTTPC.Show(new PhieuChup(tfMaPC.getText(), tfMaKH.getText(),DateBUS.GetDateString(dcNgayTao), cbxTrangThai.getSelectedItem().toString()),this);
     }//GEN-LAST:event_btnThanhToanActionPerformed
+
+    private void cbxTraCuuTrangThaiItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbxTraCuuTrangThaiItemStateChanged
+        // TODO add your handling code here:
+        String trangThai = cbxTraCuuTrangThai.getSelectedItem().toString();
+        if (trangThai.equals("Tất cả")) trangThai="";
+        LoadDanhSachPhieuChupTheoKHVaTT(tfTraCuuMaKH.getText(),trangThai);
+    }//GEN-LAST:event_cbxTraCuuTrangThaiItemStateChanged
     private void SetEnableBtnThem(Boolean isThem){
         btnThem.setEnabled(isThem);
         btnSua.setEnabled(!isThem);
@@ -561,12 +553,12 @@ public class frmQuanLyPhieuChup extends javax.swing.JInternalFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnChiTiet;
-    private javax.swing.JButton btnDanhSach;
     private javax.swing.JButton btnSua;
     private javax.swing.JButton btnThanhToan;
     private javax.swing.JButton btnThem;
     private javax.swing.JButton btnXoa;
     private javax.swing.JButton btnXoaTraCuu;
+    private javax.swing.JComboBox cbxTraCuuTrangThai;
     private javax.swing.JComboBox cbxTrangThai;
     private com.toedter.calendar.JDateChooser dcNgayTao;
     private javax.swing.JLabel jLabel1;
@@ -583,6 +575,5 @@ public class frmQuanLyPhieuChup extends javax.swing.JInternalFrame {
     private javax.swing.JTextField tfMaKH;
     private javax.swing.JTextField tfMaPC;
     private javax.swing.JTextField tfTraCuuMaKH;
-    private javax.swing.JTextField tfTraCuuMaPC;
     // End of variables declaration//GEN-END:variables
 }

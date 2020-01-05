@@ -100,7 +100,7 @@ public class PhieuThanhToanDAO {
        catch(SQLException e)
         {
         e.printStackTrace();
-        return new ThongBao(false,"Không thể kết nối CSDL");
+        return new ThongBao(false,"Lỗi truy vấn CSDL");
         }  
     }
     
@@ -115,7 +115,7 @@ public class PhieuThanhToanDAO {
        catch(SQLException e)
         {
         e.printStackTrace();
-        return new ThongBao(false, "Không thể kết nối CSDL");
+        return new ThongBao(false, "Lỗi truy vấn CSDL");
         }
     }
 }

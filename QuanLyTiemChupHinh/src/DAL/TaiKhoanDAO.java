@@ -32,7 +32,7 @@ public class TaiKhoanDAO {
        try
         {
             Connection  con = DBConnection.createConnection(); //establishing connection
-            if (con==null) return new ThongBao(false, "Không thể kết nối CSDL");
+            if (con==null) return new ThongBao(false, "Lỗi truy vấn CSDL");
             Statement statement = con.createStatement(); //Statement is used to write queries. Read more about it.
             ResultSet resultSet = statement.executeQuery("select MANV,MATKHAU,LOAINV from TAIKHOAN"); //Here table name is users and userName,password are columns. fetching all the records and storing in a resultSet.
 
@@ -55,7 +55,7 @@ public class TaiKhoanDAO {
         {
             
             e.printStackTrace();
-            return new ThongBao(false, "Không thể kết nối CSDL");
+            return new ThongBao(false, "Lỗi truy vấn CSDL");
         }
        
     }    

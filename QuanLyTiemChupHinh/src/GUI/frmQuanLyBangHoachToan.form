@@ -223,6 +223,9 @@
               <Image iconType="3" name="/RES/iconfinder_Edit_27845.png"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSuaActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnXoa">
           <Properties>
@@ -230,6 +233,9 @@
               <Image iconType="3" name="/RES/iconfinder_Delete_27842.png"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnXoaActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnThemMoi">
           <Properties>
@@ -251,18 +257,13 @@
               <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jScrollPane1" alignment="0" max="32767" attributes="0"/>
+                      <Component id="jScrollPane1" alignment="0" pref="568" max="32767" attributes="0"/>
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="jLabel6" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="cbxTraCuuHieuLuc" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="93" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
-                              <Component id="tfTraCuuTenBHT" min="-2" pref="190" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace pref="115" max="32767" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                           <Component id="btnXoaTraCuu" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -276,22 +277,16 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="cbxTraCuuHieuLuc" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="tfTraCuuTenBHT" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="cbxTraCuuHieuLuc" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
                           <Component id="btnXoaTraCuu" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace pref="19" max="32767" attributes="0"/>
+                  <EmptySpace pref="22" max="32767" attributes="0"/>
                   <Component id="jScrollPane1" min="-2" pref="482" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -342,13 +337,6 @@
               <Image iconType="3" name="/RES/iconfinder_Escape_Search_27877.png"/>
             </Property>
           </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="jLabel7">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="T&#xea;n b&#x1ea3;ng ho&#x1ea1;ch to&#xe1;n"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="tfTraCuuTenBHT">
         </Component>
       </SubComponents>
     </Container>

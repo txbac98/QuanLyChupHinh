@@ -51,12 +51,23 @@ public class frmCapNhatPhieuChup extends javax.swing.JFrame {
         SERVICEFORM.Form.centreWindow(this);
         LoadHinhAnhPhieuChup(phieuChup.MAPC);
         
-        if (coThaHinh)        {
-            this.modifyLbThaHinh();
-        }
-        else {
+        
+        
+        if (phieuChup.TRANGTHAI.equals("Đã giao ảnh")){
+            cbxTrangThai.setEnabled(false);
             lbThaHinh.setVisible(false);
+            btnXacNhan.setEnabled(false);
         }
+        else{
+           if (coThaHinh)        
+            {
+                this.modifyLbThaHinh();
+            }
+            else {
+                lbThaHinh.setVisible(false);
+            } 
+        }
+        
             
     }
 

@@ -448,6 +448,9 @@ public class frmQuanLyChuongTrinhUuDai extends javax.swing.JInternalFrame {
         ThongBao thongBao = ChuongTrinhUuDaiBUS.ThemCTUD(ctud);
         LoadDanhSachCTUD();
         ShowThongBao(thongBao);
+        if (thongBao.ThanhCong){
+            btnThem.setEnabled(false);
+        }
     }//GEN-LAST:event_btnThemActionPerformed
 
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed

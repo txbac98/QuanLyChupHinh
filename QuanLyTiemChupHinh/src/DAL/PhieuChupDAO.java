@@ -31,7 +31,7 @@ public class PhieuChupDAO {
        catch(SQLException e)
         {
             e.printStackTrace();
-            return new ThongBao(false,"Không thể kết nối CSDL");
+            return new ThongBao(false,"Lỗi truy vấn CSDL");
         } 
     }
     
@@ -46,7 +46,7 @@ public class PhieuChupDAO {
        catch(SQLException e)
         {
         e.printStackTrace();
-        return new ThongBao(false, "Không thể kết nối CSDL");
+        return new ThongBao(false, "Lỗi truy vấn CSDL");
         }
     }
     
@@ -61,7 +61,7 @@ public class PhieuChupDAO {
       catch(SQLException e)
        {
        e.printStackTrace();
-       return new ThongBao(false, "Không thể kết nối CSDL");
+       return new ThongBao(false, "Lỗi truy vấn CSDL");
        }
     }
     
@@ -139,14 +139,14 @@ public class PhieuChupDAO {
         }
         return resuilt;
     }
-    
-    public static ArrayList<PhieuChup> LayPhieuChupTheoMaPCvaMaKH(String MaPC, String MaKH){
+       
+    public static ArrayList<PhieuChup> LayDanhSachPhieuChupTheoKHVaTT(String MaKH, String TrangThai){
         ArrayList<PhieuChup> resuilt = new ArrayList<PhieuChup>();
         try
         {
         Connection con = DBConnection.createConnection(); //establishing connection
         Statement statement = con.createStatement(); //Statement is used to write queries. Read more about it.
-        ResultSet rs = statement.executeQuery("SELECT * FROM PHIEUCHUP WHERE MAPC LIKE '%"+MaPC+"%' AND MAKH LIKE '%"+ MaKH + "%'");
+        ResultSet rs = statement.executeQuery("SELECT * FROM PHIEUCHUP WHERE MAKH LIKE '%"+MaKH+"%' AND TRANGTHAI LIKE '%"+ TrangThai + "%'");
 
         while(rs.next()) // Until next row is present otherwise it return false
         {
@@ -175,7 +175,7 @@ public class PhieuChupDAO {
        catch(SQLException e)
         {
         e.printStackTrace();
-        return new ThongBao(false, "Không thể kết nối CSDL");
+        return new ThongBao(false, "Lỗi truy vấn CSDL");
         }
     }
 }

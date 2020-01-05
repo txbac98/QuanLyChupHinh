@@ -95,12 +95,17 @@ public class frmThanhToanPhieuChup extends javax.swing.JFrame {
             soAnh = Long.parseLong(tfSoLuongAnh.getText());
             
             if (ctud!=null && ctud.size()>0){
-                ctudSelected = ctud.get(cbxCTUD.getSelectedIndex());
-                if (cthtSelected!=null){
-                    uuDai = Float.parseFloat(ctudSelected.GIATRIUUDAI);
+                if (cbxCTUD.getSelectedIndex()>0){
+                    ctudSelected = ctud.get(cbxCTUD.getSelectedIndex()-1);
+                    if (cthtSelected!=null){
+                        uuDai = Float.parseFloat(ctudSelected.GIATRIUUDAI);
+                    }
+                    else {
+                        uuDai =0;
+                    }
                 }
                 else {
-                    uuDai =0;
+                        uuDai =0;
                 }
             }               
             
@@ -115,7 +120,7 @@ public class frmThanhToanPhieuChup extends javax.swing.JFrame {
     }
     
     private void LoadBHT(){
-        bht= BangHoachToanBUS.LayDanhSachBHT();
+        bht= BangHoachToanBUS.LayDanhSachBHTCoHieuLuc();
         ArrayList<String> strBHT = new ArrayList<>();
         if (bht!=null){
             for (int i=0; i< bht.size(); i++){
@@ -151,7 +156,9 @@ public class frmThanhToanPhieuChup extends javax.swing.JFrame {
                 strCTUD.add(ctud.get(i).TENCTUD +": "+ ctud.get(i).GIATRIUUDAI +" %");
             }
             List<String> ls = new ArrayList<String>(strCTUD); 
+            ls.add(0, "Không áp dụng");
             cbxCTUD.setModel(new DefaultComboBoxModel<String>(ls.toArray(new String[0])));
+            cbxCTUD.setSelectedIndex(0);
         }     
         
     }
@@ -355,6 +362,7 @@ public class frmThanhToanPhieuChup extends javax.swing.JFrame {
 
     private void cbxBHTItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbxBHTItemStateChanged
         // TODO add your handling code here:
+        LoadCTHT();
         TinhSoTien();
     }//GEN-LAST:event_cbxBHTItemStateChanged
 

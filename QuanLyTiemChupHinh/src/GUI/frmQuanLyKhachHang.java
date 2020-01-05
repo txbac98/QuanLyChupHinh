@@ -357,6 +357,9 @@ public class frmQuanLyKhachHang extends javax.swing.JInternalFrame {
         ThongBao thongBao = KhachHangBUS.ThemKhachHang(khachHang);
         LoadDanhSachKhachHang();
         ShowThongBao(thongBao);
+        if (thongBao.ThanhCong){
+            btnThem.setEnabled(false);
+        }
         
     }//GEN-LAST:event_btnThemActionPerformed
 

@@ -117,7 +117,7 @@ public class BangHoachToanDAO {
        catch(SQLException e)
         {
         e.printStackTrace();
-        return new ThongBao(false,"Không thể kết nối CSDL");
+        return new ThongBao(false,"Lỗi truy vấn CSDL");
         }  
     }
     
@@ -132,11 +132,12 @@ public class BangHoachToanDAO {
        catch(SQLException e)
         {
         e.printStackTrace();
-        return new ThongBao(false, "Không thể kết nối CSDL");
+        return new ThongBao(false, "Lỗi truy vấn CSDL");
         }
     }
     
-    public static ThongBao XoaBHT(BangHoachToan bht){
+    public static ThongBao XoaBHT(BangHoachToan bht){        
+ 
         try
         {
         Connection con = DBConnection.createConnection(); //establishing connection
@@ -147,7 +148,7 @@ public class BangHoachToanDAO {
        catch(SQLException e)
         {
         e.printStackTrace();
-        return new ThongBao(false, "Không thể kết nối CSDL");
+        return new ThongBao(false, "Lỗi truy vấn CSDL");
         }
     }
 }

@@ -32,6 +32,10 @@ public class ChiTietHoachToanBUS {
         return ChiTietHoachToanDAO.XoaCTBHT(ctht);
     }
     
+    public static void XoaCTHTVoiMa(String MaBHT){
+        ChiTietHoachToanDAO.XoaCTHTVoiMaBHT(MaBHT);
+    }
+    
      public static String LayMaCTHTMoi(String MaBHT){
 
         ArrayList<ChiTietHoachToan> listCTHT = LayDanhSachChiTietHoachToan(MaBHT);

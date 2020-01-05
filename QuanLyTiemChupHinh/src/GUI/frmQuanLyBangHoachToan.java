@@ -113,8 +113,6 @@ public class frmQuanLyBangHoachToan extends javax.swing.JInternalFrame {
         jLabel6 = new javax.swing.JLabel();
         cbxTraCuuHieuLuc = new javax.swing.JCheckBox();
         btnXoaTraCuu = new javax.swing.JButton();
-        jLabel7 = new javax.swing.JLabel();
-        tfTraCuuTenBHT = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(900, 600));
@@ -162,8 +160,18 @@ public class frmQuanLyBangHoachToan extends javax.swing.JInternalFrame {
         });
 
         btnSua.setIcon(new javax.swing.ImageIcon(getClass().getResource("/RES/iconfinder_Edit_27845.png"))); // NOI18N
+        btnSua.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSuaActionPerformed(evt);
+            }
+        });
 
         btnXoa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/RES/iconfinder_Delete_27842.png"))); // NOI18N
+        btnXoa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnXoaActionPerformed(evt);
+            }
+        });
 
         btnThemMoi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/RES/iconfinder_Add_27831.png"))); // NOI18N
         btnThemMoi.addActionListener(new java.awt.event.ActionListener() {
@@ -277,8 +285,6 @@ public class frmQuanLyBangHoachToan extends javax.swing.JInternalFrame {
 
         btnXoaTraCuu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/RES/iconfinder_Escape_Search_27877.png"))); // NOI18N
 
-        jLabel7.setText("Tên bảng hoạch toán");
-
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -286,16 +292,12 @@ public class frmQuanLyBangHoachToan extends javax.swing.JInternalFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 568, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel6)
                             .addComponent(cbxTraCuuHieuLuc))
-                        .addGap(93, 93, 93)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel7)
-                            .addComponent(tfTraCuuTenBHT, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 115, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnXoaTraCuu)))
                 .addContainerGap())
         );
@@ -305,17 +307,13 @@ public class frmQuanLyBangHoachToan extends javax.swing.JInternalFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel7))
+                        .addComponent(jLabel6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(cbxTraCuuHieuLuc)
-                            .addComponent(tfTraCuuTenBHT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(cbxTraCuuHieuLuc))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(21, 21, 21)
                         .addComponent(btnXoaTraCuu)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 482, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -352,6 +350,8 @@ public class frmQuanLyBangHoachToan extends javax.swing.JInternalFrame {
 
     private void cbxTraCuuHieuLucActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxTraCuuHieuLucActionPerformed
         // TODO add your handling code here:
+        ArrayList<BangHoachToan> listBHT = BangHoachToanBUS.LayDanhSachBHTCoHieuLuc();
+        ShowDatas(listBHT);
     }//GEN-LAST:event_cbxTraCuuHieuLucActionPerformed
 
     private void tableBHTMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableBHTMouseClicked
@@ -387,6 +387,7 @@ public class frmQuanLyBangHoachToan extends javax.swing.JInternalFrame {
         btnSua.setEnabled(false);
         btnXoa.setEnabled(false);
         btnChiTiet.setEnabled(false);
+        dcNgayTao.setDate(DateBUS.GetToDay());
     }//GEN-LAST:event_btnThemMoiActionPerformed
 
     private String TextHieuLuu(){
@@ -406,7 +407,26 @@ public class frmQuanLyBangHoachToan extends javax.swing.JInternalFrame {
         ThongBao thongBao = BangHoachToanBUS.ThemBangHoachToan(bht);
         LoadDanhSachBangHoachToan();
         ShowThongBao(thongBao);
+        if (thongBao.ThanhCong){
+            btnThem.setEnabled(false);
+        }
     }//GEN-LAST:event_btnThemActionPerformed
+
+    private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
+        // TODO add your handling code here:
+        BangHoachToan bht = new BangHoachToan(tfMaBHT.getText(), tfMaNV.getText(), tfTenBHT.getText(), DateBUS.GetDateString(dcNgayTao), TextHieuLuu());
+        ThongBao thongBao = BangHoachToanBUS.XoaBangHoachToan(bht);
+        LoadDanhSachBangHoachToan();
+        ShowThongBao(thongBao);
+    }//GEN-LAST:event_btnXoaActionPerformed
+
+    private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
+        // TODO add your handling code here:
+        BangHoachToan bht = new BangHoachToan(tfMaBHT.getText(), tfMaNV.getText(), tfTenBHT.getText(), DateBUS.GetDateString(dcNgayTao), TextHieuLuu());
+        ThongBao thongBao = BangHoachToanBUS.SuaBangHoachToan(bht);
+        LoadDanhSachBangHoachToan();
+        ShowThongBao(thongBao);
+    }//GEN-LAST:event_btnSuaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -459,7 +479,6 @@ public class frmQuanLyBangHoachToan extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
@@ -468,6 +487,5 @@ public class frmQuanLyBangHoachToan extends javax.swing.JInternalFrame {
     private javax.swing.JTextField tfMaBHT;
     private javax.swing.JTextField tfMaNV;
     private javax.swing.JTextField tfTenBHT;
-    private javax.swing.JTextField tfTraCuuTenBHT;
     // End of variables declaration//GEN-END:variables
 }

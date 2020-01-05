@@ -300,6 +300,7 @@ public class frmChiTietHoachToan extends javax.swing.JFrame {
         ChiTietHoachToan ctht = new ChiTietHoachToan(tfMaBHT.getText(), tfMaCTHT.getText(), tfNoiDung.getText(), tfGia.getText());
         ThongBao thongBao = ChiTietHoachToanBUS.ThemChiTietHoachToan(ctht);
         if (thongBao.ThanhCong){
+            
             btnThem.setEnabled(false);
         }
         LoadDanhSachCTHT(tfMaBHT.getText());
@@ -308,10 +309,18 @@ public class frmChiTietHoachToan extends javax.swing.JFrame {
 
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
         // TODO add your handling code here:
+        ChiTietHoachToan ctht = new ChiTietHoachToan(tfMaBHT.getText(), tfMaCTHT.getText(), tfNoiDung.getText(), tfGia.getText());
+        ThongBao thongBao = ChiTietHoachToanBUS.SuaChiTietHoachToan(ctht);
+        LoadDanhSachCTHT(tfMaBHT.getText());
+        ShowThongBao(thongBao);
     }//GEN-LAST:event_btnSuaActionPerformed
 
     private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
         // TODO add your handling code here:
+        ChiTietHoachToan ctht = new ChiTietHoachToan(tfMaBHT.getText(), tfMaCTHT.getText(), tfNoiDung.getText(), tfGia.getText());
+        ThongBao thongBao = ChiTietHoachToanBUS.XoaChiTietHoachToan(ctht);
+        LoadDanhSachCTHT(tfMaBHT.getText());
+        ShowThongBao(thongBao);
     }//GEN-LAST:event_btnXoaActionPerformed
 
     private void TaoMaMoi(){

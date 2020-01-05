@@ -36,8 +36,10 @@ public class BangHoachToanBUS {
         return BangHoachToanDAO.SuaBHT(bht);
     }
     
-    public static ThongBao XoaBangHoachToan(BangHoachToan bht){
-        return BangHoachToanDAO.SuaBHT(bht);
+    public static ThongBao XoaBangHoachToan(BangHoachToan bht){       
+        ThongBao tb = BangHoachToanDAO.XoaBHT(bht);
+        if (tb.ThanhCong) ChiTietHoachToanBUS.XoaCTHTVoiMa(bht.MABHT);
+        return tb;
     }
     
     public static String LayMaBHTMoi(){

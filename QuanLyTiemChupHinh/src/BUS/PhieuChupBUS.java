@@ -58,6 +58,10 @@ public class PhieuChupBUS {
         return PhieuChupDAO.LayDanhSachPhieuChupTheoKhachHang(MaKH);
     }
     
+    public static ArrayList<PhieuChup> LayDanhSachPhieuChupTheoKHVaTT(String MaKH, String TrangThai){
+        return PhieuChupDAO.LayDanhSachPhieuChupTheoKHVaTT(MaKH, TrangThai);
+    }
+    
     public static PhieuChup LayPhieuChupTheoMa(String MaPC){
         return PhieuChupDAO.LayPhieuChupTheoMa(MaPC);
     }
@@ -66,17 +70,13 @@ public class PhieuChupBUS {
         return PhieuChupDAO.SuaTrangThaiPhieuChup(MaPC, TrangThai);
     }
     
-    public static ArrayList<PhieuChup> LayDanhSachPhieuChupTheoMaPCvaMaKH(String MaPC, String MaKH){
-        return PhieuChupDAO.LayPhieuChupTheoMaPCvaMaKH(MaPC, MaKH);
-    }
-    
     public static ChiTietPhieuChup LayCTPC(String MaPC){
         return ChiTietPhieuChupDAO.LayCTPC(MaPC);
     }
     
     public static String LayMaPhieuChupMoi(String MaKH){
         
-        ArrayList<PhieuChup> listPC = PhieuChupDAO.LayDanhSachPhieuChup();
+        ArrayList<PhieuChup> listPC = PhieuChupDAO.LayDanhSachPhieuChupTheoKhachHang(MaKH);
         if (listPC==null) return MaKH + "PC1";
         if (listPC.size()==0) return  MaKH + "PC1";
         String maCuoi = listPC.get(listPC.size()-1).MAPC;
