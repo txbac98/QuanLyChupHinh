@@ -335,11 +335,16 @@ public class frmQuanLyTaiKhoan extends javax.swing.JInternalFrame {
     private void tfTraCuuTenNVKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfTraCuuTenNVKeyReleased
         // TODO add your handling code here:
         ArrayList<TaiKhoan> listTaiKhoan;
-        if (cbxTraCuuBoPhan.getSelectedIndex() ==0){
-            listTaiKhoan = TaiKhoanBUS.LayDanhSachTaiKhoan();
+        if (tfTraCuuTenNV.getText().equals("")){
+            LoadDanhSachTaiKhoan();
+        }
+        else{
+            if (cbxTraCuuBoPhan.getSelectedIndex() ==0){
+            listTaiKhoan = TaiKhoanBUS.LayDanhSachTKTheoTenVaLoai(tfTraCuuTenNV.getText(),"");
         }
         else listTaiKhoan = TaiKhoanBUS.LayDanhSachTKTheoTenVaLoai(tfTraCuuTenNV.getText(),cbxTraCuuBoPhan.getSelectedItem().toString());
         ShowData(listTaiKhoan); 
+        }       
     }//GEN-LAST:event_tfTraCuuTenNVKeyReleased
 
     private void btnXoaTraCuuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaTraCuuActionPerformed
