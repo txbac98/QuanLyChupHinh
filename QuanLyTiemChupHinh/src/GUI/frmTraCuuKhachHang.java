@@ -50,8 +50,8 @@ public class frmTraCuuKhachHang extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        btnHoanTat = new javax.swing.JButton();
+        tfMaKH = new javax.swing.JTextField();
+        btnTraCuu = new javax.swing.JButton();
         lbThongBao = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -59,10 +59,10 @@ public class frmTraCuuKhachHang extends javax.swing.JFrame {
 
         jLabel1.setText("Mã khách hàng:");
 
-        btnHoanTat.setText("Tra cứu");
-        btnHoanTat.addActionListener(new java.awt.event.ActionListener() {
+        btnTraCuu.setText("Tra cứu");
+        btnTraCuu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnHoanTatActionPerformed(evt);
+                btnTraCuuActionPerformed(evt);
             }
         });
 
@@ -81,8 +81,8 @@ public class frmTraCuuKhachHang extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lbThongBao)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(btnHoanTat)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnTraCuu)
+                        .addComponent(tfMaKH, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(25, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -91,22 +91,23 @@ public class frmTraCuuKhachHang extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(tfMaKH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lbThongBao)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
-                .addComponent(btnHoanTat)
+                .addComponent(btnTraCuu)
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnHoanTatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHoanTatActionPerformed
+    private void btnTraCuuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTraCuuActionPerformed
         // TODO add your handling code here:
-        frmCapNhatPhieuChup frmHTPC = new frmCapNhatPhieuChup();
-        frmHTPC.setVisible(true);
-    }//GEN-LAST:event_btnHoanTatActionPerformed
+        frmThongTinKhachHang frmKhachHang = new frmThongTinKhachHang();
+        frmKhachHang.Show(tfMaKH.getText());
+        this.setVisible(false);
+    }//GEN-LAST:event_btnTraCuuActionPerformed
 
     /**
      * @param args the command line arguments
@@ -144,9 +145,9 @@ public class frmTraCuuKhachHang extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnHoanTat;
+    private javax.swing.JButton btnTraCuu;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel lbThongBao;
+    private javax.swing.JTextField tfMaKH;
     // End of variables declaration//GEN-END:variables
 }

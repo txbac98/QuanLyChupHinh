@@ -19,6 +19,31 @@ import java.util.ArrayList;
 
 
  public class KhachHangDAO {
+     
+     public static KhachHang LayKHTheoMa(String MaKH){
+         KhachHang resuilt = null;
+        try
+        {
+        Connection con = DBConnection.createConnection(); //establishing connection
+        Statement statement = con.createStatement(); //Statement is used to write queries. Read more about it.
+        ResultSet rs = statement.executeQuery(String.format("SELECT * FROM KHACHHANG WHERE MAKH = '%s'",MaKH));
+
+        while(rs.next()) // Until next row is present otherwise it return false
+            {
+               resuilt = new KhachHang(rs.getString("MAKH"), 
+                       rs.getString("TENKH"), 
+                       rs.getString("NGAYSINH"), 
+                       rs.getString("SDT"), 
+                       rs.getString("EMAIL"));
+            }
+        }
+        catch(SQLException e)
+        {
+        e.printStackTrace();
+        }
+        return resuilt;
+     }
+     
  public static ThongBao ThemKhachHang(KhachHang khachHang){
    try
     {

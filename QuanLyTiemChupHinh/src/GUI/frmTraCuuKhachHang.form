@@ -34,8 +34,8 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="lbThongBao" min="-2" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
-                      <Component id="btnHoanTat" alignment="1" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTextField1" alignment="1" min="-2" pref="274" max="-2" attributes="0"/>
+                      <Component id="btnTraCuu" alignment="1" min="-2" max="-2" attributes="0"/>
+                      <Component id="tfMaKH" alignment="1" min="-2" pref="274" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace pref="25" max="32767" attributes="0"/>
@@ -48,11 +48,11 @@
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="jTextField1" min="-2" max="-2" attributes="0"/>
+              <Component id="tfMaKH" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="lbThongBao" min="-2" max="-2" attributes="0"/>
               <EmptySpace pref="10" max="32767" attributes="0"/>
-              <Component id="btnHoanTat" min="-2" max="-2" attributes="0"/>
+              <Component id="btnTraCuu" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -64,14 +64,14 @@
         <Property name="text" type="java.lang.String" value="M&#xe3; kh&#xe1;ch h&#xe0;ng:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextField1">
+    <Component class="javax.swing.JTextField" name="tfMaKH">
     </Component>
-    <Component class="javax.swing.JButton" name="btnHoanTat">
+    <Component class="javax.swing.JButton" name="btnTraCuu">
       <Properties>
         <Property name="text" type="java.lang.String" value="Tra c&#x1ee9;u"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnHoanTatActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnTraCuuActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="lbThongBao">

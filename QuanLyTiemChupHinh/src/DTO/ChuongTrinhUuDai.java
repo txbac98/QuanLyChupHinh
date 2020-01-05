@@ -12,13 +12,6 @@ import java.util.Date;
  * @author 16520
  */
 public class ChuongTrinhUuDai {
-    //    MACTUD VARCHAR(10) NOT NULL,
-    //  MANV VARCHAR(10) NOT NULL,
-    //  TENCTUD VARCHAR(100) NOT NULL,
-    //  NGAYBATDAU DATE,
-    //  NGAYKETTHUC DATE,
-    //  NOIDUNG VARCHAR(1000),
-    //  GIATRIUUDAI FLOAT
     public String MACTUD;
     public String MANV;
     public String TENCTUD;

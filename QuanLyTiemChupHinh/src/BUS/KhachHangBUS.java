@@ -19,6 +19,10 @@ public class KhachHangBUS {
         return KhachHangDAO.LayDanhSachKhachHang();
     }
     
+    public static KhachHang LayKHTheoMa(String MaKH){
+        return KhachHangDAO.LayKHTheoMa(MaKH);
+    }
+    
      public static String TongSoKH(){
         ArrayList<KhachHang> listKH = LayDanhSachKhachHang();
         if (listKH==null) return "0";

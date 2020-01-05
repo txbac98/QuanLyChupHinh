@@ -88,7 +88,7 @@ public class frmHome extends javax.swing.JFrame {
         });
         menuTraCuu.add(menuItemTraCuuKH);
 
-        menuItemTraCuuCTUD.setText("Tra cứu CTUD");
+        menuItemTraCuuCTUD.setText("Tra cứu CTUD đang áp dụng");
         menuItemTraCuuCTUD.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuItemTraCuuCTUDActionPerformed(evt);
@@ -328,8 +328,8 @@ public class frmHome extends javax.swing.JFrame {
 
     private void menuItemTraCuuCTUDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemTraCuuCTUDActionPerformed
         // TODO add your handling code here:
-        frmTraCuuChuongTrinhUuDai frmTCCTUD = new frmTraCuuChuongTrinhUuDai();
-        frmTCCTUD.Show();
+        frmCTUDDangApDung frmCTUD = new frmCTUDDangApDung();
+        frmCTUD.Show();
     }//GEN-LAST:event_menuItemTraCuuCTUDActionPerformed
 
     private void menuItemTraCuuPTTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemTraCuuPTTActionPerformed

@@ -33,14 +33,14 @@ public class KiemTraBUS {
         return true;
     }
     
-    public static ThongBao KiemTraGiaTriUuDai(String sGiaTri){
+    public static Boolean KiemTraGiaTriUuDai(String sGiaTri){
         try {  
             Float giaTri = Float.parseFloat(sGiaTri); 
-            if (giaTri<0) return new ThongBao(false, "Giá trị ưu đãi phải lớn hơn 0");
-            if (giaTri>100) return new ThongBao(false, "Giá trị ưu đãi phải bé hơn 100");
-            return new ThongBao(true,"Giá trị ưu đãi hợp lệ");
+            if (giaTri<0) return false;
+            if (giaTri>100) return false;
+            return true;
         } catch(NumberFormatException e){  
-            return  new ThongBao(false,"Giá trị ưu đãi phải là số thực");
+            return  false;
         }  
     }
     

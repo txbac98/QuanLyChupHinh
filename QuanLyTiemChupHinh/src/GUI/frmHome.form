@@ -35,7 +35,7 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="menuItemTraCuuCTUD">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Tra c&#x1ee9;u CTUD"/>
+                <Property name="text" type="java.lang.String" value="Tra c&#x1ee9;u CTUD &#x111;ang &#xe1;p d&#x1ee5;ng"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuItemTraCuuCTUDActionPerformed"/>

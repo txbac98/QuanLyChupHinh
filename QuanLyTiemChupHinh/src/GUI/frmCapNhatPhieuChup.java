@@ -59,6 +59,8 @@ public class frmCapNhatPhieuChup extends javax.swing.JFrame {
         }
             
     }
+
+    
     
     private void initImageGrid(){
         

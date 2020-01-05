@@ -6,6 +6,7 @@
 package BUS;
 
 import DAL.ChuongTrinhUuDaiDAO;
+import static DAL.ChuongTrinhUuDaiDAO.LayDanhSachCTUD;
 import java.util.ArrayList;
 import DTO.ChuongTrinhUuDai;
 import DTO.ThongBao;
@@ -20,6 +21,19 @@ public class ChuongTrinhUuDaiBUS {
         return ChuongTrinhUuDaiDAO.LayDanhSachCTUD();
     }
     public static ThongBao ThemCTUD(ChuongTrinhUuDai ctud){
+        if (KiemTraBUS.KiemTraChuoiRong(ctud.TENCTUD)
+                || KiemTraBUS.KiemTraChuoiRong(ctud.GIATRIUUDAI)) 
+            return new ThongBao(false, "Thông tin nhập không đầy đủ");
+                     
+        if (ctud.NGAYBATDAU.equals(ctud.NGAYKETTHUC) 
+                || DateBUS.GetDate(ctud.NGAYKETTHUC).before(DateBUS.GetDate(ctud.NGAYBATDAU))){
+            return new ThongBao(false, "Ngày KT phải sau ngày BD");
+        }
+        
+        if (!KiemTraBUS.KiemTraGiaTriUuDai(ctud.GIATRIUUDAI)){
+            return new ThongBao(false, "Giá trị ưu đãi không hợp lệ");
+        }
+            
         return ChuongTrinhUuDaiDAO.ThemCTUD(ctud);
     }
     
@@ -32,12 +46,36 @@ public class ChuongTrinhUuDaiBUS {
     }
     
     public static ArrayList<ChuongTrinhUuDai> LayDanhSachCTUDDangApDung(){
-        return ChuongTrinhUuDaiDAO.LayDanhSachCTUDDangApDung();
+        ArrayList<ChuongTrinhUuDai> resuilt =LayDanhSachCTUD();
+        if (resuilt!=null){
+                for (int i=0; i< resuilt.size(); i++){
+                if (DateBUS.GetDate(resuilt.get(i).NGAYKETTHUC).before(DateBUS.GetToDay())){
+                    resuilt.remove(i);
+                };
+                if (DateBUS.GetDate(resuilt.get(i).NGAYBATDAU).after(DateBUS.GetToDay())){
+                    resuilt.remove(i);
+                };
+            }
+        }      
+        return resuilt;
     }
     
     public static ArrayList<ChuongTrinhUuDai> LayDanhSachCTUDTheoThoiGian(Date ngayTraCuuBD, Date ngayTraCuuKT){      
         if (ngayTraCuuBD==null || ngayTraCuuKT == null) return null;
-        return ChuongTrinhUuDaiDAO.LayDanhSachCTUDTheoThoiGian(ngayTraCuuBD, ngayTraCuuKT);
+     
+        ArrayList<ChuongTrinhUuDai> resuilt =LayDanhSachCTUD();
+        if (resuilt!=null){
+                for (int i=0; i< resuilt.size(); i++){
+                if (DateBUS.GetDate(resuilt.get(i).NGAYKETTHUC).before(ngayTraCuuBD)){
+                    resuilt.remove(i);
+                };
+                if (DateBUS.GetDate(resuilt.get(i).NGAYBATDAU).after(ngayTraCuuKT)){
+                    resuilt.remove(i);
+                };
+            }
+        }
+        
+        return resuilt;
     }
     
     public static String LayMaCTUDMoi(){

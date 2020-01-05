@@ -94,33 +94,5 @@ public class ChuongTrinhUuDaiDAO {
         return new ThongBao(false, "Không thể truy vấn CSDL");
         }
     }
-    
-    public static ArrayList<ChuongTrinhUuDai> LayDanhSachCTUDDangApDung(){
-       
-        ArrayList<ChuongTrinhUuDai> resuilt =LayDanhSachCTUD();
-        for (int i=0; i< resuilt.size(); i++){
-            if (DateBUS.GetDate(resuilt.get(i).NGAYKETTHUC).before(DateBUS.GetToDay())){
-                resuilt.remove(i);
-            };
-            if (DateBUS.GetDate(resuilt.get(i).NGAYBATDAU).after(DateBUS.GetToDay())){
-                resuilt.remove(i);
-            };
-        }
-        return resuilt;
-    }
-    
-    public static ArrayList<ChuongTrinhUuDai> LayDanhSachCTUDTheoThoiGian(Date ngayTraCuuBD, Date ngayTraCuuKT){
-        
-        if (ngayTraCuuBD==null || ngayTraCuuKT == null) return null;
-        ArrayList<ChuongTrinhUuDai> resuilt =LayDanhSachCTUD();
-        for (int i=0; i< resuilt.size(); i++){
-            if (DateBUS.GetDate(resuilt.get(i).NGAYKETTHUC).before(ngayTraCuuBD)){
-                resuilt.remove(i);
-            };
-            if (DateBUS.GetDate(resuilt.get(i).NGAYBATDAU).after(ngayTraCuuKT)){
-                resuilt.remove(i);
-            };
-        }
-        return resuilt;
-    }
+
 }
