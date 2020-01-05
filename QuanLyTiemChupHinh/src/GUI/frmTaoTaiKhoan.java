@@ -23,10 +23,12 @@ public class frmTaoTaiKhoan extends javax.swing.JFrame {
         initComponents();
     }
 
-    public void Show(){
+    frmQuanLyTaiKhoan frmQLTK;
+    public void Show(frmQuanLyTaiKhoan qltk){
         this.setVisible(true);
         XoaThongBao();
         SERVICEFORM.Form.centreWindow(this);
+        
     }
     
     private void XoaThongBao(){
@@ -142,6 +144,8 @@ public class frmTaoTaiKhoan extends javax.swing.JFrame {
         TaiKhoan taiKhoan = new TaiKhoan(tfMaNV.getText(), tfTenNV.getText(), tfMatKhau.getText(), cbxLoaiNV.getSelectedItem().toString());
         ThongBao thongBao = TaiKhoanBUS.ThemTaiKhoan(taiKhoan);
         ShowThongBao(thongBao);
+        if (thongBao.ThanhCong)
+            frmQLTK.LoadDanhSachTaiKhoan();
     }//GEN-LAST:event_btnThemMoiActionPerformed
 
     /**

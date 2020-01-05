@@ -36,7 +36,6 @@ public class frmHome extends javax.swing.JFrame {
         menuItemTraCuuPhieuChup = new javax.swing.JMenuItem();
         menuItemTraCuuKH = new javax.swing.JMenuItem();
         menuItemTraCuuCTUD = new javax.swing.JMenuItem();
-        menuItemTraCuuPTT = new javax.swing.JMenuItem();
         menuQuanLy = new javax.swing.JMenu();
         menuItemQuanLyPhieuChup = new javax.swing.JMenuItem();
         menuItemQuanLyKH = new javax.swing.JMenuItem();
@@ -95,14 +94,6 @@ public class frmHome extends javax.swing.JFrame {
             }
         });
         menuTraCuu.add(menuItemTraCuuCTUD);
-
-        menuItemTraCuuPTT.setText("Tra cứu phiếu thanh toán");
-        menuItemTraCuuPTT.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuItemTraCuuPTTActionPerformed(evt);
-            }
-        });
-        menuTraCuu.add(menuItemTraCuuPTT);
 
         jMenuBar1.add(menuTraCuu);
 
@@ -332,12 +323,6 @@ public class frmHome extends javax.swing.JFrame {
         frmCTUD.Show();
     }//GEN-LAST:event_menuItemTraCuuCTUDActionPerformed
 
-    private void menuItemTraCuuPTTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemTraCuuPTTActionPerformed
-        // TODO add your handling code here:
-        frmTraCuuPhieuThanhToan frmTCPTT = new frmTraCuuPhieuThanhToan();
-        frmTCPTT.Show();
-    }//GEN-LAST:event_menuItemTraCuuPTTActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -385,7 +370,6 @@ public class frmHome extends javax.swing.JFrame {
     private javax.swing.JMenuItem menuItemQuanLyPhieuThanhToan;
     private javax.swing.JMenuItem menuItemTraCuuCTUD;
     private javax.swing.JMenuItem menuItemTraCuuKH;
-    private javax.swing.JMenuItem menuItemTraCuuPTT;
     private javax.swing.JMenuItem menuItemTraCuuPhieuChup;
     private javax.swing.JMenu menuQuanLy;
     private javax.swing.JMenu menuQuanLyTaiKhoan;

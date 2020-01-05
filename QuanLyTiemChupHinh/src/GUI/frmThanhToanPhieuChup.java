@@ -110,7 +110,8 @@ public class frmThanhToanPhieuChup extends javax.swing.JFrame {
         
         soTien =  (double)gia* (double)soAnh;
         soTien = soTien - (soTien/100)*uuDai;
-        tfTongSoTien.setText(soTien+"");
+        
+        tfTongSoTien.setText((long)soTien+"");
     }
     
     private void LoadBHT(){
@@ -189,6 +190,7 @@ public class frmThanhToanPhieuChup extends javax.swing.JFrame {
         lbThongBao = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
 
         jLabel9.setText("Mã PTT:");
 

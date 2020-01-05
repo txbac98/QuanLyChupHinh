@@ -28,13 +28,13 @@ public class frmThongTinKhachHang extends javax.swing.JFrame {
         initComponents();
     }
 
-    public void Show(String MaKH){
+    public void Show(KhachHang kh){
         this.setVisible(true);
         SERVICEFORM.Form.centreWindow(this);
         XoaThongBao();
-        ArrayList<PhieuChup> listPhieuChup = PhieuChupBUS.LayDanhSachPhieuChupTheoKhachHang(MaKH);
+        ArrayList<PhieuChup> listPhieuChup = PhieuChupBUS.LayDanhSachPhieuChupTheoKhachHang(kh.MAKH);
         ShowData(listPhieuChup);
-        KhachHang kh = KhachHangBUS.LayKHTheoMa(MaKH);
+
         tfMaKH.setText(kh.MAKH);
         tfTenKH.setText(kh.TENKH);
         tfSDT.setText(kh.SDT);

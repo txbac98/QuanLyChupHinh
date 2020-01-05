@@ -274,7 +274,7 @@ public class frmQuanLyTaiKhoan extends javax.swing.JInternalFrame {
     private void btnThemMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemMoiActionPerformed
         // TODO add your handling code here:
         frmTaoTaiKhoan frmTTK = new frmTaoTaiKhoan();
-        frmTTK.Show();
+        frmTTK.Show(this);
     }//GEN-LAST:event_btnThemMoiActionPerformed
 
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
@@ -354,7 +354,7 @@ public class frmQuanLyTaiKhoan extends javax.swing.JInternalFrame {
         LoadDanhSachTaiKhoan();
     }//GEN-LAST:event_btnXoaTraCuuActionPerformed
 
-    private void LoadDanhSachTaiKhoan(){
+    public void LoadDanhSachTaiKhoan(){
         ArrayList<TaiKhoan> listTaiKhoan = TaiKhoanBUS.LayDanhSachTaiKhoan();
         ShowData(listTaiKhoan); 
     }

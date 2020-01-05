@@ -302,7 +302,6 @@ public class frmCapNhatPhieuChup extends javax.swing.JFrame {
                 for(String deletedName : manager.deletedNames )
                 {
                 listNameDeleted.add(deletedName);
-                System.err.println(deletedName);
             }
         }
         if (listPath!=null){
@@ -318,8 +317,13 @@ public class frmCapNhatPhieuChup extends javax.swing.JFrame {
             }
         }
         
+        
+        ChiTietPhieuChupBUS.XoaHinhAnh(tfMaPC.getText(), listNameDeleted);
 
         tfSoLuongAnh.setText(listPath.size() +"");
+        
+        if (listPath.size()==0) cbxTrangThai.setSelectedIndex(0);
+        
         //ThongBao thongBao = PhieuChupBUS.SuaPhieuChup(new PhieuChup(tfMaPC.getText(), tfMaK))
         ThongBao thongBao = PhieuChupBUS.SuaTrangThaiPhieuChup(tfMaPC.getText(), cbxTrangThai.getSelectedItem().toString());
         

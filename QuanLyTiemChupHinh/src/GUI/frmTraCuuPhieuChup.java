@@ -9,6 +9,7 @@ import BUS.PhieuChupBUS;
 import DTO.PhieuChup;
 import DTO.ThongBao;
 import java.awt.Color;
+import java.awt.event.KeyEvent;
 
 /**
  *
@@ -61,6 +62,12 @@ public class frmTraCuuPhieuChup extends javax.swing.JFrame {
 
         jLabel1.setText("Mã phiếu chụp:");
 
+        tfMaPC.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                tfMaPCKeyPressed(evt);
+            }
+        });
+
         btnTraCuu.setText("Tra cứu");
         btnTraCuu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -107,18 +114,29 @@ public class frmTraCuuPhieuChup extends javax.swing.JFrame {
 
     private void btnTraCuuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTraCuuActionPerformed
         // TODO add your handling code here:
+        TraCuu();
+        
+    }//GEN-LAST:event_btnTraCuuActionPerformed
+
+    private void TraCuu(){
         PhieuChup phieuChup = PhieuChupBUS.LayPhieuChupTheoMa(tfMaPC.getText());
-        if (phieuChup.equals(null)){
-            lbThongBao.setText("Mã phiếu chụp không tồn tại");
+        if (phieuChup == null){
+            ShowThongBao(new ThongBao(false,"Phiếu chụp không tồn tại"));
         }
         else {
-            lbThongBao.setText("Đang mở phiếu chụp");
+            
             frmCapNhatPhieuChup frmCNPC = new frmCapNhatPhieuChup();
             frmCNPC.Show(phieuChup,null,true);
             this.setVisible(false);
         }
-        
-    }//GEN-LAST:event_btnTraCuuActionPerformed
+    }
+    
+    private void tfMaPCKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfMaPCKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode()==KeyEvent.VK_ENTER){
+           TraCuu();
+        }
+    }//GEN-LAST:event_tfMaPCKeyPressed
 
     /**
      * @param args the command line arguments

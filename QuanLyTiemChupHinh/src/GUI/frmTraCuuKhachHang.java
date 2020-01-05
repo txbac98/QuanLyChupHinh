@@ -5,8 +5,11 @@
  */
 package GUI;
 
+import BUS.KhachHangBUS;
 import DTO.ThongBao;
+import DTO.KhachHang;
 import java.awt.Color;
+import java.awt.event.KeyEvent;
 
 /**
  *
@@ -59,6 +62,12 @@ public class frmTraCuuKhachHang extends javax.swing.JFrame {
 
         jLabel1.setText("Mã khách hàng:");
 
+        tfMaKH.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                tfMaKHKeyPressed(evt);
+            }
+        });
+
         btnTraCuu.setText("Tra cứu");
         btnTraCuu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -94,9 +103,9 @@ public class frmTraCuuKhachHang extends javax.swing.JFrame {
                 .addComponent(tfMaKH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lbThongBao)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
-                .addComponent(btnTraCuu)
-                .addContainerGap())
+                .addGap(18, 18, 18)
+                .addComponent(btnTraCuu, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(30, Short.MAX_VALUE))
         );
 
         pack();
@@ -104,10 +113,27 @@ public class frmTraCuuKhachHang extends javax.swing.JFrame {
 
     private void btnTraCuuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTraCuuActionPerformed
         // TODO add your handling code here:
-        frmThongTinKhachHang frmKhachHang = new frmThongTinKhachHang();
-        frmKhachHang.Show(tfMaKH.getText());
-        this.setVisible(false);
+        TraCuu();
     }//GEN-LAST:event_btnTraCuuActionPerformed
+
+    private void TraCuu(){
+        KhachHang kh = KhachHangBUS.LayKHTheoMa(tfMaKH.getText());
+        if (kh!=null){
+            frmThongTinKhachHang frmKhachHang = new frmThongTinKhachHang();
+            frmKhachHang.Show(kh);
+            this.setVisible(false);
+        }
+        else{
+            ShowThongBao(new ThongBao(false, "Mã khách hàng không tồn tại"));
+        }
+    }
+    
+    private void tfMaKHKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfMaKHKeyPressed
+        // TODO add your handling code here:\
+        if (evt.getKeyCode()==KeyEvent.VK_ENTER){
+           TraCuu();
+        }
+    }//GEN-LAST:event_tfMaKHKeyPressed
 
     /**
      * @param args the command line arguments
