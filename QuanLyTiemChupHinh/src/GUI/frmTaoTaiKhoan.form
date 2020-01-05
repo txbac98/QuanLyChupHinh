@@ -108,11 +108,12 @@
     <Component class="javax.swing.JComboBox" name="cbxLoaiNV">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="4">
+          <StringArray count="5">
             <StringItem index="0" value="B&#x1ed9; ph&#x1ead;n giao d&#x1ecb;ch"/>
-            <StringItem index="1" value="B&#x1ed9; ph&#x1ead;n k&#x1ebf; to&#xe1;n"/>
-            <StringItem index="2" value="B&#x1ed9; ph&#x1ead;n k&#x1ef9; thu&#x1ead;t"/>
-            <StringItem index="3" value="Ban l&#xe3;nh &#x111;&#x1ea1;o"/>
+            <StringItem index="1" value="B&#x1ed9; ph&#x1ead;n ti&#x1ebf;p th&#x1ecb;"/>
+            <StringItem index="2" value="B&#x1ed9; ph&#x1ead;n k&#x1ebf; to&#xe1;n"/>
+            <StringItem index="3" value="B&#x1ed9; ph&#x1ead;n k&#x1ef9; thu&#x1ead;t"/>
+            <StringItem index="4" value="Ban l&#xe3;nh &#x111;&#x1ea1;o"/>
           </StringArray>
         </Property>
       </Properties>

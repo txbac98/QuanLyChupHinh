@@ -205,8 +205,11 @@ public class frmDangNhap extends javax.swing.JFrame {
                 home.ShowBanLanhDao();
                 break;
             case "Bộ phận giao dịch":
-                home.ShowBanLanhDao();
+                home.ShowBoPhanGiaoDich();
                 break;
+            case "Bộ phận kế toán":
+                home.ShowBoPhanKeToan();
+                break;   
             case "Bộ phận tiếp thị":
                home.ShowBoPhanTiepThi();
                break;

@@ -198,17 +198,39 @@ public class frmHome extends javax.swing.JFrame {
         ShowTrangChu();
     }
     
+    public void ShowAdmin(){
+        this.setVisible(true);
+        ShowTrangChu();
+    }
+    
+    public void ShowBoPhanKeToan(){
+        this.setVisible(true);
+        menuQuanLyTaiKhoan.setVisible(false);
+        menuTraCuu.setVisible(false);    
+        menuItemQuanLyKH.setVisible(false);
+        menuItemQuanLyPhieuChup.setVisible(false);
+        menuItemQuanLyCTUD.setVisible(false);
+        ShowTrangChu();
+    }
+    
     public void ShowBoPhanGiaoDich(){
         this.setVisible(true);
         menuQuanLyTaiKhoan.setVisible(false);
-        menuTraCuu.setVisible(false);        
+        menuTraCuu.setVisible(false);    
+        menuItemQuanLyBangHoachToan.setVisible(false);
+        menuItemQuanLyPhieuThanhToan.setVisible(false);
+        menuItemQuanLyCTUD.setVisible(false);
         ShowTrangChu();
     }
     
     public void ShowBoPhanTiepThi(){
         this.setVisible(true);
         menuQuanLyTaiKhoan.setVisible(false);
-        menuQuanLy.setVisible(false);
+        menuItemTraCuuPhieuChup.setVisible(false);
+        menuItemQuanLyKH.setVisible(false);
+        menuItemQuanLyBangHoachToan.setVisible(false);
+        menuItemQuanLyPhieuThanhToan.setVisible(false);
+        menuItemQuanLyPhieuChup.setVisible(false);
         ShowTrangChu();
     }
     

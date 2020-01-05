@@ -28,7 +28,7 @@ public class frmTaoTaiKhoan extends javax.swing.JFrame {
         this.setVisible(true);
         XoaThongBao();
         SERVICEFORM.Form.centreWindow(this);
-        
+        frmQLTK = qltk;
     }
     
     private void XoaThongBao(){
@@ -75,7 +75,7 @@ public class frmTaoTaiKhoan extends javax.swing.JFrame {
 
         jLabel4.setText("Bộ phận");
 
-        cbxLoaiNV.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Bộ phận giao dịch", "Bộ phận kế toán", "Bộ phận kỹ thuật", "Ban lãnh đạo" }));
+        cbxLoaiNV.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Bộ phận giao dịch", "Bộ phận tiếp thị", "Bộ phận kế toán", "Bộ phận kỹ thuật", "Ban lãnh đạo" }));
 
         btnThemMoi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/RES/iconfinder_Add_27831.png"))); // NOI18N
         btnThemMoi.addActionListener(new java.awt.event.ActionListener() {
