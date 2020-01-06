@@ -11,7 +11,7 @@ import java.util.Date;
  *
  * @author 16520
  */
-public class PhieuThanhToan {
+public class PhieuThanhToanDTO {
     public String MAPTT;
     public String MAPC;
     public String MAKH;
@@ -24,11 +24,11 @@ public class PhieuThanhToan {
     public String SOTIEN;
     
     
-    public PhieuThanhToan(){
+    public PhieuThanhToanDTO(){
         
     }
     
-    public PhieuThanhToan(String MaPTT, String MaPC, String MaKH, String MaNV, String SoAnh, String MaBHT, String MaCTHT, String MaCTUD, String ngayTao, String soTien){
+    public PhieuThanhToanDTO(String MaPTT, String MaPC, String MaKH, String MaNV, String SoAnh, String MaBHT, String MaCTHT, String MaCTUD, String ngayTao, String soTien){
         MAPTT = MaPTT;
         MAPC = MaPC;
         MAKH = MaKH;

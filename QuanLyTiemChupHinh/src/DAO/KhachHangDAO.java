@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package DAL;
+package DAO;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -13,15 +13,15 @@ import java.sql.DriverManager;
  import java.sql.Statement;
 
  import SERVICEDB.DBConnection;
- import DTO.KhachHang;
-import DTO.ThongBao;
+ import DTO.KhachHangDTO;
+import DTO.ThongBaoDTO;
 import java.util.ArrayList;
 
 
  public class KhachHangDAO {
      
-     public static KhachHang LayKHTheoMa(String MaKH){
-         KhachHang resuilt = null;
+     public static KhachHangDTO LayKHTheoMa(String MaKH){
+         KhachHangDTO resuilt = null;
         try
         {
         Connection con = DBConnection.createConnection(); //establishing connection
@@ -30,7 +30,7 @@ import java.util.ArrayList;
 
         while(rs.next()) // Until next row is present otherwise it return false
             {
-               resuilt = new KhachHang(rs.getString("MAKH"), 
+               resuilt = new KhachHangDTO(rs.getString("MAKH"), 
                        rs.getString("TENKH"), 
                        rs.getString("NGAYSINH"), 
                        rs.getString("SDT"), 
@@ -44,55 +44,55 @@ import java.util.ArrayList;
         return resuilt;
      }
      
- public static ThongBao ThemKhachHang(KhachHang khachHang){
+ public static ThongBaoDTO ThemKhachHang(KhachHangDTO khachHang){
    try
     {
     Connection con = DBConnection.createConnection(); //establishing connection
     Statement statement = con.createStatement(); //Statement is used to write queries. Read more about it.   
     statement.executeUpdate(String.format("INSERT INTO KHACHHANG VALUES ('%s','%s','%s','%s','%s')",khachHang.MAKH, khachHang.TENKH, khachHang.NGAYSINH, khachHang.SDT, khachHang.EMAIL));
-    return new ThongBao(true,"Thêm thành công khách hàng "+ khachHang.MAKH);
+    return new ThongBaoDTO(true,"Thêm thành công khách hàng "+ khachHang.MAKH);
     
     }
    catch(SQLException e)
     {
     e.printStackTrace();
-    return new ThongBao(false,"Lỗi truy vấn CSDL");
+    return new ThongBaoDTO(false,"Lỗi truy vấn CSDL");
     }  
  }
  
  
- public static ThongBao SuaKhachHang(KhachHang khachHang){
+ public static ThongBaoDTO SuaKhachHang(KhachHangDTO khachHang){
    try
     {
     Connection con = DBConnection.createConnection(); //establishing connection
     Statement statement = con.createStatement(); //Statement is used to write queries. Read more about it.
     statement.executeUpdate(String.format("UPDATE `khachhang` SET `TENKH`='%s',`NGAYSINH`='%s',`SDT`='%s',`EMAIL`='%s' WHERE `MAKH`='%s'", khachHang.TENKH, khachHang.NGAYSINH, khachHang.SDT, khachHang.EMAIL,khachHang.MAKH));
-    return new ThongBao(true, "Cập nhật thành công khách hàng "+ khachHang.MAKH);
+    return new ThongBaoDTO(true, "Cập nhật thành công khách hàng "+ khachHang.MAKH);
     }
    catch(SQLException e)
     {
     e.printStackTrace();
-    return new ThongBao(false, "Lỗi truy vấn CSDL");
+    return new ThongBaoDTO(false, "Lỗi truy vấn CSDL");
     }
  }
  
- public static ThongBao XoaKhachHang(KhachHang khachHang){
+ public static ThongBaoDTO XoaKhachHang(KhachHangDTO khachHang){
    try
     {
     Connection con = DBConnection.createConnection(); //establishing connection
     Statement statement = con.createStatement(); //Statement is used to write queries. Read more about it.
     statement.executeUpdate(String.format("DELETE FROM `khachhang` WHERE MAKH='%s'", khachHang.MAKH));
-    return new ThongBao(true, "Xóa thành công khách hàng "+ khachHang.MAKH);
+    return new ThongBaoDTO(true, "Xóa thành công khách hàng "+ khachHang.MAKH);
     }
    catch(SQLException e)
     {
     e.printStackTrace();
-    return new ThongBao(false, "Lỗi truy vấn CSDL");
+    return new ThongBaoDTO(false, "Lỗi truy vấn CSDL");
     }
  }
  
- public static ArrayList<KhachHang> LayDanhSachKhachHang(String MaKH, String TenKH){
-     ArrayList<KhachHang> resuilt = new ArrayList<KhachHang>();
+ public static ArrayList<KhachHangDTO> LayDanhSachKhachHang(String MaKH, String TenKH){
+     ArrayList<KhachHangDTO> resuilt = new ArrayList<KhachHangDTO>();
 
    try
     {
@@ -105,7 +105,7 @@ import java.util.ArrayList;
 
    while(rs.next()) 
     {
-       KhachHang khachHang = new KhachHang(rs.getString("MAKH"), 
+       KhachHangDTO khachHang = new KhachHangDTO(rs.getString("MAKH"), 
                        rs.getString("TENKH"), 
                        rs.getString("NGAYSINH"), 
                        rs.getString("SDT"), 
@@ -121,9 +121,9 @@ import java.util.ArrayList;
  }
  
  
- public static ArrayList<KhachHang> LayDanhSachKhachHang(){
+ public static ArrayList<KhachHangDTO> LayDanhSachKhachHang(){
      
-    ArrayList<KhachHang> resuilt = new ArrayList<KhachHang>();
+    ArrayList<KhachHangDTO> resuilt = new ArrayList<KhachHangDTO>();
 
    try
     {
@@ -133,7 +133,7 @@ import java.util.ArrayList;
 
    while(rs.next()) // Until next row is present otherwise it return false
     {
-       KhachHang khachHang = new KhachHang(rs.getString("MAKH"), 
+       KhachHangDTO khachHang = new KhachHangDTO(rs.getString("MAKH"), 
                        rs.getString("TENKH"), 
                        rs.getString("NGAYSINH"), 
                        rs.getString("SDT"), 

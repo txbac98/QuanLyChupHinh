@@ -6,8 +6,8 @@
 package GUI;
 
 import BUS.PhieuThanhToanBUS;
-import DTO.PhieuThanhToan;
-import DTO.ThongBao;
+import DTO.PhieuThanhToanDTO;
+import DTO.ThongBaoDTO;
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Vector;
@@ -38,7 +38,7 @@ public class frmQuanLyPhieuThanhToan extends javax.swing.JInternalFrame {
         lbThongBao.setText("");
     }
     
-    private void ShowThongBao(ThongBao thongBao){
+    private void ShowThongBao(ThongBaoDTO thongBao){
         lbThongBao.setText(thongBao.ChuThich);
         if (thongBao.ThanhCong){
            lbThongBao.setForeground(Color.GREEN);
@@ -49,11 +49,11 @@ public class frmQuanLyPhieuThanhToan extends javax.swing.JInternalFrame {
     }
     
     private void LoadDanhSachPTT(){
-        ArrayList<PhieuThanhToan> listPTT = PhieuThanhToanBUS.LayDanhSachPhieuThanhToan();
+        ArrayList<PhieuThanhToanDTO> listPTT = PhieuThanhToanBUS.LayDanhSachPhieuThanhToan();
         ShowData(listPTT);            
     }
     
-    private void ShowData(ArrayList<PhieuThanhToan> listPTT){
+    private void ShowData(ArrayList<PhieuThanhToanDTO> listPTT){
         
         tablePTT.clearSelection(); //Xoa du lieu table
         
@@ -380,7 +380,7 @@ public class frmQuanLyPhieuThanhToan extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_tfCTUDActionPerformed
 
-    PhieuThanhToan ptt;
+    PhieuThanhToanDTO ptt;
     private void tablePTTMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablePTTMouseClicked
         // TODO add your handling code here:
         DefaultTableModel model = (DefaultTableModel)tablePTT.getModel();
@@ -415,7 +415,7 @@ public class frmQuanLyPhieuThanhToan extends javax.swing.JInternalFrame {
     private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
         // TODO add your handling code here:
         if (ptt!=null){
-            ThongBao tb = PhieuThanhToanBUS.XoaPTT(ptt);
+            ThongBaoDTO tb = PhieuThanhToanBUS.XoaPTT(ptt);
             ShowThongBao(tb);
             LoadDanhSachPTT();
         }
@@ -426,7 +426,7 @@ public class frmQuanLyPhieuThanhToan extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
        
         PhieuThanhToanBUS.XuatPhieuThanhToan(ptt);
-        ShowThongBao( new ThongBao(true,"Xuất phiếu thanh toán thành công"));
+        ShowThongBao(new ThongBaoDTO(true,"Xuất phiếu thanh toán thành công"));
     }//GEN-LAST:event_btnXuatPhieuActionPerformed
 
     /**

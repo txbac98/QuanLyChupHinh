@@ -9,7 +9,7 @@ package DTO;
  *
  * @author 16520
  */
-public class TaiKhoan {
+public class TaiKhoanDTO {
     //     MANV VARCHAR(10) NOT NULL,
     // TENNV VARCHAR(50) NOT NULL,
     // MATKHAU VARCHAR(10) NOT NULL,
@@ -19,10 +19,10 @@ public class TaiKhoan {
     public String MATKHAU;
     public String LOAINV;
     
-    public TaiKhoan(){
+    public TaiKhoanDTO(){
         
     }
-    public TaiKhoan(String MaNV, String TenNV, String MatKhau, String LoaiNV){
+    public TaiKhoanDTO(String MaNV, String TenNV, String MatKhau, String LoaiNV){
         MANV = MaNV;
         TENNV = TenNV;
         MATKHAU = MatKhau;

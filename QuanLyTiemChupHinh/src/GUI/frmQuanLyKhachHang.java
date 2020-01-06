@@ -7,8 +7,8 @@ package GUI;
 
 import BUS.DateBUS;
 import BUS.KhachHangBUS;
-import DTO.KhachHang;
-import DTO.ThongBao;
+import DTO.KhachHangDTO;
+import DTO.ThongBaoDTO;
 import java.awt.Color;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -338,8 +338,8 @@ public class frmQuanLyKhachHang extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         //KhachHang khachHang = new KhachHang();
         
-        KhachHang khachHang = new KhachHang(tfMaKH.getText(), tfTenKH.getText(),DateBUS.GetDateString(dcNgaySinh), tfSDT.getText(), tfEmail.getText());
-        ThongBao thongBao = KhachHangBUS.SuaKhachHang(khachHang);
+        KhachHangDTO khachHang = new KhachHangDTO(tfMaKH.getText(), tfTenKH.getText(),DateBUS.GetDateString(dcNgaySinh), tfSDT.getText(), tfEmail.getText());
+        ThongBaoDTO thongBao = KhachHangBUS.SuaKhachHang(khachHang);
         if (thongBao.ThanhCong){
             //Sua thanh cong
             LoadDanhSachKhachHang();
@@ -353,8 +353,8 @@ public class frmQuanLyKhachHang extends javax.swing.JInternalFrame {
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
         // TODO add your handling code here:
 
-        KhachHang khachHang = new KhachHang(tfMaKH.getText(), tfTenKH.getText(),DateBUS.GetDateString(dcNgaySinh), tfSDT.getText(), tfEmail.getText());
-        ThongBao thongBao = KhachHangBUS.ThemKhachHang(khachHang);
+        KhachHangDTO khachHang = new KhachHangDTO(tfMaKH.getText(), tfTenKH.getText(),DateBUS.GetDateString(dcNgaySinh), tfSDT.getText(), tfEmail.getText());
+        ThongBaoDTO thongBao = KhachHangBUS.ThemKhachHang(khachHang);
         LoadDanhSachKhachHang();
         ShowThongBao(thongBao);
         if (thongBao.ThanhCong){
@@ -365,8 +365,8 @@ public class frmQuanLyKhachHang extends javax.swing.JInternalFrame {
 
     private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
         // TODO add your handling code here:
-        KhachHang khachHang = new KhachHang(tfMaKH.getText(), tfTenKH.getText(),DateBUS.GetDateString(dcNgaySinh), tfSDT.getText(), tfEmail.getText());
-        ThongBao thongBao = KhachHangBUS.XoaKhachHang(khachHang);
+        KhachHangDTO khachHang = new KhachHangDTO(tfMaKH.getText(), tfTenKH.getText(),DateBUS.GetDateString(dcNgaySinh), tfSDT.getText(), tfEmail.getText());
+        ThongBaoDTO thongBao = KhachHangBUS.XoaKhachHang(khachHang);
         if (thongBao.ThanhCong){
             //Sua thanh cong
             LoadDanhSachKhachHang();
@@ -421,7 +421,7 @@ public class frmQuanLyKhachHang extends javax.swing.JInternalFrame {
     }
     
     private void TraCuuKH(String MaKH, String TenKH){
-        ArrayList<KhachHang> listKhachHang = KhachHangBUS.LayDanhSachKhachHang(MaKH, TenKH);
+        ArrayList<KhachHangDTO> listKhachHang = KhachHangBUS.LayDanhSachKhachHang(MaKH, TenKH);
         ShowData(listKhachHang);
     }
     /**
@@ -475,7 +475,7 @@ public class frmQuanLyKhachHang extends javax.swing.JInternalFrame {
         lbThongBao.setText("");
     }
     
-    private void ShowThongBao(ThongBao thongBao){
+    private void ShowThongBao(ThongBaoDTO thongBao){
         lbThongBao.setText(thongBao.ChuThich);
         if (thongBao.ThanhCong){
            lbThongBao.setForeground(Color.GREEN);
@@ -487,11 +487,11 @@ public class frmQuanLyKhachHang extends javax.swing.JInternalFrame {
     
     public void  LoadDanhSachKhachHang(){
         
-        ArrayList<KhachHang> listKhachHang = KhachHangBUS.LayDanhSachKhachHang();
+        ArrayList<KhachHangDTO> listKhachHang = KhachHangBUS.LayDanhSachKhachHang();
         ShowData(listKhachHang);            
     }
     
-    private void ShowData(ArrayList<KhachHang> listKhachHang){
+    private void ShowData(ArrayList<KhachHangDTO> listKhachHang){
         
         tableKhachHang.clearSelection(); //Xoa du lieu table
         

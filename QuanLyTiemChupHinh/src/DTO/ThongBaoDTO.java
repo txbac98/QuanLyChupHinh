@@ -9,17 +9,15 @@ package DTO;
  *
  * @author 16520
  */
-public class ChiTietPhieuChup {
-
-    public String MAPC;
-    public String SOANH;
+public class ThongBaoDTO {
+    public Boolean ThanhCong;
+    public String ChuThich;
     
-    
-    public ChiTietPhieuChup(){
+    public ThongBaoDTO(){
         
     }
-    public ChiTietPhieuChup(String maPC, String soAnh){
-        MAPC = maPC;
-        SOANH = soAnh;
+    public ThongBaoDTO(Boolean thanhCong, String chuThich){
+        ThanhCong = thanhCong;
+        ChuThich = chuThich;
     }
 }

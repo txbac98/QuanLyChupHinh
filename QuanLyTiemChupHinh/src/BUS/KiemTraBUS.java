@@ -5,7 +5,7 @@
  */
 package BUS;
 
-import DTO.ThongBao;
+import DTO.ThongBaoDTO;
 import com.toedter.calendar.JDateChooser;
 import java.text.SimpleDateFormat;
 

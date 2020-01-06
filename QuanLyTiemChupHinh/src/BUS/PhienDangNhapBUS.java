@@ -6,7 +6,7 @@
 package BUS;
 
 import com.google.gson.Gson;
-import DTO.DangNhap;
+import DTO.PhienDangNhapDTO;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -18,9 +18,9 @@ import java.io.IOException;
  *
  * @author 16520
  */
-public class DangNhapBUS {
+public class PhienDangNhapBUS {
     
-    public static void LuuDangNhap(DangNhap dangNhap){
+    public static void LuuDangNhap(PhienDangNhapDTO dangNhap){
         if (!dangNhap.GHINHO && !dangNhap.TUDONG){
             SaveText("");
         }
@@ -33,14 +33,14 @@ public class DangNhapBUS {
     }
 
    
-    public static DangNhap CheckDangNhap(){
+    public static PhienDangNhapDTO CheckDangNhap(){
         
         String json = LoadText();
         
         if (json==null) return null;
         
         Gson gson = new Gson();
-        DangNhap dangNhap = gson.fromJson(json, DangNhap.class);
+        PhienDangNhapDTO dangNhap = gson.fromJson(json, PhienDangNhapDTO.class);
         return dangNhap;
     }
     

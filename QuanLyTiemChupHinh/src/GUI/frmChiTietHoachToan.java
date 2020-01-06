@@ -6,8 +6,8 @@
 package GUI;
 
 import BUS.ChiTietHoachToanBUS;
-import DTO.ChiTietHoachToan;
-import DTO.ThongBao;
+import DTO.ChiTietHoachToanDTO;
+import DTO.ThongBaoDTO;
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Vector;
@@ -41,7 +41,7 @@ public class frmChiTietHoachToan extends javax.swing.JFrame {
         lbThongBao.setText("");
     }
     
-    private void ShowThongBao(ThongBao thongBao){
+    private void ShowThongBao(ThongBaoDTO thongBao){
         lbThongBao.setText(thongBao.ChuThich);
         if (thongBao.ThanhCong){
            lbThongBao.setForeground(Color.GREEN);
@@ -52,11 +52,11 @@ public class frmChiTietHoachToan extends javax.swing.JFrame {
     }
     
     private void LoadDanhSachCTHT(String MaBHT){
-        ArrayList<ChiTietHoachToan> listCTHT =ChiTietHoachToanBUS.LayDanhSachChiTietHoachToan(MaBHT);
+        ArrayList<ChiTietHoachToanDTO> listCTHT =ChiTietHoachToanBUS.LayDanhSachChiTietHoachToan(MaBHT);
         ShowData(listCTHT);
     }
     
-    private void ShowData(ArrayList<ChiTietHoachToan> listCTHT){
+    private void ShowData(ArrayList<ChiTietHoachToanDTO> listCTHT){
         tableCTHT.clearSelection(); //Xoa du lieu table
         
         String header[] = {"Mã CTHT", "Nội dung", "Giá"};
@@ -297,8 +297,8 @@ public class frmChiTietHoachToan extends javax.swing.JFrame {
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
         // TODO add your handling code here:
-        ChiTietHoachToan ctht = new ChiTietHoachToan(tfMaBHT.getText(), tfMaCTHT.getText(), tfNoiDung.getText(), tfGia.getText());
-        ThongBao thongBao = ChiTietHoachToanBUS.ThemChiTietHoachToan(ctht);
+        ChiTietHoachToanDTO ctht = new ChiTietHoachToanDTO(tfMaBHT.getText(), tfMaCTHT.getText(), tfNoiDung.getText(), tfGia.getText());
+        ThongBaoDTO thongBao = ChiTietHoachToanBUS.ThemChiTietHoachToan(ctht);
         if (thongBao.ThanhCong){
             
             btnThem.setEnabled(false);
@@ -309,16 +309,16 @@ public class frmChiTietHoachToan extends javax.swing.JFrame {
 
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
         // TODO add your handling code here:
-        ChiTietHoachToan ctht = new ChiTietHoachToan(tfMaBHT.getText(), tfMaCTHT.getText(), tfNoiDung.getText(), tfGia.getText());
-        ThongBao thongBao = ChiTietHoachToanBUS.SuaChiTietHoachToan(ctht);
+        ChiTietHoachToanDTO ctht = new ChiTietHoachToanDTO(tfMaBHT.getText(), tfMaCTHT.getText(), tfNoiDung.getText(), tfGia.getText());
+        ThongBaoDTO thongBao = ChiTietHoachToanBUS.SuaChiTietHoachToan(ctht);
         LoadDanhSachCTHT(tfMaBHT.getText());
         ShowThongBao(thongBao);
     }//GEN-LAST:event_btnSuaActionPerformed
 
     private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
         // TODO add your handling code here:
-        ChiTietHoachToan ctht = new ChiTietHoachToan(tfMaBHT.getText(), tfMaCTHT.getText(), tfNoiDung.getText(), tfGia.getText());
-        ThongBao thongBao = ChiTietHoachToanBUS.XoaChiTietHoachToan(ctht);
+        ChiTietHoachToanDTO ctht = new ChiTietHoachToanDTO(tfMaBHT.getText(), tfMaCTHT.getText(), tfNoiDung.getText(), tfGia.getText());
+        ThongBaoDTO thongBao = ChiTietHoachToanBUS.XoaChiTietHoachToan(ctht);
         LoadDanhSachCTHT(tfMaBHT.getText());
         ShowThongBao(thongBao);
     }//GEN-LAST:event_btnXoaActionPerformed

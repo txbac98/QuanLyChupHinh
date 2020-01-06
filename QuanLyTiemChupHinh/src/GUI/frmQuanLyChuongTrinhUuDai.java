@@ -8,8 +8,8 @@ package GUI;
 import BUS.ChuongTrinhUuDaiBUS;
 import BUS.DateBUS;
 import BUS.KhachHangBUS;
-import DTO.ChuongTrinhUuDai;
-import DTO.ThongBao;
+import DTO.ChuongTrinhUuDaiDTO;
+import DTO.ThongBaoDTO;
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Vector;
@@ -46,7 +46,7 @@ public class frmQuanLyChuongTrinhUuDai extends javax.swing.JInternalFrame {
         lbThongBao.setText("");
     }
     
-    private void ShowThongBao(ThongBao thongBao){
+    private void ShowThongBao(ThongBaoDTO thongBao){
         lbThongBao.setText(thongBao.ChuThich);
         if (thongBao.ThanhCong){
            lbThongBao.setForeground(Color.GREEN);
@@ -58,11 +58,11 @@ public class frmQuanLyChuongTrinhUuDai extends javax.swing.JInternalFrame {
     
     public void  LoadDanhSachCTUD(){
         
-        ArrayList<ChuongTrinhUuDai> listCTUD = ChuongTrinhUuDaiBUS.LayDanhSachCTUD();
+        ArrayList<ChuongTrinhUuDaiDTO> listCTUD = ChuongTrinhUuDaiBUS.LayDanhSachCTUD();
         ShowData(listCTUD);            
     }
     
-    private void ShowData(ArrayList<ChuongTrinhUuDai> listCTUD){
+    private void ShowData(ArrayList<ChuongTrinhUuDaiDTO> listCTUD){
         
         tableCTUD.clearSelection(); //Xoa du lieu table
         
@@ -437,7 +437,7 @@ public class frmQuanLyChuongTrinhUuDai extends javax.swing.JInternalFrame {
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
         // TODO add your handling code here:
-        ChuongTrinhUuDai ctud = new ChuongTrinhUuDai(
+        ChuongTrinhUuDaiDTO ctud = new ChuongTrinhUuDaiDTO(
                 tfMaCTUD.getText(), 
                 tfMaNV.getText(),
                 tfTenCTUD.getText(),
@@ -445,7 +445,7 @@ public class frmQuanLyChuongTrinhUuDai extends javax.swing.JInternalFrame {
                 DateBUS.GetDateString(dcNgayKetThuc),
                 taNoiDung.getText(), 
                 tfGiaTriUuDai.getText());
-        ThongBao thongBao = ChuongTrinhUuDaiBUS.ThemCTUD(ctud);
+        ThongBaoDTO thongBao = ChuongTrinhUuDaiBUS.ThemCTUD(ctud);
         LoadDanhSachCTUD();
         ShowThongBao(thongBao);
         if (thongBao.ThanhCong){
@@ -455,7 +455,7 @@ public class frmQuanLyChuongTrinhUuDai extends javax.swing.JInternalFrame {
 
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
         // TODO add your handling code here:
-        ChuongTrinhUuDai ctud = new ChuongTrinhUuDai(
+        ChuongTrinhUuDaiDTO ctud = new ChuongTrinhUuDaiDTO(
                 tfMaCTUD.getText(), 
                 tfMaNV.getText(),
                 tfTenCTUD.getText(),
@@ -463,14 +463,14 @@ public class frmQuanLyChuongTrinhUuDai extends javax.swing.JInternalFrame {
                 DateBUS.GetDateString(dcNgayKetThuc),
                 taNoiDung.getText(), 
                 tfGiaTriUuDai.getText());
-        ThongBao thongBao = ChuongTrinhUuDaiBUS.SuaCTUD(ctud);
+        ThongBaoDTO thongBao = ChuongTrinhUuDaiBUS.SuaCTUD(ctud);
         LoadDanhSachCTUD();
         ShowThongBao(thongBao);
     }//GEN-LAST:event_btnSuaActionPerformed
 
     private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
         // TODO add your handling code here:
-        ChuongTrinhUuDai ctud = new ChuongTrinhUuDai(
+        ChuongTrinhUuDaiDTO ctud = new ChuongTrinhUuDaiDTO(
                 tfMaCTUD.getText(), 
                 tfMaNV.getText(),
                 tfTenCTUD.getText(),
@@ -478,7 +478,7 @@ public class frmQuanLyChuongTrinhUuDai extends javax.swing.JInternalFrame {
                 DateBUS.GetDateString(dcNgayKetThuc),
                 taNoiDung.getText(), 
                 tfGiaTriUuDai.getText());
-        ThongBao thongBao = ChuongTrinhUuDaiBUS.XoaCTUD(ctud);
+        ThongBaoDTO thongBao = ChuongTrinhUuDaiBUS.XoaCTUD(ctud);
         LoadDanhSachCTUD();
         ShowThongBao(thongBao);
     }//GEN-LAST:event_btnXoaActionPerformed
@@ -488,7 +488,7 @@ public class frmQuanLyChuongTrinhUuDai extends javax.swing.JInternalFrame {
         if (cbDangApDung.isSelected()){
             dcTraCuuBD.setDate(DateBUS.GetToDay());
             dcTraCuuKT.setDate(DateBUS.GetToDay());
-            ArrayList<ChuongTrinhUuDai> listCTUDDangApDung = ChuongTrinhUuDaiBUS.LayDanhSachCTUDTheoThoiGian(dcTraCuuBD.getDate(), dcTraCuuKT.getDate());
+            ArrayList<ChuongTrinhUuDaiDTO> listCTUDDangApDung = ChuongTrinhUuDaiBUS.LayDanhSachCTUDTheoThoiGian(dcTraCuuBD.getDate(), dcTraCuuKT.getDate());
             ShowData(listCTUDDangApDung);
         }
         else {
@@ -504,7 +504,7 @@ public class frmQuanLyChuongTrinhUuDai extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
             cbDangApDung.setSelected(false);
             if (dcTraCuuBD.getDate()== null || dcTraCuuKT.getDate() == null) return;
-            ArrayList<ChuongTrinhUuDai> listCTUDTheoNgay = ChuongTrinhUuDaiBUS.LayDanhSachCTUDTheoThoiGian(dcTraCuuBD.getDate(), dcTraCuuKT.getDate());
+            ArrayList<ChuongTrinhUuDaiDTO> listCTUDTheoNgay = ChuongTrinhUuDaiBUS.LayDanhSachCTUDTheoThoiGian(dcTraCuuBD.getDate(), dcTraCuuKT.getDate());
             ShowData(listCTUDTheoNgay);
     }//GEN-LAST:event_btnTraCuuActionPerformed
 

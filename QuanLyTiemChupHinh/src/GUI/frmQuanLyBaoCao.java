@@ -5,7 +5,7 @@
  */
 package GUI;
 
-import DTO.ThongBao;
+import DTO.ThongBaoDTO;
 import java.awt.Color;
 
 /**
@@ -30,7 +30,7 @@ public class frmQuanLyBaoCao extends javax.swing.JInternalFrame {
         lbThongBao.setText("");
     }
     
-    private void ShowThongBao(ThongBao thongBao){
+    private void ShowThongBao(ThongBaoDTO thongBao){
         lbThongBao.setText(thongBao.ChuThich);
         if (thongBao.ThanhCong){
            lbThongBao.setForeground(Color.GREEN);

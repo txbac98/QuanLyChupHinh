@@ -11,7 +11,7 @@ import java.util.Date;
  *
  * @author 16520
  */
-public class PhieuChup {
+public class PhieuChupDTO {
     //     MAPC VARCHAR(10) NOT NULL,
     // MAKH VARCHAR(10) NOT NULL,
     // NGAYTAO DATE,
@@ -20,17 +20,17 @@ public class PhieuChup {
     public String MAKH;
     public String NGAYTAO;
     public String TRANGTHAI;
-    public PhieuChup(){
+    public PhieuChupDTO(){
         
     }
-    public PhieuChup(String MaPC, String MaKH, String ngayTao, String trangThai){
+    public PhieuChupDTO(String MaPC, String MaKH, String ngayTao, String trangThai){
         MAPC = MaPC;
         MAKH = MaKH;
         NGAYTAO = ngayTao;
         TRANGTHAI = trangThai;
     }
     
-    public PhieuChup(PhieuChup pc){
+    public PhieuChupDTO(PhieuChupDTO pc){
         MAPC = pc.MAPC;
         MAKH = pc.MAKH;
         NGAYTAO = pc.NGAYTAO;

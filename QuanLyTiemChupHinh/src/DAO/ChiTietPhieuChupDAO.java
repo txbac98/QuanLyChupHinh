@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package DAL;
+package DAO;
 
 import SERVICEDB.DBConnection;
-import DTO.ThongBao;
-import DTO.ChiTietPhieuChup;
+import DTO.ThongBaoDTO;
+import DTO.ChiTietPhieuChupDTO;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -18,8 +18,8 @@ import java.sql.Statement;
  * @author 16520
  */
 public class ChiTietPhieuChupDAO {
-    public static ChiTietPhieuChup LayCTPC(String MaPC){
-        ChiTietPhieuChup resuilt = null;
+    public static ChiTietPhieuChupDTO LayCTPC(String MaPC){
+        ChiTietPhieuChupDTO resuilt = null;
         try
         {
         Connection con = DBConnection.createConnection(); //establishing connection
@@ -28,7 +28,7 @@ public class ChiTietPhieuChupDAO {
 
         while(rs.next()) // Until next row is present otherwise it return false
             {
-               resuilt = new ChiTietPhieuChup(rs.getString("MAPC"), 
+               resuilt = new ChiTietPhieuChupDTO(rs.getString("MAPC"), 
                                rs.getString("SOANH"));
 
             }
@@ -40,35 +40,35 @@ public class ChiTietPhieuChupDAO {
         return resuilt;
     }
     
-    public static ThongBao XoaCTPC(ChiTietPhieuChup ctpc){
+    public static ThongBaoDTO XoaCTPC(ChiTietPhieuChupDTO ctpc){
         try
        {
        Connection con = DBConnection.createConnection(); //establishing connection
        Statement statement = con.createStatement(); //Statement is used to write queries. Read more about it.
        statement.executeUpdate(String.format("DELETE FROM `CHITIETPHIEUCHUP` WHERE MAPC='%s'", ctpc.MAPC));
-       return new ThongBao(true, "Xóa thành công ctpc "+ ctpc.MAPC);
+       return new ThongBaoDTO(true, "Xóa thành công ctpc "+ ctpc.MAPC);
        }
       catch(SQLException e)
        {
        e.printStackTrace();
-       return new ThongBao(false, "Lỗi truy vấn CSDL");
+       return new ThongBaoDTO(false, "Lỗi truy vấn CSDL");
        }
     }
     
-    public static ThongBao LuuCTPC(ChiTietPhieuChup ctpc){
+    public static ThongBaoDTO LuuCTPC(ChiTietPhieuChupDTO ctpc){
         try
         {
         XoaCTPC(ctpc);    
         Connection con = DBConnection.createConnection(); //establishing connection
         Statement statement = con.createStatement(); //Statement is used to write queries. Read more about it.   
         statement.executeUpdate(String.format("INSERT INTO CHITIETPHIEUCHUP VALUES ('%s','%s')",ctpc.MAPC,ctpc.SOANH));
-        return new ThongBao(true,"Thêm thành công ctpc "+ ctpc.MAPC);
+        return new ThongBaoDTO(true,"Thêm thành công ctpc "+ ctpc.MAPC);
 
         }
        catch(SQLException e)
         {
             e.printStackTrace();
-            return new ThongBao(false,"Lỗi truy vấn CSDL");
+            return new ThongBaoDTO(false,"Lỗi truy vấn CSDL");
         } 
     }
 }

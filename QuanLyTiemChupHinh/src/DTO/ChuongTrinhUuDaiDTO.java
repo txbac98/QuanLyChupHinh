@@ -11,7 +11,7 @@ import java.util.Date;
  *
  * @author 16520
  */
-public class ChuongTrinhUuDai {
+public class ChuongTrinhUuDaiDTO {
     public String MACTUD;
     public String MANV;
     public String TENCTUD;
@@ -20,10 +20,10 @@ public class ChuongTrinhUuDai {
     public String NOIDUNG;
     public String GIATRIUUDAI;
     
-    public ChuongTrinhUuDai(){
+    public ChuongTrinhUuDaiDTO(){
         
     }
-    public ChuongTrinhUuDai(String maCTUD, String maNV, String tenCTUD, String ngayBD, String ngayKT, String noiDung, String gtud){
+    public ChuongTrinhUuDaiDTO(String maCTUD, String maNV, String tenCTUD, String ngayBD, String ngayKT, String noiDung, String gtud){
         MACTUD = maCTUD;
         MANV = maNV;
         TENCTUD = tenCTUD;

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package DAL;
+package DAO;
 
 import SERVICEDB.DBConnection;
 import java.sql.Connection;
@@ -11,8 +11,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import DTO.BangHoachToan;
-import DTO.ThongBao;
+import DTO.BangHoachToanDTO;
+import DTO.ThongBaoDTO;
 
 /**
  *
@@ -20,8 +20,8 @@ import DTO.ThongBao;
  */
 public class BangHoachToanDAO {
     
-    public static ArrayList<BangHoachToan> LayDanhSachBHT(){
-     ArrayList<BangHoachToan> resuilt = new ArrayList<BangHoachToan>();
+    public static ArrayList<BangHoachToanDTO> LayDanhSachBHT(){
+     ArrayList<BangHoachToanDTO> resuilt = new ArrayList<BangHoachToanDTO>();
 
         try
          {
@@ -34,7 +34,7 @@ public class BangHoachToanDAO {
 
         while(rs.next()) 
          {
-            BangHoachToan bht = new BangHoachToan(rs.getString("MABHT"), 
+            BangHoachToanDTO bht = new BangHoachToanDTO(rs.getString("MABHT"), 
                             rs.getString("MANV"), 
                             rs.getString("TENBHT"), 
                             rs.getString("NGAYTAO"), 
@@ -49,8 +49,8 @@ public class BangHoachToanDAO {
          return resuilt;   
     }
     
-    public static ArrayList<BangHoachToan> LayDanhSachBHTCoHieuLuc(){
-        ArrayList<BangHoachToan> resuilt = new ArrayList<BangHoachToan>();
+    public static ArrayList<BangHoachToanDTO> LayDanhSachBHTCoHieuLuc(){
+        ArrayList<BangHoachToanDTO> resuilt = new ArrayList<BangHoachToanDTO>();
         try
          {
          Connection con = DBConnection.createConnection(); 
@@ -62,7 +62,7 @@ public class BangHoachToanDAO {
 
         while(rs.next()) 
          {
-            BangHoachToan bht = new BangHoachToan(rs.getString("MABHT"), 
+            BangHoachToanDTO bht = new BangHoachToanDTO(rs.getString("MABHT"), 
                             rs.getString("MANV"), 
                             rs.getString("TENBHT"), 
                             rs.getString("NGAYTAO"), 
@@ -77,8 +77,8 @@ public class BangHoachToanDAO {
          return resuilt; 
     }
     
-    public static ArrayList<BangHoachToan> LayDanhSachBHTTheoTenVaHieuLuc(String tenBHT, String hieuLuc){
-        ArrayList<BangHoachToan> resuilt = new ArrayList<BangHoachToan>();
+    public static ArrayList<BangHoachToanDTO> LayDanhSachBHTTheoTenVaHieuLuc(String tenBHT, String hieuLuc){
+        ArrayList<BangHoachToanDTO> resuilt = new ArrayList<BangHoachToanDTO>();
         try
          {
          Connection con = DBConnection.createConnection(); 
@@ -90,7 +90,7 @@ public class BangHoachToanDAO {
 
         while(rs.next()) 
          {
-            BangHoachToan bht = new BangHoachToan(rs.getString("MABHT"), 
+            BangHoachToanDTO bht = new BangHoachToanDTO(rs.getString("MABHT"), 
                             rs.getString("MANV"), 
                             rs.getString("TENBHT"), 
                             rs.getString("NGAYTAO"), 
@@ -105,50 +105,50 @@ public class BangHoachToanDAO {
          return resuilt; 
     }
     
-    public static ThongBao ThemBHT(BangHoachToan bht){
+    public static ThongBaoDTO ThemBHT(BangHoachToanDTO bht){
         try
         {
         Connection con = DBConnection.createConnection(); //establishing connection
         Statement statement = con.createStatement(); //Statement is used to write queries. Read more about it.   
         statement.executeUpdate(String.format("INSERT INTO `banghoachtoan`(`MABHT`, `MANV`, `TENBHT`, `NGAYTAO`, `HIEULUC`) VALUES ('%s','%s','%s','%s','%s')",bht.MABHT, bht.MANV, bht.TENBHT, bht.NGAYTAO, bht.HIEULUC));
-        return new ThongBao(true,"Thêm thành công BHT "+ bht.MABHT);
+        return new ThongBaoDTO(true,"Thêm thành công BHT "+ bht.MABHT);
 
         }
        catch(SQLException e)
         {
         e.printStackTrace();
-        return new ThongBao(false,"Lỗi truy vấn CSDL");
+        return new ThongBaoDTO(false,"Lỗi truy vấn CSDL");
         }  
     }
     
-    public static ThongBao SuaBHT(BangHoachToan bht){
+    public static ThongBaoDTO SuaBHT(BangHoachToanDTO bht){
          try
         {
         Connection con = DBConnection.createConnection(); //establishing connection
         Statement statement = con.createStatement(); //Statement is used to write queries. Read more about it.
         statement.executeUpdate(String.format("UPDATE `banghoachtoan` SET `MANV`='%s',`TENBHT`='%s',`NGAYTAO`='%s',`HIEULUC`='%s' WHERE MABHT='%s'", bht.MANV, bht.TENBHT, bht.NGAYTAO, bht.HIEULUC, bht.MABHT));
-        return new ThongBao(true, "Cập nhật thành công BHT "+ bht.MABHT);
+        return new ThongBaoDTO(true, "Cập nhật thành công BHT "+ bht.MABHT);
         }
        catch(SQLException e)
         {
         e.printStackTrace();
-        return new ThongBao(false, "Lỗi truy vấn CSDL");
+        return new ThongBaoDTO(false, "Lỗi truy vấn CSDL");
         }
     }
     
-    public static ThongBao XoaBHT(BangHoachToan bht){        
+    public static ThongBaoDTO XoaBHT(BangHoachToanDTO bht){        
  
         try
         {
         Connection con = DBConnection.createConnection(); //establishing connection
         Statement statement = con.createStatement(); //Statement is used to write queries. Read more about it.
         statement.executeUpdate(String.format("DELETE FROM `banghoachtoan` WHERE MABHT ='%s'", bht.MABHT));
-        return new ThongBao(true, "Xóa thành công BHT "+ bht.MABHT);
+        return new ThongBaoDTO(true, "Xóa thành công BHT "+ bht.MABHT);
         }
        catch(SQLException e)
         {
         e.printStackTrace();
-        return new ThongBao(false, "Lỗi truy vấn CSDL");
+        return new ThongBaoDTO(false, "Lỗi truy vấn CSDL");
         }
     }
 }

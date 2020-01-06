@@ -7,9 +7,9 @@ package GUI;
 
 import BUS.ChiTietPhieuChupBUS;
 import BUS.PhieuChupBUS;
-import DTO.ChiTietPhieuChup;
-import DTO.PhieuChup;
-import DTO.ThongBao;
+import DTO.ChiTietPhieuChupDTO;
+import DTO.PhieuChupDTO;
+import DTO.ThongBaoDTO;
 import java.awt.Color;
 import java.awt.datatransfer.DataFlavor;
 import java.awt.datatransfer.Transferable;
@@ -41,7 +41,7 @@ public class frmCapNhatPhieuChup extends javax.swing.JFrame {
     }
     
     private frmQuanLyPhieuChup frmQLPC;
-    public void Show(PhieuChup phieuChup, frmQuanLyPhieuChup qlpc, boolean coThaHinh){
+    public void Show(PhieuChupDTO phieuChup, frmQuanLyPhieuChup qlpc, boolean coThaHinh){
         tfMaPC.setText(phieuChup.MAPC);
         cbxTrangThai.setSelectedItem(phieuChup.TRANGTHAI);
         frmQLPC = qlpc;
@@ -336,11 +336,11 @@ public class frmCapNhatPhieuChup extends javax.swing.JFrame {
         if (listPath.size()==0) cbxTrangThai.setSelectedIndex(0);
         
         //ThongBao thongBao = PhieuChupBUS.SuaPhieuChup(new PhieuChup(tfMaPC.getText(), tfMaK))
-        ThongBao thongBao = PhieuChupBUS.SuaTrangThaiPhieuChup(tfMaPC.getText(), cbxTrangThai.getSelectedItem().toString());
+        ThongBaoDTO thongBao = PhieuChupBUS.SuaTrangThaiPhieuChup(tfMaPC.getText(), cbxTrangThai.getSelectedItem().toString());
         
         ShowThongBao(thongBao);
         
-        thongBao = ChiTietPhieuChupBUS.LuuCTPC(new ChiTietPhieuChup(tfMaPC.getText(),tfSoLuongAnh.getText()));
+        thongBao = ChiTietPhieuChupBUS.LuuCTPC(new ChiTietPhieuChupDTO(tfMaPC.getText(),tfSoLuongAnh.getText()));
         ShowThongBao(thongBao);
         
         ChiTietPhieuChupBUS.LuuHinhAnh(tfMaPC.getText(), listPath);
@@ -362,7 +362,7 @@ public class frmCapNhatPhieuChup extends javax.swing.JFrame {
         lbThongBao.setText("");
     }
     
-    private void ShowThongBao(ThongBao thongBao){
+    private void ShowThongBao(ThongBaoDTO thongBao){
         lbThongBao.setText(thongBao.ChuThich);
         if (thongBao.ThanhCong){
             lbThongBao.setForeground(Color.GREEN);

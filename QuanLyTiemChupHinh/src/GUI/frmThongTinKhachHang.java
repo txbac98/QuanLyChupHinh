@@ -7,9 +7,9 @@ package GUI;
 
 import BUS.KhachHangBUS;
 import BUS.PhieuChupBUS;
-import DTO.KhachHang;
-import DTO.PhieuChup;
-import DTO.ThongBao;
+import DTO.KhachHangDTO;
+import DTO.PhieuChupDTO;
+import DTO.ThongBaoDTO;
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Vector;
@@ -28,11 +28,11 @@ public class frmThongTinKhachHang extends javax.swing.JFrame {
         initComponents();
     }
 
-    public void Show(KhachHang kh){
+    public void Show(KhachHangDTO kh){
         this.setVisible(true);
         SERVICEFORM.Form.centreWindow(this);
         XoaThongBao();
-        ArrayList<PhieuChup> listPhieuChup = PhieuChupBUS.LayDanhSachPhieuChupTheoKhachHang(kh.MAKH);
+        ArrayList<PhieuChupDTO> listPhieuChup = PhieuChupBUS.LayDanhSachPhieuChupTheoKhachHang(kh.MAKH);
         ShowData(listPhieuChup);
 
         tfMaKH.setText(kh.MAKH);
@@ -46,7 +46,7 @@ public class frmThongTinKhachHang extends javax.swing.JFrame {
         lbThongBao.setText("");
     }
     
-    private void ShowThongBao(ThongBao thongBao){
+    private void ShowThongBao(ThongBaoDTO thongBao){
         lbThongBao.setText(thongBao.ChuThich);
         if (thongBao.ThanhCong){
            lbThongBao.setForeground(Color.GREEN);
@@ -56,7 +56,7 @@ public class frmThongTinKhachHang extends javax.swing.JFrame {
         }
     }
     
-    private void ShowData(ArrayList<PhieuChup> listPhieuChup){
+    private void ShowData(ArrayList<PhieuChupDTO> listPhieuChup){
         
         tablePhieuChup.clearSelection(); //Xoa du lieu table
         
@@ -272,7 +272,7 @@ public class frmThongTinKhachHang extends javax.swing.JFrame {
     private void btnCapNhatPCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCapNhatPCActionPerformed
         // TODO add your handling code here:
         if (tfPCDangChon.getText()!=""){
-            PhieuChup pc = PhieuChupBUS.LayPhieuChupTheoMa(tfPCDangChon.getText());
+            PhieuChupDTO pc = PhieuChupBUS.LayPhieuChupTheoMa(tfPCDangChon.getText());
             frmCapNhatPhieuChup frmCNPC = new frmCapNhatPhieuChup();      
             frmCNPC.Show(pc, null, false);
             this.setVisible(false);

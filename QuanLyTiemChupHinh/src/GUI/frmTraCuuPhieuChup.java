@@ -6,8 +6,8 @@
 package GUI;
 
 import BUS.PhieuChupBUS;
-import DTO.PhieuChup;
-import DTO.ThongBao;
+import DTO.PhieuChupDTO;
+import DTO.ThongBaoDTO;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
 
@@ -34,7 +34,7 @@ public class frmTraCuuPhieuChup extends javax.swing.JFrame {
         lbThongBao.setText("");
     }
     
-    private void ShowThongBao(ThongBao thongBao){
+    private void ShowThongBao(ThongBaoDTO thongBao){
         lbThongBao.setText(thongBao.ChuThich);
         if (thongBao.ThanhCong){
            lbThongBao.setForeground(Color.GREEN);
@@ -118,9 +118,9 @@ public class frmTraCuuPhieuChup extends javax.swing.JFrame {
     }//GEN-LAST:event_btnTraCuuActionPerformed
 
     private void TraCuu(){
-        PhieuChup phieuChup = PhieuChupBUS.LayPhieuChupTheoMa(tfMaPC.getText());
+        PhieuChupDTO phieuChup = PhieuChupBUS.LayPhieuChupTheoMa(tfMaPC.getText());
         if (phieuChup == null){
-            ShowThongBao(new ThongBao(false,"Phiếu chụp không tồn tại"));
+            ShowThongBao(new ThongBaoDTO(false,"Phiếu chụp không tồn tại"));
         }
         else {
             

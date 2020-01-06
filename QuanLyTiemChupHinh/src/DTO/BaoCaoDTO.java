@@ -9,7 +9,7 @@ package DTO;
  *
  * @author 16520
  */
-public class BaoCao {
+public class BaoCaoDTO {
     //    MABC VARCHAR(10) NOT NULL,
     //  MANV VARCHAR(10) NOT NULL,
     //  LOAIBC VARCHAR(100),

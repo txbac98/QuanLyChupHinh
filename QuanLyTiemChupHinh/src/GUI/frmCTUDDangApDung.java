@@ -6,8 +6,8 @@
 package GUI;
 
 import BUS.ChuongTrinhUuDaiBUS;
-import DTO.ChuongTrinhUuDai;
-import DTO.KhachHang;
+import DTO.ChuongTrinhUuDaiDTO;
+import DTO.KhachHangDTO;
 import java.util.ArrayList;
 import java.util.Vector;
 import javax.swing.table.DefaultTableModel;
@@ -29,11 +29,11 @@ public class frmCTUDDangApDung extends javax.swing.JFrame {
         this.setVisible(true);
         SERVICEFORM.Form.centreWindow(this);
         
-        ArrayList<ChuongTrinhUuDai> listCTUD = ChuongTrinhUuDaiBUS.LayDanhSachCTUD();
+        ArrayList<ChuongTrinhUuDaiDTO> listCTUD = ChuongTrinhUuDaiBUS.LayDanhSachCTUD();
         ShowData(listCTUD);
     }
     
-    private void ShowData(ArrayList<ChuongTrinhUuDai> listCTUD){
+    private void ShowData(ArrayList<ChuongTrinhUuDaiDTO> listCTUD){
         
         tableCTUD.clearSelection(); //Xoa du lieu table
         

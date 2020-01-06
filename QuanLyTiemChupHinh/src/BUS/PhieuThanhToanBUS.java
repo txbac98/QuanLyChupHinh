@@ -5,9 +5,9 @@
  */
 package BUS;
 
-import DTO.PhieuThanhToan;
-import DTO.ThongBao;
-import DAL.PhieuThanhToanDAO;
+import DTO.PhieuThanhToanDTO;
+import DTO.ThongBaoDTO;
+import DAO.PhieuThanhToanDAO;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -19,11 +19,11 @@ import java.util.Date;
  * @author 16520
  */
 public class PhieuThanhToanBUS {
-    public static ArrayList<PhieuThanhToan> LayDanhSachPhieuThanhToan(){
+    public static ArrayList<PhieuThanhToanDTO> LayDanhSachPhieuThanhToan(){
         return PhieuThanhToanDAO.LayDanhSachPTT();
     }
     
-    public static void XuatPhieuThanhToan(PhieuThanhToan ptt){
+    public static void XuatPhieuThanhToan(PhieuThanhToanDTO ptt){
         String text= String.format(" Photography\n Mã PTT: %s\n Mã PC: %s\n Mã KH: %s\n Mã NV: %s\n Số ảnh: %s\n BHT: %s\n CTHT: %s\n CTUD: %s\n Ngày tạo: %s\n Số tiền: %s\n", ptt.MAPTT, ptt.MAPC, ptt.MAKH, ptt.MANV, ptt.SOANH, ptt.BHT, ptt.CTHT, ptt.CTUD, ptt.NGAYTAO, ptt.SOTIEN);
         String path = System.getProperty("user.dir")+"/Data/PhieuThanhToan/"+ptt.MAPTT+".pdf";
         PDFBUS.SavePDF(path, text);
@@ -34,7 +34,7 @@ public class PhieuThanhToanBUS {
     
     public static String TongDoanhThu(){
         double sum=0;
-         ArrayList<PhieuThanhToan> listPC = LayDanhSachPhieuThanhToan();
+         ArrayList<PhieuThanhToanDTO> listPC = LayDanhSachPhieuThanhToan();
         if (listPC==null) return "0";
         
         for (int i=0; i< listPC.size(); i++){
@@ -50,7 +50,7 @@ public class PhieuThanhToanBUS {
     
     public static String TongDoanhThuTuDauThang(){
         double sum=0;
-         ArrayList<PhieuThanhToan> listPC = LayDanhSachPhieuThanhToan();
+         ArrayList<PhieuThanhToanDTO> listPC = LayDanhSachPhieuThanhToan();
         if (listPC==null) return "0";
         
         Date today = DateBUS.GetToDay();
@@ -69,20 +69,20 @@ public class PhieuThanhToanBUS {
         return sum+"";
     }
     
-    public static PhieuThanhToan LayPTTTheoMa(String MaPTT){
+    public static PhieuThanhToanDTO LayPTTTheoMa(String MaPTT){
         return PhieuThanhToanDAO.LayPTTTheoMa(MaPTT);
     }
     
-    public static ThongBao ThemPTT(PhieuThanhToan ptt){
+    public static ThongBaoDTO ThemPTT(PhieuThanhToanDTO ptt){
         return PhieuThanhToanDAO.ThemPTT(ptt);
     }
     
-    public static ThongBao XoaPTT(PhieuThanhToan ptt){
+    public static ThongBaoDTO XoaPTT(PhieuThanhToanDTO ptt){
         return PhieuThanhToanDAO.XoaPTT(ptt);
     }
     
     public static String LayMaMoi(){              
-        ArrayList<PhieuThanhToan> listPTT = LayDanhSachPhieuThanhToan();
+        ArrayList<PhieuThanhToanDTO> listPTT = LayDanhSachPhieuThanhToan();
         if (listPTT==null) return "PTT1";
         if (listPTT.size()==0) return "PTT1";
         String maCuoi = listPTT.get(listPTT.size()-1).MAPTT;

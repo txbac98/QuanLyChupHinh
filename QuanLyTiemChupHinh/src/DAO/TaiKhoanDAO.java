@@ -6,7 +6,7 @@
 
 
 
-package DAL;
+package DAO;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -16,8 +16,8 @@ import java.sql.DriverManager;
  import java.sql.Statement;
 
 import SERVICEDB.DBConnection;
-import DTO.TaiKhoan;
-import DTO.ThongBao;
+import DTO.TaiKhoanDTO;
+import DTO.ThongBaoDTO;
 import java.util.ArrayList;
 
 /**
@@ -25,14 +25,14 @@ import java.util.ArrayList;
  * @author 16520
  */
 public class TaiKhoanDAO {
-    public static ThongBao KiemTraDangNhap(String MaNV, String MatKhau){
+    public static ThongBaoDTO KiemTraDangNhap(String MaNV, String MatKhau){
        String userNameDB = "";
         String passwordDB = "";
         String loaiNV ="";
        try
         {
             Connection  con = DBConnection.createConnection(); //establishing connection
-            if (con==null) return new ThongBao(false, "Lỗi truy vấn CSDL");
+            if (con==null) return new ThongBaoDTO(false, "Lỗi truy vấn CSDL");
             Statement statement = con.createStatement(); //Statement is used to write queries. Read more about it.
             ResultSet resultSet = statement.executeQuery("select MANV,MATKHAU,LOAINV from TAIKHOAN"); //Here table name is users and userName,password are columns. fetching all the records and storing in a resultSet.
 
@@ -45,23 +45,23 @@ public class TaiKhoanDAO {
              
               if(MaNV.equals(userNameDB) && MatKhau.equals(passwordDB))
               {
-                 return new ThongBao(true, "Truy cập bộ phận "+ loaiNV);///If the user entered values are already present in database, which means user has already registered so I will return SUCCESS message.
+                 return new ThongBaoDTO(true, "Truy cập bộ phận "+ loaiNV);///If the user entered values are already present in database, which means user has already registered so I will return SUCCESS message.
               }
              
            }
-           return new ThongBao(false, "Thông tin đăng nhập không chính xác");
+           return new ThongBaoDTO(false, "Thông tin đăng nhập không chính xác");
         }
         catch(SQLException e)
         {
             
             e.printStackTrace();
-            return new ThongBao(false, "Lỗi truy vấn CSDL");
+            return new ThongBaoDTO(false, "Lỗi truy vấn CSDL");
         }
        
     }    
     
-    public static TaiKhoan LayTaiKhoanTheoMa(String MaNV){
-       TaiKhoan resuilt = null;
+    public static TaiKhoanDTO LayTaiKhoanTheoMa(String MaNV){
+       TaiKhoanDTO resuilt = null;
         try
         {
         Connection con = DBConnection.createConnection(); //establishing connection
@@ -70,7 +70,7 @@ public class TaiKhoanDAO {
 
         while(rs.next()) // Until next row is present otherwise it return false
             {
-               resuilt = new TaiKhoan(rs.getString("MaNV"), 
+               resuilt = new TaiKhoanDTO(rs.getString("MaNV"), 
                                rs.getString("TENNV"), 
                                rs.getString("MATKHAU"), 
                                rs.getString("LOAINV"));
@@ -83,8 +83,8 @@ public class TaiKhoanDAO {
         return resuilt;
     }
     
-    public static ArrayList<TaiKhoan> LayDanhSachTaiKhoan(){
-        ArrayList<TaiKhoan> resuilt = new ArrayList<TaiKhoan>();
+    public static ArrayList<TaiKhoanDTO> LayDanhSachTaiKhoan(){
+        ArrayList<TaiKhoanDTO> resuilt = new ArrayList<TaiKhoanDTO>();
 
         try
          {
@@ -97,7 +97,7 @@ public class TaiKhoanDAO {
 
         while(rs.next()) 
          {
-            TaiKhoan taiKhoan = new TaiKhoan(rs.getString("MANV"), 
+            TaiKhoanDTO taiKhoan = new TaiKhoanDTO(rs.getString("MANV"), 
                             rs.getString("TENNV"), 
                             rs.getString("MATKHAU"), 
                             rs.getString("LOAINV"));
@@ -111,8 +111,8 @@ public class TaiKhoanDAO {
          return resuilt;   
     }
     
-    public static ArrayList<TaiKhoan> LayDanhSachTKTheoTen(String tenNV){
-        ArrayList<TaiKhoan> resuilt = new ArrayList<TaiKhoan>();
+    public static ArrayList<TaiKhoanDTO> LayDanhSachTKTheoTen(String tenNV){
+        ArrayList<TaiKhoanDTO> resuilt = new ArrayList<TaiKhoanDTO>();
 
         try
          {
@@ -125,7 +125,7 @@ public class TaiKhoanDAO {
 
         while(rs.next()) 
          {
-            TaiKhoan taiKhoan = new TaiKhoan(rs.getString("MANV"), 
+            TaiKhoanDTO taiKhoan = new TaiKhoanDTO(rs.getString("MANV"), 
                             rs.getString("TENNV"), 
                             rs.getString("MATKHAU"), 
                             rs.getString("LOAINV"));
@@ -139,8 +139,8 @@ public class TaiKhoanDAO {
          return resuilt;  
     }
     
-    public static ArrayList<TaiKhoan> LayDanhSachTKTheoTenVaLoai(String tenNV, String loaiNV){
-        ArrayList<TaiKhoan> resuilt = new ArrayList<TaiKhoan>();
+    public static ArrayList<TaiKhoanDTO> LayDanhSachTKTheoTenVaLoai(String tenNV, String loaiNV){
+        ArrayList<TaiKhoanDTO> resuilt = new ArrayList<TaiKhoanDTO>();
 
         try
          {
@@ -153,7 +153,7 @@ public class TaiKhoanDAO {
 
         while(rs.next()) 
          {
-            TaiKhoan taiKhoan = new TaiKhoan(rs.getString("MANV"), 
+            TaiKhoanDTO taiKhoan = new TaiKhoanDTO(rs.getString("MANV"), 
                             rs.getString("TENNV"), 
                             rs.getString("MATKHAU"), 
                             rs.getString("LOAINV"));
@@ -167,8 +167,8 @@ public class TaiKhoanDAO {
          return resuilt;  
     }
     
-    public static ArrayList<TaiKhoan> LayDanhSachTaiKhoanTheoLoai(String loaiNV){
-        ArrayList<TaiKhoan> resuilt = new ArrayList<TaiKhoan>();
+    public static ArrayList<TaiKhoanDTO> LayDanhSachTaiKhoanTheoLoai(String loaiNV){
+        ArrayList<TaiKhoanDTO> resuilt = new ArrayList<TaiKhoanDTO>();
 
         try
          {
@@ -181,7 +181,7 @@ public class TaiKhoanDAO {
 
         while(rs.next()) 
          {
-            TaiKhoan taiKhoan = new TaiKhoan(rs.getString("MANV"), 
+            TaiKhoanDTO taiKhoan = new TaiKhoanDTO(rs.getString("MANV"), 
                             rs.getString("TENNV"), 
                             rs.getString("MATKHAU"), 
                             rs.getString("LOAINV"));
@@ -195,64 +195,64 @@ public class TaiKhoanDAO {
          return resuilt;  
     }
     
-    public static ThongBao ThemTaiKhoan(TaiKhoan taiKhoan){
-        if (LayTaiKhoanTheoMa(taiKhoan.MANV)!=null) return new ThongBao(false, "Tài khoản với mã NV này đã tồn tại");
+    public static ThongBaoDTO ThemTaiKhoan(TaiKhoanDTO taiKhoan){
+        if (LayTaiKhoanTheoMa(taiKhoan.MANV)!=null) return new ThongBaoDTO(false, "Tài khoản với mã NV này đã tồn tại");
          try
         {
         Connection con = DBConnection.createConnection(); //establishing connection
         Statement statement = con.createStatement(); //Statement is used to write queries. Read more about it.   
         statement.executeUpdate(String.format("INSERT INTO `taikhoan`(`MANV`, `TENNV`, `MATKHAU`, `LOAINV`) VALUES ('%s','%s','%s','%s')",taiKhoan.MANV, taiKhoan.TENNV, taiKhoan.MATKHAU, taiKhoan.LOAINV));
-        return new ThongBao(true,"Thêm thành công tài khoản "+ taiKhoan.MANV);
+        return new ThongBaoDTO(true,"Thêm thành công tài khoản "+ taiKhoan.MANV);
         }
        catch(SQLException e)
         {
         e.printStackTrace();
-        return new ThongBao(false,"Không thể truy vấn CSDL");
+        return new ThongBaoDTO(false,"Không thể truy vấn CSDL");
         }
     }
     
-    public static ThongBao SuaTaiKhoan(TaiKhoan taiKhoan){
+    public static ThongBaoDTO SuaTaiKhoan(TaiKhoanDTO taiKhoan){
         try
         {
         Connection con = DBConnection.createConnection(); //establishing connection
         Statement statement = con.createStatement(); //Statement is used to write queries. Read more about it.   
         statement.executeUpdate(String.format("UPDATE `taikhoan` SET `TENNV`='%s',`MATKHAU`='%s',`LOAINV`='%s' WHERE `MANV`='%s'", taiKhoan.TENNV, taiKhoan.MATKHAU, taiKhoan.LOAINV, taiKhoan.MANV));
-        return new ThongBao(true,"Sửa thành công tài khoản "+ taiKhoan.MANV);
+        return new ThongBaoDTO(true,"Sửa thành công tài khoản "+ taiKhoan.MANV);
         }
        catch(SQLException e)
         {
         e.printStackTrace();
-        return new ThongBao(false,"Không thể truy vấn CSDL");
+        return new ThongBaoDTO(false,"Không thể truy vấn CSDL");
         }
     }
     
-    public static ThongBao DoiMatKhau(String MaNV, String mkCu, String mkMoi){
+    public static ThongBaoDTO DoiMatKhau(String MaNV, String mkCu, String mkMoi){
         try
         {
         Connection con = DBConnection.createConnection(); //establishing connection
         Statement statement = con.createStatement(); //Statement is used to write queries. Read more about it.   
         statement.executeUpdate(String.format("UPDATE `taikhoan` SET `MATKHAU`='%s' WHERE `MANV`='%s' AND `MATKHAU`='%s'", mkMoi, MaNV, mkCu));
-        return new ThongBao(true,"Sửa thành công tài khoản "+ MaNV);
+        return new ThongBaoDTO(true,"Sửa thành công tài khoản "+ MaNV);
         }
        catch(SQLException e)
         {
         e.printStackTrace();
-        return new ThongBao(false,"Không thể truy vấn CSDL");
+        return new ThongBaoDTO(false,"Không thể truy vấn CSDL");
         }
     }
     
-    public static ThongBao XoaTaiKhoan(TaiKhoan taiKhoan){
+    public static ThongBaoDTO XoaTaiKhoan(TaiKhoanDTO taiKhoan){
         try
         {
         Connection con = DBConnection.createConnection(); //establishing connection
         Statement statement = con.createStatement(); //Statement is used to write queries. Read more about it.   
         statement.executeUpdate(String.format("DELETE FROM `taikhoan` WHERE MANV='%s'",taiKhoan.MANV));
-        return new ThongBao(true,"Xóa thành công tài khoản "+ taiKhoan.MANV);
+        return new ThongBaoDTO(true,"Xóa thành công tài khoản "+ taiKhoan.MANV);
         }
        catch(SQLException e)
         {
         e.printStackTrace();
-        return new ThongBao(false,"Không thể truy vấn CSDL");
+        return new ThongBaoDTO(false,"Không thể truy vấn CSDL");
         }
     }
 }

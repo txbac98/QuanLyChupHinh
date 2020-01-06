@@ -9,7 +9,7 @@ package DTO;
  *
  * @author 16520
  */
-public class ChiTietHoachToan {
+public class ChiTietHoachToanDTO {
     //    MACTHT VARCHAR(10) NOT NULL,
     //  MABHT VARCHAR(10) NOT NULL,
     //  NOIDUNG VARCHAR(1000),
@@ -19,11 +19,11 @@ public class ChiTietHoachToan {
     public String NOIDUNG;
     public String GIA;
     
-    public ChiTietHoachToan(){
+    public ChiTietHoachToanDTO(){
         
     }
     
-    public ChiTietHoachToan( String MaBHT, String MaCTHT, String NoiDung, String Gia){      
+    public ChiTietHoachToanDTO( String MaBHT, String MaCTHT, String NoiDung, String Gia){      
         MABHT = MaBHT;
         MACTHT = MaCTHT;
         NOIDUNG = NoiDung;

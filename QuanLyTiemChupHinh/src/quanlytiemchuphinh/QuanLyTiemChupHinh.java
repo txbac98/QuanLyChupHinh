@@ -5,7 +5,7 @@
  */
 package quanlytiemchuphinh;
 
-import DTO.TaiKhoan;
+import DTO.TaiKhoanDTO;
 import GUI.frmDangNhap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -37,5 +37,5 @@ public class QuanLyTiemChupHinh {
         frmDN.Show();
     }
     
-    public static TaiKhoan taiKhoanDangNhap;
+    public static TaiKhoanDTO taiKhoanDangNhap;
 }

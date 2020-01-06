@@ -6,8 +6,8 @@
 package GUI;
 
 import BUS.KhachHangBUS;
-import DTO.ThongBao;
-import DTO.KhachHang;
+import DTO.ThongBaoDTO;
+import DTO.KhachHangDTO;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
 
@@ -34,7 +34,7 @@ public class frmTraCuuKhachHang extends javax.swing.JFrame {
         lbThongBao.setText("");
     }
     
-    private void ShowThongBao(ThongBao thongBao){
+    private void ShowThongBao(ThongBaoDTO thongBao){
         lbThongBao.setText(thongBao.ChuThich);
         if (thongBao.ThanhCong){
            lbThongBao.setForeground(Color.GREEN);
@@ -117,14 +117,14 @@ public class frmTraCuuKhachHang extends javax.swing.JFrame {
     }//GEN-LAST:event_btnTraCuuActionPerformed
 
     private void TraCuu(){
-        KhachHang kh = KhachHangBUS.LayKHTheoMa(tfMaKH.getText());
+        KhachHangDTO kh = KhachHangBUS.LayKHTheoMa(tfMaKH.getText());
         if (kh!=null){
             frmThongTinKhachHang frmKhachHang = new frmThongTinKhachHang();
             frmKhachHang.Show(kh);
             this.setVisible(false);
         }
         else{
-            ShowThongBao(new ThongBao(false, "Mã khách hàng không tồn tại"));
+            ShowThongBao(new ThongBaoDTO(false, "Mã khách hàng không tồn tại"));
         }
     }
     

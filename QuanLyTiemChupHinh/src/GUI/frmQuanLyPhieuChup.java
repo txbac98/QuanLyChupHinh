@@ -10,8 +10,8 @@ import BUS.PhieuChupBUS;
 import java.util.ArrayList;
 import java.util.Date;
 
-import DTO.PhieuChup;
-import DTO.ThongBao;
+import DTO.PhieuChupDTO;
+import DTO.ThongBaoDTO;
 import java.awt.Color;
 import java.util.Vector;
 
@@ -50,7 +50,7 @@ public class frmQuanLyPhieuChup extends javax.swing.JInternalFrame {
         lbThongBao.setText("");
     }
     
-    private void ShowThongBao(ThongBao thongBao){
+    private void ShowThongBao(ThongBaoDTO thongBao){
         lbThongBao.setText(thongBao.ChuThich);
         if (thongBao.ThanhCong){
            lbThongBao.setForeground(Color.GREEN);
@@ -73,7 +73,7 @@ public class frmQuanLyPhieuChup extends javax.swing.JInternalFrame {
     }
     
     public void LoadDanhSachPhieuChup(){
-        ArrayList<PhieuChup> listPhieuChup;
+        ArrayList<PhieuChupDTO> listPhieuChup;
         if (tfMaKH.getText().equals(""))
             listPhieuChup = PhieuChupBUS.LayDanhSachPhieuChup();
         else 
@@ -82,16 +82,16 @@ public class frmQuanLyPhieuChup extends javax.swing.JInternalFrame {
     }
     
     private void LoadDanhSachPhieuChupTheoKhachHang(String MaKH){
-        ArrayList<PhieuChup> listPhieuChup = PhieuChupBUS.LayDanhSachPhieuChupTheoKhachHang(MaKH);
+        ArrayList<PhieuChupDTO> listPhieuChup = PhieuChupBUS.LayDanhSachPhieuChupTheoKhachHang(MaKH);
         ShowData(listPhieuChup);
     }
     
     private void LoadDanhSachPhieuChupTheoKHVaTT(String MaKH, String TrangThai){
-        ArrayList<PhieuChup> listPhieuChup = PhieuChupBUS.LayDanhSachPhieuChupTheoKHVaTT(MaKH,TrangThai);
+        ArrayList<PhieuChupDTO> listPhieuChup = PhieuChupBUS.LayDanhSachPhieuChupTheoKHVaTT(MaKH,TrangThai);
         ShowData(listPhieuChup);
     }
     
-    private void ShowData(ArrayList<PhieuChup> listPhieuChup){
+    private void ShowData(ArrayList<PhieuChupDTO> listPhieuChup){
         
         tablePhieuChup.clearSelection(); //Xoa du lieu table
         
@@ -119,7 +119,7 @@ public class frmQuanLyPhieuChup extends javax.swing.JInternalFrame {
     public void ThanhToanPhieuChup(){
         cbxTrangThai.setSelectedItem("Đã giao ảnh");
         // TODO add your handling code here:
-        PhieuChup phieuChup = new PhieuChup(tfMaPC.getText(), tfMaKH.getText(),DateBUS.GetDateString(dcNgayTao), cbxTrangThai.getSelectedItem().toString() );
+        PhieuChupDTO phieuChup = new PhieuChupDTO(tfMaPC.getText(), tfMaKH.getText(),DateBUS.GetDateString(dcNgayTao), cbxTrangThai.getSelectedItem().toString() );
         if (PhieuChupBUS.SuaPhieuChup(phieuChup).ThanhCong){
             //Sua thanh cong
             LoadDanhSachPhieuChup();
@@ -423,8 +423,8 @@ public class frmQuanLyPhieuChup extends javax.swing.JInternalFrame {
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
         // TODO add your handling code here:
-        PhieuChup phieuChup = new PhieuChup(tfMaPC.getText(), tfMaKH.getText(),DateBUS.GetDateString(dcNgayTao), cbxTrangThai.getSelectedItem().toString());
-        ThongBao thongBao = PhieuChupBUS.ThemPhieuChup(phieuChup);
+        PhieuChupDTO phieuChup = new PhieuChupDTO(tfMaPC.getText(), tfMaKH.getText(),DateBUS.GetDateString(dcNgayTao), cbxTrangThai.getSelectedItem().toString());
+        ThongBaoDTO thongBao = PhieuChupBUS.ThemPhieuChup(phieuChup);
         if (thongBao.ThanhCong){
             LoadDanhSachPhieuChup();
             btnThem.setEnabled(false);
@@ -434,7 +434,7 @@ public class frmQuanLyPhieuChup extends javax.swing.JInternalFrame {
 
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
         // TODO add your handling code here:
-        PhieuChup phieuChup = new PhieuChup(tfMaPC.getText(), tfMaKH.getText(),DateBUS.GetDateString(dcNgayTao), cbxTrangThai.getSelectedItem().toString() );
+        PhieuChupDTO phieuChup = new PhieuChupDTO(tfMaPC.getText(), tfMaKH.getText(),DateBUS.GetDateString(dcNgayTao), cbxTrangThai.getSelectedItem().toString() );
         if (PhieuChupBUS.SuaPhieuChup(phieuChup).ThanhCong){
             //Sua thanh cong
             LoadDanhSachPhieuChup();
@@ -443,8 +443,8 @@ public class frmQuanLyPhieuChup extends javax.swing.JInternalFrame {
 
     private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
         // TODO add your handling code here:
-        PhieuChup phieuChup = new PhieuChup(tfMaPC.getText(), tfMaKH.getText(),DateBUS.GetDateString(dcNgayTao), cbxTrangThai.getSelectedItem().toString());
-        ThongBao thongBao = PhieuChupBUS.XoaPhieuChup(phieuChup);
+        PhieuChupDTO phieuChup = new PhieuChupDTO(tfMaPC.getText(), tfMaKH.getText(),DateBUS.GetDateString(dcNgayTao), cbxTrangThai.getSelectedItem().toString());
+        ThongBaoDTO thongBao = PhieuChupBUS.XoaPhieuChup(phieuChup);
         if (thongBao.ThanhCong){
             //Sua thanh cong
             XoaDuLieuNhap();
@@ -465,7 +465,7 @@ public class frmQuanLyPhieuChup extends javax.swing.JInternalFrame {
 
     private void btnChiTietActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChiTietActionPerformed
         // TODO add your handling code here:
-        PhieuChup phieuChup = PhieuChupBUS.LayPhieuChupTheoMa(tfMaPC.getText());
+        PhieuChupDTO phieuChup = PhieuChupBUS.LayPhieuChupTheoMa(tfMaPC.getText());
         if (phieuChup.equals(null)){
             lbThongBao.setText("Mã phiếu chụp không tồn tại");
         }
@@ -500,7 +500,7 @@ public class frmQuanLyPhieuChup extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         //if ()
         frmThanhToanPhieuChup frmTTPC = new frmThanhToanPhieuChup();
-        frmTTPC.Show(new PhieuChup(tfMaPC.getText(), tfMaKH.getText(),DateBUS.GetDateString(dcNgayTao), cbxTrangThai.getSelectedItem().toString()),this);
+        frmTTPC.Show(new PhieuChupDTO(tfMaPC.getText(), tfMaKH.getText(),DateBUS.GetDateString(dcNgayTao), cbxTrangThai.getSelectedItem().toString()),this);
     }//GEN-LAST:event_btnThanhToanActionPerformed
 
     private void cbxTraCuuTrangThaiItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbxTraCuuTrangThaiItemStateChanged

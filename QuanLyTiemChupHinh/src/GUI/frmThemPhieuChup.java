@@ -7,9 +7,9 @@ package GUI;
 
 import BUS.DateBUS;
 import BUS.PhieuChupBUS;
-import DTO.KhachHang;
-import DTO.PhieuChup;
-import DTO.ThongBao;
+import DTO.KhachHangDTO;
+import DTO.PhieuChupDTO;
+import DTO.ThongBaoDTO;
 import java.awt.Color;
 
 /**
@@ -25,7 +25,7 @@ public class frmThemPhieuChup extends javax.swing.JFrame {
         initComponents();
     }
 
-    public void Show(KhachHang kh){
+    public void Show(KhachHangDTO kh){
         this.setVisible(true);
         SERVICEFORM.Form.centreWindow(this);
         XoaThongBao();
@@ -159,8 +159,8 @@ public class frmThemPhieuChup extends javax.swing.JFrame {
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
         // TODO add your handling code here:
-        PhieuChup phieuChup = new PhieuChup(tfMaPC.getText(), tfMaKH.getText(),DateBUS.GetDateString(dcNgayTao), cbxTrangThai.getSelectedItem().toString());
-        ThongBao thongBao = PhieuChupBUS.ThemPhieuChup(phieuChup);
+        PhieuChupDTO phieuChup = new PhieuChupDTO(tfMaPC.getText(), tfMaKH.getText(),DateBUS.GetDateString(dcNgayTao), cbxTrangThai.getSelectedItem().toString());
+        ThongBaoDTO thongBao = PhieuChupBUS.ThemPhieuChup(phieuChup);
         if (thongBao.ThanhCong){
             btnThem.setEnabled(false);
         }
@@ -171,7 +171,7 @@ public class frmThemPhieuChup extends javax.swing.JFrame {
         lbThongBao.setText("");
     }
     
-    private void ShowThongBao(ThongBao thongBao){
+    private void ShowThongBao(ThongBaoDTO thongBao){
         lbThongBao.setText(thongBao.ChuThich);
         if (thongBao.ThanhCong){
            lbThongBao.setForeground(Color.GREEN);

@@ -11,7 +11,7 @@ import java.util.Date;
  *
  * @author 16520
  */
-public class BangHoachToan {
+public class BangHoachToanDTO {
     //     MABHT VARCHAR(10) NOT NULL,
     //  MANV VARCHAR(10) NOT NULL,
     //  TENBHT VARCHAR(100) NOT NULL,
@@ -23,11 +23,11 @@ public class BangHoachToan {
     public String NGAYTAO;
     public String HIEULUC;
     
-    public BangHoachToan(){
+    public BangHoachToanDTO(){
         
     }
     
-    public BangHoachToan(String MaBHT, String MaNV, String TenBHT, String NgayTao, String HieuLuc){
+    public BangHoachToanDTO(String MaBHT, String MaNV, String TenBHT, String NgayTao, String HieuLuc){
         MABHT = MaBHT;
         MANV = MaNV;
         TENBHT = TenBHT;

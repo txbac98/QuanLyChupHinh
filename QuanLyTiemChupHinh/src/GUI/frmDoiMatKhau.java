@@ -6,7 +6,7 @@
 package GUI;
 
 import BUS.TaiKhoanBUS;
-import DTO.ThongBao;
+import DTO.ThongBaoDTO;
 import java.awt.Color;
 
 /**
@@ -33,7 +33,7 @@ public class frmDoiMatKhau extends javax.swing.JFrame {
         lbThongBao.setText("");
     }
     
-    private void ShowThongBao(ThongBao thongBao){
+    private void ShowThongBao(ThongBaoDTO thongBao){
         lbThongBao.setText(thongBao.ChuThich);
         if (thongBao.ThanhCong){
            lbThongBao.setForeground(Color.GREEN);
@@ -125,7 +125,7 @@ public class frmDoiMatKhau extends javax.swing.JFrame {
 
     private void btnDoiMKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDoiMKActionPerformed
         // TODO add your handling code here:
-        ThongBao tb = TaiKhoanBUS.DoiMatKhau(tfMaNV.getText(), pfMKCu.getText(), pfMKMoi.getText());
+        ThongBaoDTO tb = TaiKhoanBUS.DoiMatKhau(tfMaNV.getText(), pfMKCu.getText(), pfMKMoi.getText());
         ShowThongBao(tb);
         
     }//GEN-LAST:event_btnDoiMKActionPerformed

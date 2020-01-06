@@ -5,13 +5,13 @@
  */
 package GUI;
 
-import BUS.DangNhapBUS;
+import BUS.PhienDangNhapBUS;
 import BUS.TaiKhoanBUS;
-import DTO.TaiKhoan;
-import DTO.ThongBao;
+import DTO.TaiKhoanDTO;
+import DTO.ThongBaoDTO;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
-import DTO.DangNhap;
+import DTO.PhienDangNhapDTO;
 
 /**
  *
@@ -129,12 +129,12 @@ public class frmDangNhap extends javax.swing.JFrame {
     }//GEN-LAST:event_btnDangNhapActionPerformed
 
     private void DangNhap(){
-        DangNhap dangNhap = new DangNhap(tfTaiKhoan.getText(), pfMatKhau.getText(), cbGNMK.isSelected(), cbTDDN.isSelected());
+        PhienDangNhapDTO dangNhap = new PhienDangNhapDTO(tfTaiKhoan.getText(), pfMatKhau.getText(), cbGNMK.isSelected(), cbTDDN.isSelected());
         
-        ThongBao thongBao = TaiKhoanBUS.KiemTraDangNhap(tfTaiKhoan.getText(), pfMatKhau.getText());;
+        ThongBaoDTO thongBao = TaiKhoanBUS.KiemTraDangNhap(tfTaiKhoan.getText(), pfMatKhau.getText());;
         if (thongBao.ThanhCong){
             quanlytiemchuphinh.QuanLyTiemChupHinh.taiKhoanDangNhap = TaiKhoanBUS.LayTaiKhoanTheoMa(tfTaiKhoan.getText());                    
-            DangNhapBUS.LuuDangNhap(dangNhap);
+            PhienDangNhapBUS.LuuDangNhap(dangNhap);
             LoadDangNhap();       
         }      
         ShowThongBao(thongBao);
@@ -158,7 +158,7 @@ public class frmDangNhap extends javax.swing.JFrame {
         this.setVisible(true);
         SERVICEFORM.Form.centreWindow(this);
         XoaThongBao();
-        DangNhap dangNhap =DangNhapBUS.CheckDangNhap();
+        PhienDangNhapDTO dangNhap =PhienDangNhapBUS.CheckDangNhap();
         if (dangNhap!=null){
             tfTaiKhoan.setText(dangNhap.TAIKHOAN);
             pfMatKhau.setText(dangNhap.MATKHAU);
@@ -175,7 +175,7 @@ public class frmDangNhap extends javax.swing.JFrame {
         this.setVisible(true);
         SERVICEFORM.Form.centreWindow(this);
         XoaThongBao();
-        DangNhap dangNhap =DangNhapBUS.CheckDangNhap();
+        PhienDangNhapDTO dangNhap =PhienDangNhapBUS.CheckDangNhap();
         if (dangNhap!=null){         
             tfTaiKhoan.setText(dangNhap.TAIKHOAN);
             pfMatKhau.setText(dangNhap.MATKHAU);
@@ -189,7 +189,7 @@ public class frmDangNhap extends javax.swing.JFrame {
         lbThongBao.setText("");
     }
     
-    private void ShowThongBao(ThongBao thongBao){
+    private void ShowThongBao(ThongBaoDTO thongBao){
         lbThongBao.setText(thongBao.ChuThich);
         if (thongBao.ThanhCong){
            lbThongBao.setForeground(Color.GREEN);

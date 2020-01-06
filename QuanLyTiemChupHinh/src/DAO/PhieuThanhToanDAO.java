@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package DAL;
+package DAO;
 
 import SERVICEDB.DBConnection;
-import DTO.PhieuThanhToan;
-import DTO.ThongBao;
+import DTO.PhieuThanhToanDTO;
+import DTO.ThongBaoDTO;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -19,8 +19,8 @@ import java.util.ArrayList;
  * @author 16520
  */
 public class PhieuThanhToanDAO {
-    public static ArrayList<PhieuThanhToan> LayDanhSachPTT(){
-        ArrayList<PhieuThanhToan> resuilt = new ArrayList<PhieuThanhToan>();
+    public static ArrayList<PhieuThanhToanDTO> LayDanhSachPTT(){
+        ArrayList<PhieuThanhToanDTO> resuilt = new ArrayList<PhieuThanhToanDTO>();
 
         try
          {
@@ -30,7 +30,7 @@ public class PhieuThanhToanDAO {
 
         while(rs.next()) // Until next row is present otherwise it return false
          {
-            PhieuThanhToan ptt = new PhieuThanhToan(rs.getString("MAPTT"), 
+            PhieuThanhToanDTO ptt = new PhieuThanhToanDTO(rs.getString("MAPTT"), 
                             rs.getString("MAPC"), 
                             rs.getString("MAKH"),
                             rs.getString("MANV"), 
@@ -50,8 +50,8 @@ public class PhieuThanhToanDAO {
          return resuilt;
     }
     
-    public static PhieuThanhToan LayPTTTheoMa(String MaPTT){
-        PhieuThanhToan resuilt = null;
+    public static PhieuThanhToanDTO LayPTTTheoMa(String MaPTT){
+        PhieuThanhToanDTO resuilt = null;
         try
         {
         Connection con = DBConnection.createConnection(); //establishing connection
@@ -60,7 +60,7 @@ public class PhieuThanhToanDAO {
 
         while(rs.next()) // Until next row is present otherwise it return false
             {
-               resuilt = new PhieuThanhToan(rs.getString("MAPTT"), 
+               resuilt = new PhieuThanhToanDTO(rs.getString("MAPTT"), 
                                rs.getString("MAPC"), 
                             rs.getString("MAKH"),
                             rs.getString("MANV"), 
@@ -80,42 +80,42 @@ public class PhieuThanhToanDAO {
         return resuilt;
     }
     
-    public static ArrayList<PhieuThanhToan> LayDanhSachPTTTheoKH(String MaKH){
+    public static ArrayList<PhieuThanhToanDTO> LayDanhSachPTTTheoKH(String MaKH){
         return null;
     }
     
-    public static ArrayList<PhieuThanhToan> LayDanhSachPTTTheoNgay(String date){
+    public static ArrayList<PhieuThanhToanDTO> LayDanhSachPTTTheoNgay(String date){
         return null;
     }
     
-    public static ThongBao ThemPTT(PhieuThanhToan ptt){
+    public static ThongBaoDTO ThemPTT(PhieuThanhToanDTO ptt){
         try
         {
         Connection con = DBConnection.createConnection(); //establishing connection
         Statement statement = con.createStatement(); //Statement is used to write queries. Read more about it.   
         statement.executeUpdate(String.format("INSERT INTO `phieuthanhtoan`(`MAPTT`, `MAPC`, `MAKH`, `MANV`, `SOANH`, `BHT`, `CTHT`, `CTUD`, `NGAYTAO`, `SOTIEN`) VALUES ('%s','%s','%s','%s','%s','%s','%s','%s','%s','%s')",ptt.MAPTT, ptt.MAPC, ptt.MAKH, ptt.MANV, ptt.SOANH, ptt.BHT, ptt.CTHT, ptt.CTUD, ptt.NGAYTAO, ptt.SOTIEN));
-        return new ThongBao(true,"Thêm thành công phiếu thanh toán "+ ptt.MAPTT);
+        return new ThongBaoDTO(true,"Thêm thành công phiếu thanh toán "+ ptt.MAPTT);
 
         }
        catch(SQLException e)
         {
         e.printStackTrace();
-        return new ThongBao(false,"Lỗi truy vấn CSDL");
+        return new ThongBaoDTO(false,"Lỗi truy vấn CSDL");
         }  
     }
     
-    public static ThongBao XoaPTT(PhieuThanhToan ptt){
+    public static ThongBaoDTO XoaPTT(PhieuThanhToanDTO ptt){
         try
         {
         Connection con = DBConnection.createConnection(); //establishing connection
         Statement statement = con.createStatement(); //Statement is used to write queries. Read more about it.
         statement.executeUpdate(String.format("DELETE FROM `phieuthanhtoan` WHERE MAPTT ='%s'", ptt.MAPTT));
-        return new ThongBao(true, "Xóa thành công PTT "+ ptt.MAPTT);
+        return new ThongBaoDTO(true, "Xóa thành công PTT "+ ptt.MAPTT);
         }
        catch(SQLException e)
         {
         e.printStackTrace();
-        return new ThongBao(false, "Lỗi truy vấn CSDL");
+        return new ThongBaoDTO(false, "Lỗi truy vấn CSDL");
         }
     }
 }

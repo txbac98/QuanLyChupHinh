@@ -5,12 +5,12 @@
  */
 package BUS;
 
-import DAL.ChiTietPhieuChupDAO;
-import DAL.PhieuChupDAO;
-import DTO.ChiTietPhieuChup;
+import DAO.ChiTietPhieuChupDAO;
+import DAO.PhieuChupDAO;
+import DTO.ChiTietPhieuChupDTO;
 import java.util.ArrayList;
-import DTO.PhieuChup;
-import DTO.ThongBao;
+import DTO.PhieuChupDTO;
+import DTO.ThongBaoDTO;
 import java.util.Date;
 
 /**
@@ -18,18 +18,18 @@ import java.util.Date;
  * @author 16520
  */
 public class PhieuChupBUS {
-    public static ArrayList<PhieuChup> LayDanhSachPhieuChup(){
+    public static ArrayList<PhieuChupDTO> LayDanhSachPhieuChup(){
         return PhieuChupDAO.LayDanhSachPhieuChup();
     }
     
     public static String TongSoPC(){
-        ArrayList<PhieuChup> listPC = LayDanhSachPhieuChup();
+        ArrayList<PhieuChupDTO> listPC = LayDanhSachPhieuChup();
         if (listPC==null) return "0";
         return listPC.size()+"";
     }
     
     public static String TongSoPCTuDauThang(){
-        ArrayList<PhieuChup> listPC = LayDanhSachPhieuChup();
+        ArrayList<PhieuChupDTO> listPC = LayDanhSachPhieuChup();
         if (listPC==null) return "0";
         
         int num=0;
@@ -42,41 +42,41 @@ public class PhieuChupBUS {
         return num+"";
     }
     
-    public static ThongBao ThemPhieuChup(PhieuChup phieuChup){
+    public static ThongBaoDTO ThemPhieuChup(PhieuChupDTO phieuChup){
         return PhieuChupDAO.ThemPhieuChup(phieuChup);
     }
     
-    public static ThongBao SuaPhieuChup(PhieuChup phieuChup){
+    public static ThongBaoDTO SuaPhieuChup(PhieuChupDTO phieuChup){
         return PhieuChupDAO.SuaPhieuChup(phieuChup);
     }
     
-    public static ThongBao XoaPhieuChup(PhieuChup phieuChup){
+    public static ThongBaoDTO XoaPhieuChup(PhieuChupDTO phieuChup){
         return PhieuChupDAO.XoaPhieuChup(phieuChup);
     }
     
-    public static ArrayList<PhieuChup> LayDanhSachPhieuChupTheoKhachHang(String MaKH){
+    public static ArrayList<PhieuChupDTO> LayDanhSachPhieuChupTheoKhachHang(String MaKH){
         return PhieuChupDAO.LayDanhSachPhieuChupTheoKhachHang(MaKH);
     }
     
-    public static ArrayList<PhieuChup> LayDanhSachPhieuChupTheoKHVaTT(String MaKH, String TrangThai){
+    public static ArrayList<PhieuChupDTO> LayDanhSachPhieuChupTheoKHVaTT(String MaKH, String TrangThai){
         return PhieuChupDAO.LayDanhSachPhieuChupTheoKHVaTT(MaKH, TrangThai);
     }
     
-    public static PhieuChup LayPhieuChupTheoMa(String MaPC){
+    public static PhieuChupDTO LayPhieuChupTheoMa(String MaPC){
         return PhieuChupDAO.LayPhieuChupTheoMa(MaPC);
     }
         
-    public static ThongBao SuaTrangThaiPhieuChup(String MaPC, String TrangThai){
+    public static ThongBaoDTO SuaTrangThaiPhieuChup(String MaPC, String TrangThai){
         return PhieuChupDAO.SuaTrangThaiPhieuChup(MaPC, TrangThai);
     }
     
-    public static ChiTietPhieuChup LayCTPC(String MaPC){
+    public static ChiTietPhieuChupDTO LayCTPC(String MaPC){
         return ChiTietPhieuChupDAO.LayCTPC(MaPC);
     }
     
     public static String LayMaPhieuChupMoi(String MaKH){
         
-        ArrayList<PhieuChup> listPC = PhieuChupDAO.LayDanhSachPhieuChupTheoKhachHang(MaKH);
+        ArrayList<PhieuChupDTO> listPC = PhieuChupDAO.LayDanhSachPhieuChupTheoKhachHang(MaKH);
         if (listPC==null) return MaKH + "PC1";
         if (listPC.size()==0) return  MaKH + "PC1";
         String maCuoi = listPC.get(listPC.size()-1).MAPC;

@@ -7,8 +7,8 @@ package GUI;
 
 import BUS.BangHoachToanBUS;
 import BUS.DateBUS;
-import DTO.BangHoachToan;
-import DTO.ThongBao;
+import DTO.BangHoachToanDTO;
+import DTO.ThongBaoDTO;
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Vector;
@@ -41,7 +41,7 @@ public class frmQuanLyBangHoachToan extends javax.swing.JInternalFrame {
         lbThongBao.setText("");
     }
     
-    private void ShowThongBao(ThongBao thongBao){
+    private void ShowThongBao(ThongBaoDTO thongBao){
         lbThongBao.setText(thongBao.ChuThich);
         if (thongBao.ThanhCong){
            lbThongBao.setForeground(Color.GREEN);
@@ -52,11 +52,11 @@ public class frmQuanLyBangHoachToan extends javax.swing.JInternalFrame {
     }
     
     private void LoadDanhSachBangHoachToan(){
-        ArrayList<BangHoachToan> listBHT = BangHoachToanBUS.LayDanhSachBHT();
+        ArrayList<BangHoachToanDTO> listBHT = BangHoachToanBUS.LayDanhSachBHT();
         ShowDatas(listBHT);
     }
     
-    private void ShowDatas(ArrayList<BangHoachToan> listBHT){
+    private void ShowDatas(ArrayList<BangHoachToanDTO> listBHT){
         tableBHT.clearSelection(); //Xoa du lieu table
         
         String header[] = {"Mã BHT", "Mã NV", "Tên BHT", "Ngày tạo", "Hiệu lực"};
@@ -350,7 +350,7 @@ public class frmQuanLyBangHoachToan extends javax.swing.JInternalFrame {
 
     private void cbxTraCuuHieuLucActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxTraCuuHieuLucActionPerformed
         // TODO add your handling code here:
-        ArrayList<BangHoachToan> listBHT = BangHoachToanBUS.LayDanhSachBHTCoHieuLuc();
+        ArrayList<BangHoachToanDTO> listBHT = BangHoachToanBUS.LayDanhSachBHTCoHieuLuc();
         ShowDatas(listBHT);
     }//GEN-LAST:event_cbxTraCuuHieuLucActionPerformed
 
@@ -403,8 +403,8 @@ public class frmQuanLyBangHoachToan extends javax.swing.JInternalFrame {
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
         // TODO add your handling code here:
-        BangHoachToan bht = new BangHoachToan(tfMaBHT.getText(), tfMaNV.getText(), tfTenBHT.getText(), DateBUS.GetDateString(dcNgayTao), TextHieuLuu());
-        ThongBao thongBao = BangHoachToanBUS.ThemBangHoachToan(bht);
+        BangHoachToanDTO bht = new BangHoachToanDTO(tfMaBHT.getText(), tfMaNV.getText(), tfTenBHT.getText(), DateBUS.GetDateString(dcNgayTao), TextHieuLuu());
+        ThongBaoDTO thongBao = BangHoachToanBUS.ThemBangHoachToan(bht);
         LoadDanhSachBangHoachToan();
         ShowThongBao(thongBao);
         if (thongBao.ThanhCong){
@@ -414,16 +414,16 @@ public class frmQuanLyBangHoachToan extends javax.swing.JInternalFrame {
 
     private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
         // TODO add your handling code here:
-        BangHoachToan bht = new BangHoachToan(tfMaBHT.getText(), tfMaNV.getText(), tfTenBHT.getText(), DateBUS.GetDateString(dcNgayTao), TextHieuLuu());
-        ThongBao thongBao = BangHoachToanBUS.XoaBangHoachToan(bht);
+        BangHoachToanDTO bht = new BangHoachToanDTO(tfMaBHT.getText(), tfMaNV.getText(), tfTenBHT.getText(), DateBUS.GetDateString(dcNgayTao), TextHieuLuu());
+        ThongBaoDTO thongBao = BangHoachToanBUS.XoaBangHoachToan(bht);
         LoadDanhSachBangHoachToan();
         ShowThongBao(thongBao);
     }//GEN-LAST:event_btnXoaActionPerformed
 
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
         // TODO add your handling code here:
-        BangHoachToan bht = new BangHoachToan(tfMaBHT.getText(), tfMaNV.getText(), tfTenBHT.getText(), DateBUS.GetDateString(dcNgayTao), TextHieuLuu());
-        ThongBao thongBao = BangHoachToanBUS.SuaBangHoachToan(bht);
+        BangHoachToanDTO bht = new BangHoachToanDTO(tfMaBHT.getText(), tfMaNV.getText(), tfTenBHT.getText(), DateBUS.GetDateString(dcNgayTao), TextHieuLuu());
+        ThongBaoDTO thongBao = BangHoachToanBUS.SuaBangHoachToan(bht);
         LoadDanhSachBangHoachToan();
         ShowThongBao(thongBao);
     }//GEN-LAST:event_btnSuaActionPerformed

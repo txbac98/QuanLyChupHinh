@@ -5,10 +5,10 @@
  */
 package BUS;
 
-import DAL.ChiTietHoachToanDAO;
+import DAO.ChiTietHoachToanDAO;
 import java.util.ArrayList;
-import DTO.ChiTietHoachToan;
-import DTO.ThongBao;
+import DTO.ChiTietHoachToanDTO;
+import DTO.ThongBaoDTO;
 
 
 /**
@@ -16,19 +16,19 @@ import DTO.ThongBao;
  * @author 16520
  */
 public class ChiTietHoachToanBUS {
-    public static ArrayList<ChiTietHoachToan> LayDanhSachChiTietHoachToan(String MaBHT){
+    public static ArrayList<ChiTietHoachToanDTO> LayDanhSachChiTietHoachToan(String MaBHT){
         return ChiTietHoachToanDAO.LayDanhSachCTHT(MaBHT);
     }
     
-    public static ThongBao ThemChiTietHoachToan(ChiTietHoachToan ctht){
+    public static ThongBaoDTO ThemChiTietHoachToan(ChiTietHoachToanDTO ctht){
         return ChiTietHoachToanDAO.ThemCTBHT(ctht);
     }
     
-    public static ThongBao SuaChiTietHoachToan(ChiTietHoachToan ctht){
+    public static ThongBaoDTO SuaChiTietHoachToan(ChiTietHoachToanDTO ctht){
         return ChiTietHoachToanDAO.SuaCTBHT(ctht);
     }
     
-    public static ThongBao XoaChiTietHoachToan(ChiTietHoachToan ctht){
+    public static ThongBaoDTO XoaChiTietHoachToan(ChiTietHoachToanDTO ctht){
         return ChiTietHoachToanDAO.XoaCTBHT(ctht);
     }
     
@@ -38,7 +38,7 @@ public class ChiTietHoachToanBUS {
     
      public static String LayMaCTHTMoi(String MaBHT){
 
-        ArrayList<ChiTietHoachToan> listCTHT = LayDanhSachChiTietHoachToan(MaBHT);
+        ArrayList<ChiTietHoachToanDTO> listCTHT = LayDanhSachChiTietHoachToan(MaBHT);
         if (listCTHT==null) return MaBHT +"CT1";
         if (listCTHT.size()==0) return MaBHT + "CT1";
         String maCuoi = listCTHT.get(listCTHT.size()-1).MACTHT;

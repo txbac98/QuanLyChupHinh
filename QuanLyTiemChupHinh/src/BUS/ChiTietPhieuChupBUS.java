@@ -5,9 +5,9 @@
  */
 package BUS;
 
-import DAL.ChiTietPhieuChupDAO;
-import DTO.ChiTietPhieuChup;
-import DTO.ThongBao;
+import DAO.ChiTietPhieuChupDAO;
+import DTO.ChiTietPhieuChupDTO;
+import DTO.ThongBaoDTO;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -71,7 +71,7 @@ public class ChiTietPhieuChupBUS {
         
     }
   
-    public static ThongBao LuuCTPC(ChiTietPhieuChup ctpc){
+    public static ThongBaoDTO LuuCTPC(ChiTietPhieuChupDTO ctpc){
         return ChiTietPhieuChupDAO.LuuCTPC(ctpc);
     }
     

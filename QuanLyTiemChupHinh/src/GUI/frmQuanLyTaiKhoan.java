@@ -7,8 +7,8 @@ package GUI;
 
 import BUS.DateBUS;
 import BUS.TaiKhoanBUS;
-import DTO.TaiKhoan;
-import DTO.ThongBao;
+import DTO.TaiKhoanDTO;
+import DTO.ThongBaoDTO;
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Vector;
@@ -281,8 +281,8 @@ public class frmQuanLyTaiKhoan extends javax.swing.JInternalFrame {
 
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
         // TODO add your handling code here:
-        TaiKhoan taiKhoan = new TaiKhoan(tfMaNV.getText(), tfTenNV.getText(),tfMatKhau.getText(), cbxBoPhan.getSelectedItem().toString() );
-        ThongBao thongBao = TaiKhoanBUS.SuaTaiKhoan(taiKhoan);
+        TaiKhoanDTO taiKhoan = new TaiKhoanDTO(tfMaNV.getText(), tfTenNV.getText(),tfMatKhau.getText(), cbxBoPhan.getSelectedItem().toString() );
+        ThongBaoDTO thongBao = TaiKhoanBUS.SuaTaiKhoan(taiKhoan);
         LoadDanhSachTaiKhoan();
         ShowThongBao(thongBao);
     }//GEN-LAST:event_btnSuaActionPerformed
@@ -291,7 +291,7 @@ public class frmQuanLyTaiKhoan extends javax.swing.JInternalFrame {
         lbThongBao.setText("");
     }
     
-    private void ShowThongBao(ThongBao thongBao){
+    private void ShowThongBao(ThongBaoDTO thongBao){
         lbThongBao.setText(thongBao.ChuThich);
         if (thongBao.ThanhCong){
            lbThongBao.setForeground(Color.GREEN);
@@ -303,8 +303,8 @@ public class frmQuanLyTaiKhoan extends javax.swing.JInternalFrame {
     
     private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
         // TODO add your handling code here:
-        TaiKhoan taiKhoan = new TaiKhoan(tfMaNV.getText(), tfTenNV.getText(),tfMatKhau.getText(), cbxBoPhan.getSelectedItem().toString() );
-        ThongBao thongBao = TaiKhoanBUS.XoaTaiKhoan(taiKhoan);
+        TaiKhoanDTO taiKhoan = new TaiKhoanDTO(tfMaNV.getText(), tfTenNV.getText(),tfMatKhau.getText(), cbxBoPhan.getSelectedItem().toString() );
+        ThongBaoDTO thongBao = TaiKhoanBUS.XoaTaiKhoan(taiKhoan);
         LoadDanhSachTaiKhoan();
         ShowThongBao(thongBao);
     }//GEN-LAST:event_btnXoaActionPerformed
@@ -329,7 +329,7 @@ public class frmQuanLyTaiKhoan extends javax.swing.JInternalFrame {
 
     private void cbxTraCuuBoPhanItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbxTraCuuBoPhanItemStateChanged
         // TODO add your handling code here:
-        ArrayList<TaiKhoan> listTaiKhoan;
+        ArrayList<TaiKhoanDTO> listTaiKhoan;
         if (cbxTraCuuBoPhan.getSelectedIndex() ==0){
             listTaiKhoan = TaiKhoanBUS.LayDanhSachTKTheoTen(tfTraCuuTenNV.getText());
         }
@@ -339,7 +339,7 @@ public class frmQuanLyTaiKhoan extends javax.swing.JInternalFrame {
 
     private void tfTraCuuTenNVKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfTraCuuTenNVKeyReleased
         // TODO add your handling code here:
-        ArrayList<TaiKhoan> listTaiKhoan;
+        ArrayList<TaiKhoanDTO> listTaiKhoan;
         if (tfTraCuuTenNV.getText().equals("")){
             LoadDanhSachTaiKhoan();
         }
@@ -360,11 +360,11 @@ public class frmQuanLyTaiKhoan extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnXoaTraCuuActionPerformed
 
     public void LoadDanhSachTaiKhoan(){
-        ArrayList<TaiKhoan> listTaiKhoan = TaiKhoanBUS.LayDanhSachTaiKhoan();
+        ArrayList<TaiKhoanDTO> listTaiKhoan = TaiKhoanBUS.LayDanhSachTaiKhoan();
         ShowData(listTaiKhoan); 
     }
     
-    private void ShowData(ArrayList<TaiKhoan> listTaiKhoan){
+    private void ShowData(ArrayList<TaiKhoanDTO> listTaiKhoan){
         tableTaiKhoan.clearSelection(); //Xoa du lieu table
         
         String header[] = {"Mã NV", "Tên NV", "Mật khẩu", "Bộ phận"};

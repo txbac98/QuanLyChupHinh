@@ -11,7 +11,7 @@ import java.util.Date;
  *
  * @author 16520
  */
-public class KhachHang {
+public class KhachHangDTO {
 //     MAKH VARCHAR(11) NOT NULL,
 //    TENKH VARCHAR(50) NOT NULL,
 //    NGAYSINH DATE NOT NULL,
@@ -24,10 +24,10 @@ public class KhachHang {
      public String SDT;
      public String EMAIL;
      
-     public KhachHang(){
+     public KhachHangDTO(){
          
      }
-     public KhachHang(String maKH, String tenKH, String ngaySinh, String sdt, String email){
+     public KhachHangDTO(String maKH, String tenKH, String ngaySinh, String sdt, String email){
          this.MAKH = maKH;
          this.TENKH = tenKH;
          this.NGAYSINH = ngaySinh;

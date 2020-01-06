@@ -6,8 +6,8 @@
 package GUI;
 
 import BUS.TaiKhoanBUS;
-import DTO.TaiKhoan;
-import DTO.ThongBao;
+import DTO.TaiKhoanDTO;
+import DTO.ThongBaoDTO;
 import java.awt.Color;
 
 /**
@@ -35,7 +35,7 @@ public class frmTaoTaiKhoan extends javax.swing.JFrame {
         lbThongBao.setText("");
     }
     
-    private void ShowThongBao(ThongBao thongBao){
+    private void ShowThongBao(ThongBaoDTO thongBao){
         lbThongBao.setText(thongBao.ChuThich);
         if (thongBao.ThanhCong){
            lbThongBao.setForeground(Color.GREEN);
@@ -141,8 +141,8 @@ public class frmTaoTaiKhoan extends javax.swing.JFrame {
 
     private void btnThemMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemMoiActionPerformed
         // TODO add your handling code here:
-        TaiKhoan taiKhoan = new TaiKhoan(tfMaNV.getText(), tfTenNV.getText(), tfMatKhau.getText(), cbxLoaiNV.getSelectedItem().toString());
-        ThongBao thongBao = TaiKhoanBUS.ThemTaiKhoan(taiKhoan);
+        TaiKhoanDTO taiKhoan = new TaiKhoanDTO(tfMaNV.getText(), tfTenNV.getText(), tfMatKhau.getText(), cbxLoaiNV.getSelectedItem().toString());
+        ThongBaoDTO thongBao = TaiKhoanBUS.ThemTaiKhoan(taiKhoan);
         ShowThongBao(thongBao);
         if (thongBao.ThanhCong)
             frmQLTK.LoadDanhSachTaiKhoan();
