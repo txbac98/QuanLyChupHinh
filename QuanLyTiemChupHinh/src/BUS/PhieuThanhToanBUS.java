@@ -8,6 +8,9 @@ package BUS;
 import DTO.PhieuThanhToan;
 import DTO.ThongBao;
 import DAL.PhieuThanhToanDAO;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -19,6 +22,14 @@ public class PhieuThanhToanBUS {
     public static ArrayList<PhieuThanhToan> LayDanhSachPhieuThanhToan(){
         return PhieuThanhToanDAO.LayDanhSachPTT();
     }
+    
+    public static void XuatPhieuThanhToan(PhieuThanhToan ptt){
+        String text= String.format(" Photography\n Mã PTT: %s\n Mã PC: %s\n Mã KH: %s\n Mã NV: %s\n Số ảnh: %s\n BHT: %s\n CTHT: %s\n CTUD: %s\n Ngày tạo: %s\n Số tiền: %s\n", ptt.MAPTT, ptt.MAPC, ptt.MAKH, ptt.MANV, ptt.SOANH, ptt.BHT, ptt.CTHT, ptt.CTUD, ptt.NGAYTAO, ptt.SOTIEN);
+        String path = System.getProperty("user.dir")+"/Data/PhieuThanhToan/"+ptt.MAPTT+".pdf";
+        PDFBUS.SavePDF(path, text);
+    }
+
+
     
     
     public static String TongDoanhThu(){

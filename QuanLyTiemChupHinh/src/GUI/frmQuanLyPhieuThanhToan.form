@@ -96,7 +96,12 @@
                               <Component id="tfCTHT" alignment="0" min="-2" pref="219" max="-2" attributes="0"/>
                               <Component id="jLabel8" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                  <Component id="btnXoa" alignment="1" min="-2" pref="64" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+                                      <Component id="btnXuatPhieu" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
+                                      <Component id="btnXoa" min="-2" pref="64" max="-2" attributes="0"/>
+                                  </Group>
                                   <Component id="tfSoTien" alignment="0" pref="219" max="32767" attributes="0"/>
                                   <Component id="jLabel6" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="lbThongBao" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -163,7 +168,10 @@
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="lbThongBao" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="btnXoa" min="-2" pref="36" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="btnXoa" pref="36" max="32767" attributes="0"/>
+                      <Component id="btnXuatPhieu" max="32767" attributes="0"/>
+                  </Group>
                   <EmptySpace pref="118" max="32767" attributes="0"/>
               </Group>
           </Group>
@@ -315,6 +323,14 @@
             </Property>
           </Properties>
         </Component>
+        <Component class="javax.swing.JButton" name="btnXuatPhieu">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Xu&#x1ea5;t phi&#x1ebf;u"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnXuatPhieuActionPerformed"/>
+          </Events>
+        </Component>
       </SubComponents>
     </Container>
     <Container class="javax.swing.JPanel" name="jPanel2">
@@ -333,7 +349,7 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jScrollPane1" pref="549" max="32767" attributes="0"/>
+                  <Component id="jScrollPane1" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>

@@ -30,6 +30,8 @@ public class frmQuanLyPhieuThanhToan extends javax.swing.JInternalFrame {
         this.setVisible(true);
         XoaThongBao();
         LoadDanhSachPTT();
+        btnXoa.setEnabled(false);
+        btnXuatPhieu.setEnabled(false);
     }
     
      private void XoaThongBao(){
@@ -109,6 +111,7 @@ public class frmQuanLyPhieuThanhToan extends javax.swing.JInternalFrame {
         btnXoa = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         tfMaKH = new javax.swing.JTextField();
+        btnXuatPhieu = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablePTT = new javax.swing.JTable();
@@ -197,6 +200,13 @@ public class frmQuanLyPhieuThanhToan extends javax.swing.JInternalFrame {
         tfMaKH.setEditable(false);
         tfMaKH.setBackground(new java.awt.Color(204, 204, 204));
 
+        btnXuatPhieu.setText("Xuất phiếu");
+        btnXuatPhieu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnXuatPhieuActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -231,7 +241,11 @@ public class frmQuanLyPhieuThanhToan extends javax.swing.JInternalFrame {
                             .addComponent(tfCTHT, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel8)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(btnXoa, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addGap(15, 15, 15)
+                                    .addComponent(btnXuatPhieu)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btnXoa, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addComponent(tfSoTien, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 219, Short.MAX_VALUE)
                                 .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(lbThongBao, javax.swing.GroupLayout.Alignment.LEADING)))
@@ -286,7 +300,9 @@ public class frmQuanLyPhieuThanhToan extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lbThongBao)
                 .addGap(18, 18, 18)
-                .addComponent(btnXoa, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnXoa, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
+                    .addComponent(btnXuatPhieu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(118, Short.MAX_VALUE))
         );
 
@@ -321,7 +337,7 @@ public class frmQuanLyPhieuThanhToan extends javax.swing.JInternalFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 549, Short.MAX_VALUE))
+                .addComponent(jScrollPane1))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -384,6 +400,9 @@ public class frmQuanLyPhieuThanhToan extends javax.swing.JInternalFrame {
             tfCTUD.setText(ptt.CTUD);
             tfNgayTao.setText(ptt.NGAYTAO);
             tfSoTien.setText(ptt.SOTIEN);
+            
+            btnXoa.setEnabled(true);
+            btnXuatPhieu.setEnabled(true);
         }
         
         
@@ -402,6 +421,13 @@ public class frmQuanLyPhieuThanhToan extends javax.swing.JInternalFrame {
         }
         
     }//GEN-LAST:event_btnXoaActionPerformed
+
+    private void btnXuatPhieuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXuatPhieuActionPerformed
+        // TODO add your handling code here:
+       
+        PhieuThanhToanBUS.XuatPhieuThanhToan(ptt);
+        ShowThongBao( new ThongBao(true,"Xuất phiếu thanh toán thành công"));
+    }//GEN-LAST:event_btnXuatPhieuActionPerformed
 
     /**
      * @param args the command line arguments
@@ -440,6 +466,7 @@ public class frmQuanLyPhieuThanhToan extends javax.swing.JInternalFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnXoa;
+    private javax.swing.JButton btnXuatPhieu;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
