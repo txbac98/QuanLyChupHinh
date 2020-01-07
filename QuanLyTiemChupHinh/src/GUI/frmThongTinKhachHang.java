@@ -99,10 +99,12 @@ public class frmThongTinKhachHang extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         tfPCDangChon = new javax.swing.JTextField();
         lbThongBao = new javax.swing.JLabel();
-        btnThemPC = new javax.swing.JButton();
-        btnCapNhatPC = new javax.swing.JButton();
         tfSDT = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        tfTrangThaiPC = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        tfNgayTao = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablePhieuChup = new javax.swing.JTable();
@@ -129,24 +131,20 @@ public class frmThongTinKhachHang extends javax.swing.JFrame {
         tfPCDangChon.setEditable(false);
         tfPCDangChon.setBackground(new java.awt.Color(204, 204, 204));
 
-        btnThemPC.setText("Thêm PC");
-        btnThemPC.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnThemPCActionPerformed(evt);
-            }
-        });
-
-        btnCapNhatPC.setText("Cập nhật PC");
-        btnCapNhatPC.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCapNhatPCActionPerformed(evt);
-            }
-        });
-
         tfSDT.setEditable(false);
         tfSDT.setBackground(new java.awt.Color(204, 204, 204));
 
         jLabel5.setText("SDT:");
+
+        jLabel6.setText("Trạng thái PC:");
+
+        tfTrangThaiPC.setEditable(false);
+        tfTrangThaiPC.setBackground(new java.awt.Color(204, 204, 204));
+
+        jLabel7.setText("Ngày tạo:");
+
+        tfNgayTao.setEditable(false);
+        tfNgayTao.setBackground(new java.awt.Color(204, 204, 204));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -154,23 +152,22 @@ public class frmThongTinKhachHang extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(lbThongBao)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                            .addComponent(btnThemPC)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(btnCapNhatPC, javax.swing.GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE))
-                        .addComponent(jLabel1)
-                        .addComponent(tfMaKH)
-                        .addComponent(jLabel2)
-                        .addComponent(tfTenKH)
-                        .addComponent(jLabel3)
-                        .addComponent(tfTongPC)
-                        .addComponent(jLabel4)
-                        .addComponent(tfPCDangChon)
-                        .addComponent(tfSDT))
-                    .addComponent(jLabel5))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(lbThongBao)
+                    .addComponent(jLabel1)
+                    .addComponent(tfMaKH, javax.swing.GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE)
+                    .addComponent(jLabel2)
+                    .addComponent(tfTenKH)
+                    .addComponent(jLabel3)
+                    .addComponent(tfTongPC)
+                    .addComponent(jLabel4)
+                    .addComponent(tfPCDangChon)
+                    .addComponent(tfSDT)
+                    .addComponent(jLabel5)
+                    .addComponent(tfTrangThaiPC)
+                    .addComponent(jLabel6)
+                    .addComponent(jLabel7)
+                    .addComponent(tfNgayTao))
                 .addContainerGap(22, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -180,29 +177,33 @@ public class frmThongTinKhachHang extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(tfMaKH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel2)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(tfTenKH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(17, 17, 17)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(tfSDT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel3)
-                .addGap(18, 18, 18)
-                .addComponent(tfTongPC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel4)
-                .addGap(18, 18, 18)
-                .addComponent(tfPCDangChon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(23, 23, 23)
-                .addComponent(lbThongBao)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnThemPC, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
-                    .addComponent(btnCapNhatPC, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(28, 28, 28))
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(tfTongPC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(tfPCDangChon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel7)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(tfNgayTao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(8, 8, 8)
+                .addComponent(lbThongBao)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel6)
+                .addGap(18, 18, 18)
+                .addComponent(tfTrangThaiPC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(30, Short.MAX_VALUE))
         );
 
         tablePhieuChup.setModel(new javax.swing.table.DefaultTableModel(
@@ -251,8 +252,8 @@ public class frmThongTinKhachHang extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -267,25 +268,13 @@ public class frmThongTinKhachHang extends javax.swing.JFrame {
        
         // set the selected row data into jtextfields
        tfPCDangChon.setText(model.getValueAt(selectedRowIndex, 0).toString());
-    }//GEN-LAST:event_tablePhieuChupMouseClicked
-
-    private void btnCapNhatPCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCapNhatPCActionPerformed
-        // TODO add your handling code here:
-        if (tfPCDangChon.getText()!=""){
-            PhieuChupDTO pc = PhieuChupBUS.LayPhieuChupTheoMa(tfPCDangChon.getText());
-            frmCapNhatPhieuChup frmCNPC = new frmCapNhatPhieuChup();      
-            frmCNPC.Show(pc, null, false);
-            this.setVisible(false);
-        }
+       PhieuChupDTO phieuChup = PhieuChupBUS.LayPhieuChupTheoMa(tfPCDangChon.getText());
+       if (phieuChup!=null){
+           tfNgayTao.setText(phieuChup.NGAYTAO);
+           tfTrangThaiPC.setText(phieuChup.TRANGTHAI);
+       }
        
-    }//GEN-LAST:event_btnCapNhatPCActionPerformed
-
-    private void btnThemPCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemPCActionPerformed
-        // TODO add your handling code here:
-        frmThemPhieuChup frmTPC = new frmThemPhieuChup();
-        frmTPC.Show(KhachHangBUS.LayKHTheoMa(tfMaKH.getText()));
-        this.setVisible(false);
-    }//GEN-LAST:event_btnThemPCActionPerformed
+    }//GEN-LAST:event_tablePhieuChupMouseClicked
 
     /**
      * @param args the command line arguments
@@ -323,22 +312,24 @@ public class frmThongTinKhachHang extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnCapNhatPC;
-    private javax.swing.JButton btnThemPC;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbThongBao;
     private javax.swing.JTable tablePhieuChup;
     private javax.swing.JTextField tfMaKH;
+    private javax.swing.JTextField tfNgayTao;
     private javax.swing.JTextField tfPCDangChon;
     private javax.swing.JTextField tfSDT;
     private javax.swing.JTextField tfTenKH;
     private javax.swing.JTextField tfTongPC;
+    private javax.swing.JTextField tfTrangThaiPC;
     // End of variables declaration//GEN-END:variables
 }

@@ -7,7 +7,7 @@ package BUS;
 
 import DTO.PhieuThanhToanDTO;
 import DTO.ThongBaoDTO;
-import DAO.PhieuThanhToanDAO;
+import DAL.PhieuThanhToanDAO;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -29,17 +29,92 @@ public class PhieuThanhToanBUS {
         PDFBUS.SavePDF(path, text);
     }
 
+    private static ArrayList<PhieuThanhToanDTO> LayPTTTheoNgay(Date ngayBD, Date ngayKT){
+        ArrayList<PhieuThanhToanDTO> listPTT = LayDanhSachPhieuThanhToan();
+        
+        if (listPTT== null) return null;
+        ArrayList<PhieuThanhToanDTO> resuilt = new ArrayList<PhieuThanhToanDTO>();
+        for (int i=0; i< listPTT.size(); i++){
+            if (DateBUS.GetDate(listPTT.get(i).NGAYTAO).after(ngayBD)
+                   && DateBUS.GetDate(listPTT.get(i).NGAYTAO).before(ngayKT))
+            {
+                resuilt.add(listPTT.get(i));
+                continue;
+            }
+            if (DateBUS.GetDate(listPTT.get(i).NGAYTAO).equals(ngayBD)
+                   && DateBUS.GetDate(listPTT.get(i).NGAYTAO).equals(ngayKT))
+            {
+                resuilt.add(listPTT.get(i));
+                continue;
+            }
+        }
+        return resuilt;
+    }
+    
+    public static String TongDoanhThuTheoNgay(Date ngayBD, Date ngayKT){
+        long sum=0;
+         ArrayList<PhieuThanhToanDTO> listPTT = LayPTTTheoNgay(ngayBD, ngayKT);
+         if (listPTT!=null){
+             for (int i=0; i< listPTT.size(); i++){
 
+                try {  
+                       long soTien = Long.parseLong(listPTT.get(i).SOTIEN);
+                       sum+=soTien;
+                   } catch(NumberFormatException e){  
+
+                   }  
+             }
+         }
+         return sum+"";       
+    }
+
+    public static String TongDoanhThuTheoCTHT(Date ngayBD, Date ngayKT, String TenCTHT, String BHT){
+        long sum=0;
+         ArrayList<PhieuThanhToanDTO> listPTT = LayPTTTheoNgay(ngayBD, ngayKT);
+         if (listPTT!=null){
+             for (int i=0; i< listPTT.size(); i++){
+                 if (listPTT.get(i).CTHT.contains(TenCTHT) && listPTT.get(i).BHT.contains(BHT)){
+                     try {  
+                            long soTien = Long.parseLong(listPTT.get(i).SOTIEN);
+                            sum+=soTien;
+                        } catch(NumberFormatException e){  
+
+                        }  
+                 }
+             }
+         }
+         return sum+"";
+    }
+    
+    public static Long TongDoanhThuTheoCTUD(Date ngayBD, Date ngayKT, String TenCTUD){
+        long sum=0;
+        ArrayList<PhieuThanhToanDTO> listPTT = LayPTTTheoNgay(ngayBD, ngayKT);
+        if (listPTT!=null){
+             for (int i=0; i< listPTT.size(); i++){
+                 System.err.println("So tien PTT: "+listPTT.get(i).SOTIEN);
+                 if (listPTT.get(i).CTUD.contains(TenCTUD)){
+                     System.err.println("Có");
+                     try {  
+                            long soTien = Long.parseLong(listPTT.get(i).SOTIEN);                           
+                            sum+=soTien;
+                        } catch(NumberFormatException e){  
+
+                        }  
+                 }
+             }
+         }
+         return sum;
+    }
     
     
     public static String TongDoanhThu(){
         double sum=0;
-         ArrayList<PhieuThanhToanDTO> listPC = LayDanhSachPhieuThanhToan();
-        if (listPC==null) return "0";
+         ArrayList<PhieuThanhToanDTO> listPTT = LayDanhSachPhieuThanhToan();
+        if (listPTT==null) return "0";
         
-        for (int i=0; i< listPC.size(); i++){
+        for (int i=0; i< listPTT.size(); i++){
              try {  
-            double giaTri = Double.parseDouble(listPC.get(i).SOTIEN); 
+            double giaTri = Double.parseDouble(listPTT.get(i).SOTIEN); 
             sum+=giaTri;
             } catch(NumberFormatException e){  
 
@@ -50,15 +125,15 @@ public class PhieuThanhToanBUS {
     
     public static String TongDoanhThuTuDauThang(){
         double sum=0;
-         ArrayList<PhieuThanhToanDTO> listPC = LayDanhSachPhieuThanhToan();
-        if (listPC==null) return "0";
+         ArrayList<PhieuThanhToanDTO> listPTT = LayDanhSachPhieuThanhToan();
+        if (listPTT==null) return "0";
         
         Date today = DateBUS.GetToDay();
-        for (int i=0; i< listPC.size(); i++){
-            if (DateBUS.GetDate(listPC.get(i).NGAYTAO).getMonth() == today.getMonth() )
+        for (int i=0; i< listPTT.size(); i++){
+            if (DateBUS.GetDate(listPTT.get(i).NGAYTAO).getMonth() == today.getMonth() )
             {
                 try {  
-            double giaTri = Double.parseDouble(listPC.get(i).SOTIEN); 
+            double giaTri = Double.parseDouble(listPTT.get(i).SOTIEN); 
             sum+=giaTri;
             } catch(NumberFormatException e){  
 

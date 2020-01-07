@@ -5,8 +5,7 @@
  */
 package BUS;
 
-import DAO.ChuongTrinhUuDaiDAO;
-import static DAO.ChuongTrinhUuDaiDAO.LayDanhSachCTUD;
+import DAL.ChuongTrinhUuDaiDAO;
 import java.util.ArrayList;
 import DTO.ChuongTrinhUuDaiDTO;
 import DTO.ThongBaoDTO;
@@ -20,6 +19,7 @@ public class ChuongTrinhUuDaiBUS {
     public static ArrayList<ChuongTrinhUuDaiDTO> LayDanhSachCTUD(){
         return ChuongTrinhUuDaiDAO.LayDanhSachCTUD();
     }
+    
     public static ThongBaoDTO ThemCTUD(ChuongTrinhUuDaiDTO ctud){
         if (KiemTraBUS.KiemTraChuoiRong(ctud.TENCTUD)
                 || KiemTraBUS.KiemTraChuoiRong(ctud.GIATRIUUDAI)) 
@@ -44,6 +44,7 @@ public class ChuongTrinhUuDaiBUS {
     public static ThongBaoDTO XoaCTUD(ChuongTrinhUuDaiDTO ctud){
         return ChuongTrinhUuDaiDAO.XoaCTUD(ctud);
     }
+    
     
     public static ArrayList<ChuongTrinhUuDaiDTO> LayDanhSachCTUDDangApDung(){
         ArrayList<ChuongTrinhUuDaiDTO> resuilt =LayDanhSachCTUD();

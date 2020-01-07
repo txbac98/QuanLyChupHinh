@@ -21,6 +21,10 @@ public class DateBUS {
         return sdf.format(dateChooser.getDate());
     }
     
+    public static String GetDateString(Date date){
+        return sdf.format(date);
+    }
+    
     public static Date GetDate(String dateString){
         try{
             return sdf.parse(dateString); 

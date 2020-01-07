@@ -43,6 +43,7 @@ public class frmHome extends javax.swing.JFrame {
         menuItemQuanLyPhieuThanhToan = new javax.swing.JMenuItem();
         menuItemQuanLyBangHoachToan = new javax.swing.JMenuItem();
         menuQuanLyTaiKhoan = new javax.swing.JMenu();
+        menuBaoCao = new javax.swing.JMenu();
         menuTaiKhoan = new javax.swing.JMenu();
         menuItemDoiMatKhau = new javax.swing.JMenuItem();
         menuItemDangXuat = new javax.swing.JMenuItem();
@@ -149,6 +150,14 @@ public class frmHome extends javax.swing.JFrame {
         });
         jMenuBar1.add(menuQuanLyTaiKhoan);
 
+        menuBaoCao.setText("Báo Cáo");
+        menuBaoCao.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                menuBaoCaoMouseClicked(evt);
+            }
+        });
+        jMenuBar1.add(menuBaoCao);
+
         menuTaiKhoan.setText("Tài khoản");
 
         menuItemDoiMatKhau.setText("Đổi mật khẩu");
@@ -195,6 +204,7 @@ public class frmHome extends javax.swing.JFrame {
     
     public void ShowBanLanhDao(){
         this.setVisible(true);
+        //menuBaoCao.setVisible(false);
         ShowTrangChu();
     }
     
@@ -220,6 +230,7 @@ public class frmHome extends javax.swing.JFrame {
         menuItemQuanLyBangHoachToan.setVisible(false);
         menuItemQuanLyPhieuThanhToan.setVisible(false);
         menuItemQuanLyCTUD.setVisible(false);
+        menuBaoCao.setVisible(false);
         ShowTrangChu();
     }
     
@@ -231,9 +242,10 @@ public class frmHome extends javax.swing.JFrame {
         menuItemQuanLyBangHoachToan.setVisible(false);
         menuItemQuanLyPhieuThanhToan.setVisible(false);
         menuItemQuanLyPhieuChup.setVisible(false);
+        menuBaoCao.setVisible(false);
         ShowTrangChu();
     }
-    
+
     public void ShowBoPhanKyThuat(){
         frmKyThuatVien frmKTV = new frmKyThuatVien();
         frmKTV.Show();
@@ -345,6 +357,12 @@ public class frmHome extends javax.swing.JFrame {
         frmCTUD.Show();
     }//GEN-LAST:event_menuItemTraCuuCTUDActionPerformed
 
+    private void menuBaoCaoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuBaoCaoMouseClicked
+        // TODO add your handling code here:
+        frmXuatBaoCao frmXBC = new frmXuatBaoCao();
+        frmXBC.Show();
+    }//GEN-LAST:event_menuBaoCaoMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -383,6 +401,7 @@ public class frmHome extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane destopPane;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenu menuBaoCao;
     private javax.swing.JMenuItem menuItemDangXuat;
     private javax.swing.JMenuItem menuItemDoiMatKhau;
     private javax.swing.JMenuItem menuItemQuanLyBangHoachToan;

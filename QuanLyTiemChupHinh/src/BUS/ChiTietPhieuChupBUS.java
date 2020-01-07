@@ -5,7 +5,7 @@
  */
 package BUS;
 
-import DAO.ChiTietPhieuChupDAO;
+import DAL.ChiTietPhieuChupDAO;
 import DTO.ChiTietPhieuChupDTO;
 import DTO.ThongBaoDTO;
 import java.io.File;

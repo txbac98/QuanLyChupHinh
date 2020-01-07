@@ -5,8 +5,8 @@
  */
 package BUS;
 
-import DAO.ChiTietPhieuChupDAO;
-import DAO.PhieuChupDAO;
+import DAL.ChiTietPhieuChupDAO;
+import DAL.PhieuChupDAO;
 import DTO.ChiTietPhieuChupDTO;
 import java.util.ArrayList;
 import DTO.PhieuChupDTO;
@@ -73,6 +73,7 @@ public class PhieuChupBUS {
     public static ChiTietPhieuChupDTO LayCTPC(String MaPC){
         return ChiTietPhieuChupDAO.LayCTPC(MaPC);
     }
+    
     
     public static String LayMaPhieuChupMoi(String MaKH){
         
