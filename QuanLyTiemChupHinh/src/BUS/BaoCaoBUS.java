@@ -21,8 +21,8 @@ public class BaoCaoBUS {
         if (ngayBD==null || ngayKT == null) return new ThongBaoDTO(false, "Chọn thời gian báo cáo");
         if (ngayBD.after(ngayKT)) return new ThongBaoDTO(false, "Ngày kết  phải ở sau ngày BD");
         
-        String text= "Công ty ảnh kỹ thuật số ABC\n\n" +
-                DateBUS.GetToDayString()+"\n"+
+        String text= "Công ty ảnh kỹ thuật số Photography\n" +
+                DateBUS.GetToDayString()+"\n\n"+
 "                                                          BÁO CÁO DOANH THU\n" +
 "                                                            "+DateBUS.GetDateString(ngayKT)+" - " + DateBUS.GetDateString(ngayKT) + "\n\n";
         
@@ -64,9 +64,9 @@ quanlytiemchuphinh.QuanLyTiemChupHinh.taiKhoanDangNhap.TENNV;
         if (ngayBD==null || ngayKT == null) return new ThongBaoDTO(false, "Chọn thời gian báo cáo");
         if (ngayBD.after(ngayKT)) return new ThongBaoDTO(false, "Ngày kết  phải ở sau ngày BD");
         
-        String text= "Công ty ảnh kỹ thuật số ABC\n\n" +
-DateBUS.GetToDayString()+"\n"+
-"                                                BÁO CÁO HOẠT ĐỘNG CHƯƠNG TRÌNH ƯU ĐÃI\n" +
+        String text= "Công ty ảnh kỹ thuật số Photography\n" +
+DateBUS.GetToDayString()+"\n\n"+
+"                                                BÁO CÁO HOẠT ĐỘNG CTUD\n" +
 "                                                       "+DateBUS.GetDateString(ngayKT)+" - " + DateBUS.GetDateString(ngayKT)+"\n\n";
         
         ArrayList<ChuongTrinhUuDaiDTO> ctud = ChuongTrinhUuDaiBUS.LayDanhSachCTUDTheoThoiGian(ngayBD, ngayKT);

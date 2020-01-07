@@ -24,16 +24,21 @@ import java.util.logging.Logger;
  * @author 16520
  */
 public class PDFBUS {
-    public static void SavePDF(String path, String str){
+    public static void SavePDF(String path, String str) {
          Document document = new Document();
         try
-        {   
-            
+        {           
            PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream(path));
            document.open();
              
-           document.add(new Paragraph(str, FontFactory.getFont(FontFactory.TIMES_ROMAN, 14)));
-           document.close();
+             try {
+                 BaseFont unicode = BaseFont.createFont("c:/windows/fonts/arial.ttf", BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
+                 document.add(new Paragraph(str, new com.itextpdf.text.Font(unicode, 12)));
+             } catch (IOException ex) {
+                 Logger.getLogger(PDFBUS.class.getName()).log(Level.SEVERE, null, ex);
+                 document.add(new Paragraph(str, FontFactory.getFont(FontFactory.TIMES_ROMAN, 12)));
+             }
+            document.close();
            writer.close();
         } catch (DocumentException e)
         {
