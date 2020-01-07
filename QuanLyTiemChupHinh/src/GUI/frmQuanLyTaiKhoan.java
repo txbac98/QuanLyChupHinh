@@ -267,6 +267,7 @@ public class frmQuanLyTaiKhoan extends javax.swing.JFrame {
     
     public void Show(){
         this.setVisible(true);
+        SERVICEFORM.Form.centreWindow(this);
         XoaThongBao();
         btnSua.setEnabled(false);
         btnXoa.setEnabled(false);

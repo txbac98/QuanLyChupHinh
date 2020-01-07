@@ -200,12 +200,7 @@ public class frmHome extends javax.swing.JFrame {
     
     public void ShowBanLanhDao(){
         this.setVisible(true);
-        //menuBaoCao.setVisible(false);
-        ShowTrangChu();
-    }
-    
-    public void ShowAdmin(){
-        this.setVisible(true);
+        menuBaoCao.setVisible(false);
         ShowTrangChu();
     }
     
