@@ -199,7 +199,19 @@ public class frmDangNhap extends javax.swing.JFrame {
         }
     }
     private void LoadDangNhap(){
+        
+        if (quanlytiemchuphinh.QuanLyTiemChupHinh.taiKhoanDangNhap.MANV.equals("admin")){
+            frmAdmin frmadmin = new frmAdmin();
+            frmadmin.Show();
+            this.setVisible(false);
+            return;
+        }
         frmHome home = new frmHome();
+        if (quanlytiemchuphinh.QuanLyTiemChupHinh.taiKhoanDangNhap.MANV.equals("full")){
+            home.ShowFull();
+            this.setVisible(false);
+            return;
+        }
         switch (quanlytiemchuphinh.QuanLyTiemChupHinh.taiKhoanDangNhap.LOAINV){
             case "Ban lãnh đạo":            
                 home.ShowBanLanhDao();

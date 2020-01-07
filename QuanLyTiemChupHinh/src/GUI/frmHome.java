@@ -42,7 +42,6 @@ public class frmHome extends javax.swing.JFrame {
         menuItemQuanLyCTUD = new javax.swing.JMenuItem();
         menuItemQuanLyPhieuThanhToan = new javax.swing.JMenuItem();
         menuItemQuanLyBangHoachToan = new javax.swing.JMenuItem();
-        menuQuanLyTaiKhoan = new javax.swing.JMenu();
         menuBaoCao = new javax.swing.JMenu();
         menuTaiKhoan = new javax.swing.JMenu();
         menuItemDoiMatKhau = new javax.swing.JMenuItem();
@@ -142,14 +141,6 @@ public class frmHome extends javax.swing.JFrame {
 
         jMenuBar1.add(menuQuanLy);
 
-        menuQuanLyTaiKhoan.setText("Quản lý tài khoản");
-        menuQuanLyTaiKhoan.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                menuQuanLyTaiKhoanMouseClicked(evt);
-            }
-        });
-        jMenuBar1.add(menuQuanLyTaiKhoan);
-
         menuBaoCao.setText("Báo Cáo");
         menuBaoCao.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -202,6 +193,11 @@ public class frmHome extends javax.swing.JFrame {
         frmTC.Show();
     }
     
+    public void ShowFull(){
+        this.setVisible(true);
+        ShowTrangChu();
+    }
+    
     public void ShowBanLanhDao(){
         this.setVisible(true);
         //menuBaoCao.setVisible(false);
@@ -215,7 +211,6 @@ public class frmHome extends javax.swing.JFrame {
     
     public void ShowBoPhanKeToan(){
         this.setVisible(true);
-        menuQuanLyTaiKhoan.setVisible(false);
         menuTraCuu.setVisible(false);    
         menuItemQuanLyKH.setVisible(false);
         menuItemQuanLyPhieuChup.setVisible(false);
@@ -225,7 +220,6 @@ public class frmHome extends javax.swing.JFrame {
     
     public void ShowBoPhanGiaoDich(){
         this.setVisible(true);
-        menuQuanLyTaiKhoan.setVisible(false);
         menuTraCuu.setVisible(false);    
         menuItemQuanLyBangHoachToan.setVisible(false);
         menuItemQuanLyPhieuThanhToan.setVisible(false);
@@ -236,7 +230,6 @@ public class frmHome extends javax.swing.JFrame {
     
     public void ShowBoPhanTiepThi(){
         this.setVisible(true);
-        menuQuanLyTaiKhoan.setVisible(false);
         menuItemTraCuuPhieuChup.setVisible(false);
         menuItemQuanLyKH.setVisible(false);
         menuItemQuanLyBangHoachToan.setVisible(false);
@@ -296,14 +289,6 @@ public class frmHome extends javax.swing.JFrame {
         frmTraCuuPhieuChup frmTCPC = new frmTraCuuPhieuChup();
         frmTCPC.Show();
     }//GEN-LAST:event_menuItemTraCuuPhieuChupActionPerformed
-
-    private void menuQuanLyTaiKhoanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuQuanLyTaiKhoanMouseClicked
-        // TODO add your handling code here:
-        this.CloseAllChildForm();
-        frmQuanLyTaiKhoan frmQLTK = new frmQuanLyTaiKhoan();
-        destopPane.add(frmQLTK);
-        frmQLTK.Show();
-    }//GEN-LAST:event_menuQuanLyTaiKhoanMouseClicked
 
     private void menuItemQuanLyKHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemQuanLyKHActionPerformed
         // TODO add your handling code here:
@@ -413,7 +398,6 @@ public class frmHome extends javax.swing.JFrame {
     private javax.swing.JMenuItem menuItemTraCuuKH;
     private javax.swing.JMenuItem menuItemTraCuuPhieuChup;
     private javax.swing.JMenu menuQuanLy;
-    private javax.swing.JMenu menuQuanLyTaiKhoan;
     private javax.swing.JMenu menuTaiKhoan;
     private javax.swing.JMenu menuTraCuu;
     private javax.swing.JMenu menuTrangChu;

@@ -18,7 +18,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author 16520
  */
-public class frmQuanLyTaiKhoan extends javax.swing.JInternalFrame {
+public class frmQuanLyTaiKhoan extends javax.swing.JFrame {
 
     /**
      * Creates new form frmQuanLyTaiKhoan
