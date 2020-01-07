@@ -61,6 +61,8 @@ public class frmHome extends javax.swing.JFrame {
             .addGap(0, 600, Short.MAX_VALUE)
         );
 
+        jMenuBar1.setToolTipText("");
+
         menuTrangChu.setText("Trang chủ");
         menuTrangChu.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {

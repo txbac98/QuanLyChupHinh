@@ -5,7 +5,7 @@
  */
 package BUS;
 
-import DAL.BangHoachToanDAO;
+import DAO.BangHoachToanDAO;
 import java.util.ArrayList;
 import DTO.BangHoachToanDTO;
 import DTO.ThongBaoDTO;

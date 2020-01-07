@@ -45,6 +45,7 @@ public class frmDangNhap extends javax.swing.JFrame {
         lbThongBao = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Đăng nhập");
         setLocation(new java.awt.Point(0, 0));
         setResizable(false);
 
@@ -95,7 +96,7 @@ public class frmDangNhap extends javax.swing.JFrame {
                         .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(cbTDDN, javax.swing.GroupLayout.Alignment.LEADING)))
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

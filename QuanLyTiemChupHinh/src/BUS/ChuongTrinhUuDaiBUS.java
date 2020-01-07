@@ -5,7 +5,7 @@
  */
 package BUS;
 
-import DAL.ChuongTrinhUuDaiDAO;
+import DAO.ChuongTrinhUuDaiDAO;
 import java.util.ArrayList;
 import DTO.ChuongTrinhUuDaiDTO;
 import DTO.ThongBaoDTO;
