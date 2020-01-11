@@ -7,7 +7,7 @@ package BUS;
 
 import DTO.PhieuThanhToanDTO;
 import DTO.ThongBaoDTO;
-import DAO.PhieuThanhToanDAO;
+import DAL.PhieuThanhToanDAO;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;

@@ -7,7 +7,7 @@ package BUS;
 
 import java.util.ArrayList;
 import DTO.KhachHangDTO;
-import DAO.KhachHangDAO;
+import DAL.KhachHangDAO;
 import DTO.ThongBaoDTO;
 
 /**

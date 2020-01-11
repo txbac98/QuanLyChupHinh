@@ -5,8 +5,8 @@
  */
 package BUS;
 
-import DAO.ChiTietPhieuChupDAO;
-import DAO.PhieuChupDAO;
+import DAL.ChiTietPhieuChupDAO;
+import DAL.PhieuChupDAO;
 import DTO.ChiTietPhieuChupDTO;
 import java.util.ArrayList;
 import DTO.PhieuChupDTO;

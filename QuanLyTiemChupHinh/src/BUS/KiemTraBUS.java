@@ -23,9 +23,7 @@ public class KiemTraBUS {
             return  false;
         }  
     }
-    
-    
-    
+        
     public static Boolean KiemTraEmail(String email){
         if (!email.contains("@") || !email.contains(".")){
             return false;

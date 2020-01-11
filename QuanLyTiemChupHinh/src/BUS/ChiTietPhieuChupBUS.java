@@ -5,7 +5,7 @@
  */
 package BUS;
 
-import DAO.ChiTietPhieuChupDAO;
+import DAL.ChiTietPhieuChupDAO;
 import DTO.ChiTietPhieuChupDTO;
 import DTO.ThongBaoDTO;
 import java.io.File;
@@ -44,17 +44,12 @@ public class ChiTietPhieuChupBUS {
     
     public static void LuuHinhAnh(String MaPC, List<String> listPath){
         String newPath = System.getProperty("user.dir") +"/Data/HinhAnh/" + MaPC ;
-        CreateFolder(newPath);
-        
-        System.out.print(newPath);
-        
-        
+        CreateFolder(newPath);       
+        System.out.print(newPath);              
         for (int i =0; i<listPath.size(); i++){
             String MaHA= MaPC + "_" + (i+1);
             if (!KiemTraTonTai(listPath.get(i),  newPath))
-                CopyFile(listPath.get(i), newPath );
-            
-            
+                CopyFile(listPath.get(i), newPath );                     
         }              
     }
     public static void CopyFile(String sou, String des){             
@@ -94,10 +89,7 @@ public class ChiTietPhieuChupBUS {
             DeleteImageFile(newPath+ "/" + listName.get(i));
         }     
     }
-    
-    
-            
-    
+                
     private static String getFileExtension(File file) {
         String extension = "";
  
